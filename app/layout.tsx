@@ -1,7 +1,6 @@
 import './globals.css';
-import { Inter } from 'next/font/google';
-
-const inter = Inter({ subsets: ['latin'] });
+import NavBar from './ui/navbar';
+import { Providers } from './providers';
 
 export const metadata = {
   title: 'SciGPT',
@@ -14,8 +13,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className="light">
+      <body>
+        <Providers>
+          <NavBar />
+          {children}
+          <footer className="text-center text-gray-500 text-sm p-4">
+            &copy; 2021 SciGPT
+          </footer>
+        </Providers>
+      </body>
     </html>
   );
 }

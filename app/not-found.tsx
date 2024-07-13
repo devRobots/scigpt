@@ -1,0 +1,14 @@
+import { Button } from '@nextui-org/react';
+import Link from 'next/link';
+
+export default function NotFound() {
+  return (
+    <div className="flex flex-col min-h-screen justify-center items-center">
+      <h1 className="font-bold text-xl">Error 404: No encontrado</h1>
+      <p>No se pudo encontrar el recurso solicitado</p>
+      <Link href="/" className="mt-4">
+        <Button>Volver al inicio</Button>
+      </Link>
+    </div>
+  );
+}

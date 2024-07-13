@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.title {
+    @apply
+    text-4xl 
+    font-bold 
+    md:text-end 
+    md:text-6xl;
+}
+
+.super-button {
+    @apply
+    text-gray-900 
+    bg-gradient-to-r 
+        from-yellow-100 
+        to-amber-200 hover:bg-gradient-to-l 
+            hover:from-yellow-100 
+            hover:to-amber-200 
+    font-medium 
+    text-lg
+}
+
+.editorial-header {
+    @apply
+    font-extrabold
+    text-4xl;
+}
+
+.editorial-body {
+    @apply
+    font-normal
+    text-medium 
+    md:text-lg 
+    text-justify 
+    self-center;
+}
