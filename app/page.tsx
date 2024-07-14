@@ -1,8 +1,8 @@
-import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import { Button, Card, CardBody, CardHeader } from '@nextui-org/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { mate } from './ui/fonts';
+import { FaArrowRight } from 'react-icons/fa6';
+import { mate } from './components/fonts';
 
 export default function Chat() {
   return (
@@ -20,7 +20,7 @@ export default function Chat() {
             <Button
               radius="lg"
               size="lg"
-              endContent={<ArrowRightIcon className="h-6 w-6" />}
+              endContent={<FaArrowRight />}
               className="super-button"
             >
               Empieza aqui
@@ -29,7 +29,7 @@ export default function Chat() {
         </div>
       </article>
       <article className="px-6 pb-4 md:px-12 md:py-10">
-        <Card className="flex h-full bg-stone-100 p-4 md:p-8">
+        <Card className="flex h-full p-4 md:p-8">
           <CardHeader className={mate.className + ' editorial-header'}>
             Ensayo sobre la ceguera
           </CardHeader>
