@@ -1,6 +1,6 @@
 import NavBar from '@/app/components/navbar';
 import { Providers } from '@/app/providers';
-import './globals.css';
+import '@/app/globals.css';
 
 export const metadata = {
   title: 'SciGPT',

@@ -1,6 +1,7 @@
 'use client';
 
 import { mate } from '@/app/components/fonts';
+import CategorySelector from '@/app/writer/studyFieldSelector';
 import {
   Button,
   Card,
@@ -10,7 +11,6 @@ import {
   Textarea
 } from '@nextui-org/react';
 import { useState } from 'react';
-import CategorySelector from './studyFieldSelector';
 
 export default function Writer() {
   const [category, setCategory] = useState('');

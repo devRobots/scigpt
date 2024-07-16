@@ -2,7 +2,7 @@ import { Button, Card, CardBody, CardHeader } from '@nextui-org/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaArrowRight } from 'react-icons/fa6';
-import { mate } from './components/fonts';
+import { mate } from '@/app/components/fonts';
 
 export default function Chat() {
   return (

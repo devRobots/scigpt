@@ -26,7 +26,7 @@ export default function NavBar() {
   ];
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen} position="static">
+    <Navbar onMenuOpenChange={setIsMenuOpen} shouldHideOnScroll>
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
