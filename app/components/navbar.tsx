@@ -26,7 +26,7 @@ export default function NavBar() {
   ];
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen}>
+    <Navbar onMenuOpenChange={setIsMenuOpen} position="static">
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
@@ -41,7 +41,9 @@ export default function NavBar() {
         {menuItems.map((item, index) => (
           <NavbarItem key={index} className="justify-items-center">
             <Link
-              className={item.path == path ? 'text-yellow-200' : 'text-white'}
+              className={
+                item.path == path ? 'text-yellow-200' : 'text-foreground'
+              }
               href={item.path}
               size="lg"
             >
@@ -55,7 +57,10 @@ export default function NavBar() {
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
             <Link
-              className={'w-full ' + (item.path == path ? 'bg-text-200' : '')}
+              className={
+                'w-full ' +
+                (item.path == path ? 'text-yellow-200' : 'text-foreground')
+              }
               href={item.path}
               size="lg"
             >

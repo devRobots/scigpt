@@ -1,6 +1,6 @@
-import NavBar from './components/navbar';
+import NavBar from '@/app/components/navbar';
+import { Providers } from '@/app/providers';
 import './globals.css';
-import { Providers } from './providers';
 
 export const metadata = {
   title: 'SciGPT',
@@ -18,7 +18,7 @@ export default function RootLayout({
         <Providers>
           <NavBar />
           {children}
-          <footer className="text-center text-gray-500 text-sm p-4">
+          <footer className="text-center text-foreground/70 text-sm p-4">
             &copy; 2021 SciGPT
           </footer>
         </Providers>
