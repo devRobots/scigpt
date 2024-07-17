@@ -12,19 +12,21 @@ import {
   FaStethoscope
 } from 'react-icons/fa6';
 
-interface CatSelectorProps {
-  setCategory: Dispatch<string>;
+interface FieldOfStudySelectorProps {
+  setFieldOfStudy: Dispatch<string>;
 }
 
-export default function CategorySelector({ setCategory }: CatSelectorProps) {
-  const [categoryKey, setCategoryKey] = useState(new Set(''));
+export default function FieldOfStudySelector({
+  setFieldOfStudy
+}: FieldOfStudySelectorProps) {
+  const [fieldOfStudyKey, setFieldOfStudyKey] = useState(new Set(''));
 
-  const onSelectionCategory = (selection: Selection) => {
+  const onSelectionFieldOfStudy = (selection: Selection) => {
     const set = selection as Set<string>;
     const key = set.keys().next().value;
 
-    setCategoryKey(key);
-    setCategory(key);
+    setFieldOfStudyKey(key);
+    setFieldOfStudy(key);
   };
 
   return (
@@ -37,8 +39,8 @@ export default function CategorySelector({ setCategory }: CatSelectorProps) {
           disallowEmptySelection={true}
           className="w-auto"
           selectionMode="single"
-          selectedKeys={categoryKey}
-          onSelectionChange={onSelectionCategory}
+          selectedKeys={fieldOfStudyKey}
+          onSelectionChange={onSelectionFieldOfStudy}
         >
           {fieldsOfStudy.map((field) => (
             <ListboxItem

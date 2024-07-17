@@ -3,7 +3,6 @@ interface StringAPI {
 }
 interface AuthorAPI {
     name: StringAPI;
-
 }
 
 export interface PaperAPIResponse {

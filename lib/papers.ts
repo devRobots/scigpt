@@ -3,18 +3,17 @@ import { Paper, PaperAPIResponse } from "@/types/paper";
 const SEMANTIC_SCHOLAR_API_URL: string = "https://www.semanticscholar.org/api/1/search";
 const SCIHUB_URL: string = "https://sci-hub.st";
 
-export async function searchPapers(query: string) {
-    const results: Array<{}> = [];
-
-    const response = await fetch(SEMANTIC_SCHOLAR_API_URL,
+export async function fecthPapers(query: string, page: number = 1): Promise<PaperAPIResponse[]> {
+    const raw = await fetch(SEMANTIC_SCHOLAR_API_URL,
         {
+            cache: 'force-cache',
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
                 "queryString": query,
-                "page": 1,
+                "page": page,
                 "pageSize": 10,
                 "sort": "relevance",
                 "authors": [],
@@ -35,18 +34,30 @@ export async function searchPapers(query: string) {
             })
         }
     );
-    const data = await response.json();
-    await data.results.forEach(async (paperRaw: any) => {
-        const paper = await processPaper(paperRaw);
-        if (paper.url === "" || paper.abstract === "") {
-            return;
-        }
-        results.push(paper);
-    });
+    const data = await raw.json();
+    return data.results;
+}
 
-    console.log(results);
+export async function searchPapers(query: string, limit: number = 10): Promise<Paper[]> {
+    const results: Paper[] = [];
+    let page: number = 1;
 
-    return data;
+    while (results.length < limit) {
+        const data = await fecthPapers(query, page);
+        data.forEach((paperRaw: any) => {
+            if (results.length >= limit) {
+                return;
+            }
+            const paper = processPaper(paperRaw);
+            if (paper.url === "" || paper.abstract === "") {
+                return;
+            }
+            results.push(paper);
+        });
+        page++;
+    }
+
+    return results;
 }
 
 async function getPaperUrlByDOI(doi: string): Promise<string> {
@@ -68,24 +79,25 @@ async function getPaperUrlByDOI(doi: string): Promise<string> {
     return SCIHUB_URL + data.match(/\/downloads\/.*\.pdf/);
 }
 
-async function processPaper(paperRaw: PaperAPIResponse): Promise<Paper> {
+function processPaper(raw: PaperAPIResponse): Paper {
     let url: string | null = null;
     let inestable: boolean = false;
 
-    const primaryPaperUrl = paperRaw.primaryPaperLink.url;
+    const primaryPaperUrl = raw.primaryPaperLink ? raw.primaryPaperLink.url : '';
     url = isPdfUrl(primaryPaperUrl) ? primaryPaperUrl : null;
 
     inestable = url ? false : true;
-    url = url ?? isUrlDOI(primaryPaperUrl) ? primaryPaperUrl : paperRaw.doiInfo.doiUrl;
+    url = url ?? isUrlDOI(primaryPaperUrl) ? primaryPaperUrl : null;
+    url = url ?? raw.doiInfo ? raw.doiInfo.doiUrl : '';
 
     const paper = {
-        abstract: paperRaw.paperAbstract.text,
-        authors: paperRaw.authors.map((author: any) => author[0].name),
-        citationCount: paperRaw.citationStats.numCitations,
-        fieldsOfStudy: paperRaw.fieldsOfStudy,
-        title: paperRaw.title.text,
+        abstract: raw.paperAbstract.text,
+        authors: raw.authors.map((author: any) => author[0].name),
+        citationCount: raw.citationStats.numCitations,
+        fieldsOfStudy: raw.fieldsOfStudy,
+        title: raw.title.text,
         url: url,
-        year: paperRaw.year.text
+        year: raw.year.text
     }
 
     return paper;
@@ -97,4 +109,16 @@ function isUrlDOI(url: string): boolean {
 
 function isPdfUrl(url: string): boolean {
     return url.match(/\.pdf$/) !== null;
+}
+
+export function tldr(data: string | string[], limit: number = 100): string {
+    return Array.isArray(data) ? tldrArray(data, limit) : tldrText(data, limit)
+}
+
+function tldrText(data: string, limit: number = 300): string {
+    return data.length > limit ? data.slice(0, limit) + "..." : data
+}
+
+function tldrArray(data: string[], limit: number = 3): string {
+    return data.length > limit ? data.slice(0, limit).join(", ") + "..." : data.join(", ");
 }
