@@ -35,7 +35,7 @@ export const prompt = `
 {
     "topic": "<user-provided topic>",
     "fieldOfStudy": "<user-provided field>",
-    "hypothesis": [
+    "thesis": [
         "Hypothesis 1",
         "Hypothesis 2",
         "Hypothesis 3",
@@ -55,7 +55,7 @@ export const prompt = `
 {
     "topic": "Climate Change",
     "fieldOfStudy": "Environmental Science",
-    "hypothesis": [
+    "thesis": [
         "¿El aumento de los niveles de CO2 atmosférico se correlaciona con el aumento de las temperaturas globales?",
         "¿El derretimiento de los casquetes polares contribuye al aumento del nivel del mar?",
         "¿Los cambios en las corrientes oceánicas están influenciados por las variaciones de temperatura global?",
@@ -71,7 +71,7 @@ export const prompt = `
 {
     "topic": "Gene Therapy",
     "fieldOfStudy": "Medical Science",
-    "hypothesis": [
+    "thesis": [
         "¿Los vectores virales pueden administrar eficazmente genes terapéuticos a las células diana?",
         "¿Las técnicas de edición genética pueden corregir mutaciones genéticas específicas en células humanas?",
         "¿La respuesta inmune a la terapia génica se puede mitigar mediante el uso de nanopartículas lipídicas?",
@@ -87,7 +87,7 @@ export const prompt = `
 {
     "topic": "Algorithm Optimization",
     "fieldOfStudy": "Computer Science",
-    "hypothesis": [
+    "thesis": [
         "¿Los algoritmos de aprendizaje profundo pueden mejorar la precisión de la clasificación de imágenes?",
         "¿La optimización de los algoritmos de búsqueda puede reducir el tiempo de ejecución en aplicaciones web?",
         "¿La paralelización de algoritmos de procesamiento de datos puede aumentar la eficiencia en sistemas distribuidos?",
