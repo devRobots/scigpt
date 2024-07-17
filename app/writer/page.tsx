@@ -14,7 +14,7 @@ export default function Writer() {
   const [fieldOfStudy, setFieldOfStudy] = useState('');
 
   const handleNext = () => {
-    router.push(`/references?query=${query}&fieldOfStudy=${fieldOfStudy}`);
+    router.push(`/writer/thesis?topic=${query}&fieldOfStudy=${fieldOfStudy}`);
   };
 
   return (
