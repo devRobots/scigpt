@@ -13,6 +13,10 @@ export default function Writer() {
   const [query, setQuery] = useState('');
   const [fieldOfStudy, setFieldOfStudy] = useState('');
 
+  const handleNext = () => {
+    router.push(`/references?query=${query}&fieldOfStudy=${fieldOfStudy}`);
+  };
+
   return (
     <>
       <Card className="h-fit p-2 sm:p-2">
@@ -32,7 +36,12 @@ export default function Writer() {
           <FieldOfStudySelector setFieldOfStudy={setFieldOfStudy} />
         </CardBody>
         <CardFooter className="sm:flex sm:flex-col sm:items-end">
-          <Button className="super-button w-full sm:w-auto">Siguiente</Button>
+          <Button
+            className="super-button w-full sm:w-auto"
+            onClick={handleNext}
+          >
+            Siguiente
+          </Button>
         </CardFooter>
       </Card>
     </>
