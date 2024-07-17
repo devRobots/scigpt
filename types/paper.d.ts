@@ -4,6 +4,9 @@ interface StringAPI {
 interface AuthorAPI {
     name: StringAPI;
 }
+interface PaperLinkAPI {
+    url: string;
+}
 
 export interface PaperAPIResponse {
     authors: AuthorAPI[];
@@ -15,9 +18,8 @@ export interface PaperAPIResponse {
     };
     fieldsOfStudy: string[];
     paperAbstract: StringAPI;
-    primaryPaperLink: {
-        url: string;
-    }
+    primaryPaperLink: PaperLinkAPI;
+    alternatePaperLinks: PaperLinkAPI[];
     title: StringAPI;
     year: StringAPI;
 }

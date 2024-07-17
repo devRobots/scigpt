@@ -44,14 +44,10 @@ export async function searchPapers(query: string, limit: number = 10): Promise<P
 
     while (results.length < limit) {
         const data = await fecthPapers(query, page);
-        data.forEach((paperRaw: any) => {
-            if (results.length >= limit) {
-                return;
-            }
-            const paper = processPaper(paperRaw);
-            if (paper.url === "" || paper.abstract === "") {
-                return;
-            }
+        if (data.length === 0) break;
+        data.forEach((raw) => {
+            const paper = processPaper(raw);
+            if (paper.url === "" || paper.abstract === "") return;
             results.push(paper);
         });
         page++;
@@ -86,9 +82,16 @@ function processPaper(raw: PaperAPIResponse): Paper {
     const primaryPaperUrl = raw.primaryPaperLink ? raw.primaryPaperLink.url : '';
     url = isPdfUrl(primaryPaperUrl) ? primaryPaperUrl : null;
 
+    const alternatePaperUrl = raw.alternatePaperLinks ?? [];
+    for (let i = 0; i < alternatePaperUrl.length; i++) {
+        if (url) break;
+        url = isPdfUrl(alternatePaperUrl[i].url) ? alternatePaperUrl[i].url : null;
+    }
+
     inestable = url ? false : true;
-    url = url ?? isUrlDOI(primaryPaperUrl) ? primaryPaperUrl : null;
-    url = url ?? raw.doiInfo ? raw.doiInfo.doiUrl : '';
+    url = url || (isUrlDOI(primaryPaperUrl) ? primaryPaperUrl : null);
+    url = url || (raw.doiInfo ? raw.doiInfo.doiUrl : '');
+
 
     const paper = {
         abstract: raw.paperAbstract.text,

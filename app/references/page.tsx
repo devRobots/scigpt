@@ -20,9 +20,8 @@ export default function References() {
   return (
     <main className="p-8">
       <h1 className="editorial-header mb-8">Referentes</h1>
-      <div className="columns-4">
+      <div className="columns-2">
         {papers.map((paper) => {
-          console.log(paper);
           return paper && <ReferenceCard paper={paper} />;
         })}
       </div>
