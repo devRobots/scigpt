@@ -4,7 +4,7 @@ import { Accordion, AccordionItem } from '@nextui-org/accordion';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
 import { Chip } from '@nextui-org/react';
 
-export default function ReferenceCard({ paper }: { paper: Paper }) {
+export function PaperCard({ paper }: { paper: Paper }) {
   return (
     <Card key={paper.url} className="w-full">
       <CardHeader>
@@ -36,5 +36,19 @@ export default function ReferenceCard({ paper }: { paper: Paper }) {
         </div>
       </CardHeader>
     </Card>
+  );
+}
+
+export default function PaperList({ papers }: { papers: Paper[] }) {
+  const hasPapers = papers.length > 0;
+
+  return (
+    <>
+      {hasPapers ? (
+        papers.map((paper) => <PaperCard key={paper.url} paper={paper} />)
+      ) : (
+        <p>No papers found</p>
+      )}
+    </>
   );
 }

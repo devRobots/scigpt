@@ -46,7 +46,7 @@ export async function searchPapers(query: string, limit: number = 10): Promise<P
         const data = await fecthPapers(query, page);
         if (data.length === 0) break;
         data.forEach((raw) => {
-            const paper = processPaper(raw);
+            const paper = mapPaper(raw);
             if (paper.url === "" || paper.abstract === "") return;
             results.push(paper);
         });
@@ -75,7 +75,7 @@ async function getPaperUrlByDOI(doi: string): Promise<string> {
     return SCIHUB_URL + data.match(/\/downloads\/.*\.pdf/);
 }
 
-function processPaper(raw: PaperAPIResponse): Paper {
+function mapPaper(raw: PaperAPIResponse): Paper {
     let url: string | null = null;
     let inestable: boolean = false;
 
