@@ -1,7 +1,7 @@
 'use client';
 
 import { steps } from '@/lib/writerSteps';
-import { BreadcrumbItem, Breadcrumbs } from '@nextui-org/react';
+import { BreadcrumbItem, Breadcrumbs } from '@nextui-org/breadcrumbs';
 import { useState } from 'react';
 import { FaFeather } from 'react-icons/fa6';
 

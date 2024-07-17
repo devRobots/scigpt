@@ -1,7 +1,7 @@
 'use client';
 
+import { Link } from '@nextui-org/link';
 import {
-  Link,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -9,7 +9,7 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle
-} from '@nextui-org/react';
+} from '@nextui-org/navbar';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { FaFeather, FaHouse, FaInfo } from 'react-icons/fa6';
