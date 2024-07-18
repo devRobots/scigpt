@@ -1,4 +1,4 @@
-import { Paper, PaperReducerAction } from "@/types/internals";
+import { Paper, PaperReducerAction } from "@/app/types/internals";
 
 export const PAPER_ACTIONS = {
     ADD_TOPIC: 'ADD_TOPIC',

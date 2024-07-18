@@ -1,4 +1,4 @@
-import { generateThesis } from '@/lib/thesis';
+import { generateThesis } from '@/app/lib/thesis';
 import { useCallback, useState } from 'react';
 
 export function useThesis() {

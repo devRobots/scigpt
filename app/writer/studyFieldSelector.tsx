@@ -1,4 +1,4 @@
-import { fieldsOfStudy } from '@/lib/fieldsOfStudy';
+import { fieldsOfStudy } from '@/app/lib/fieldsOfStudy';
 import { Listbox, ListboxItem } from '@nextui-org/listbox';
 import { Selection } from '@react-types/shared';
 import { Dispatch, useState } from 'react';

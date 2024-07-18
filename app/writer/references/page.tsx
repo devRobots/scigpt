@@ -1,7 +1,7 @@
 'use client';
 
+import { usePapers } from '@/app/hooks/usePapers';
 import PaperList from '@/app/references/Papers';
-import { usePapers } from '@/hooks/usePapers';
 import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 

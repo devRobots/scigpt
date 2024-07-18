@@ -1,5 +1,5 @@
+import { Paper } from "@/app/types/internals";
 import { PAPER_ACTIONS, paperReducer } from "@/reducers/paper";
-import { Paper } from "@/types/internals";
 import { useReducer } from "react";
 
 const initialState: Paper = {

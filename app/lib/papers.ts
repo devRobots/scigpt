@@ -1,4 +1,4 @@
-import { Paper, PaperAPIResponse } from "@/types/paper";
+import { Paper, PaperAPIResponse } from "@/app/types/paper";
 
 const SEMANTIC_SCHOLAR_API_URL: string = "https://www.semanticscholar.org/api/1/search";
 const SCIHUB_URL: string = "https://sci-hub.st";

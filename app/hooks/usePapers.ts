@@ -1,5 +1,5 @@
-import { searchPapers } from '@/lib/papers';
-import { Paper } from '@/types/paper';
+import { searchPapers } from '@/app/lib/papers';
+import { Paper } from '@/app/types/paper';
 import { useCallback, useState } from 'react';
 
 export function usePapers() {

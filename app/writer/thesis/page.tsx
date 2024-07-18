@@ -1,9 +1,9 @@
 'use client';
 
+import { usePager } from '@/app/hooks/usePager';
+import { usePaper } from '@/app/hooks/usePaper';
+import { useThesis } from '@/app/hooks/useThesis';
 import ThesisList from '@/app/writer/thesis/Thesis';
-import { usePager } from '@/hooks/usePager';
-import { usePaper } from '@/hooks/usePaper';
-import { useThesis } from '@/hooks/useThesis';
 import { useEffect } from 'react';
 
 export default function Thesis() {

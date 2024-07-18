@@ -1,4 +1,4 @@
-import { usePaperReducer } from '@/hooks/usePaperReducer';
+import { usePaperReducer } from '@/app/hooks/usePaperReducer';
 import { createContext, ReactNode } from 'react';
 
 export const PaperContext = createContext({

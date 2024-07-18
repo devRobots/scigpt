@@ -1,5 +1,5 @@
-import { usePager } from '@/hooks/usePager';
-import { steps } from '@/lib/writerSteps';
+import { usePager } from '@/app/hooks/usePager';
+import { steps } from '@/app/lib/writerSteps';
 import { BreadcrumbItem, Breadcrumbs } from '@nextui-org/breadcrumbs';
 import { FaFeather } from 'react-icons/fa6';
 

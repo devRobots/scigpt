@@ -1,4 +1,4 @@
-import { prompt } from '@/lib/prompts/thesis';
+import { prompt } from '@/app/lib/prompts/thesis';
 import { generateText } from 'ai';
 import { ollama } from "ollama-ai-provider";
 

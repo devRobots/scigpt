@@ -1,8 +1,8 @@
 'use client';
 
 import { mate } from '@/app/components/fonts';
+import { usePaper } from '@/app/hooks/usePaper';
 import FieldOfStudySelector from '@/app/writer/studyFieldSelector';
-import { usePaper } from '@/hooks/usePaper';
 import { Button } from '@nextui-org/button';
 import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card';
 import { Textarea } from '@nextui-org/input';
