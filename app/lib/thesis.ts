@@ -2,9 +2,9 @@ import { prompt } from '@/app/lib/prompts/thesis';
 import { generateText } from 'ai';
 import { ollama } from "ollama-ai-provider";
 
-export async function generateThesis(topic: string, fieldsOfStudy: string): Promise<string[]> {
+export async function generateThesis(topics: string[], fieldsOfStudy: string): Promise<string[]> {
     const seed = Math.floor(Math.random() * 1024);
-    const input = `Topic: ${topic}\nField of Study: ${fieldsOfStudy}`;
+    const input = `Topic: ${topics.join(", ")}\nField of Study: ${fieldsOfStudy}`;
 
     const { text } = await generateText({
         model: ollama('llama3'),

@@ -5,7 +5,7 @@ import { useContext, useReducer } from 'react';
 
 
 const initialState: Draft = {
-    topic: '',
+    topics: [],
     fieldOfStudy: '',
     thesis: '',
     objectives: []
@@ -15,14 +15,15 @@ export function useDraftReducer() {
     const [state, dispatch] = useReducer(draftReducer, initialState);
 
     const addTopic = (topic: string) => dispatch({ type: DRAFT_ACTIONS.ADD_TOPIC, payload: topic });
-    const addFieldOfStudy = (fieldOfStudy: string) => dispatch({ type: DRAFT_ACTIONS.ADD_FIELD_OF_STUDY, payload: fieldOfStudy });
+    const removeTopic = (topic: string) => dispatch({ type: DRAFT_ACTIONS.REMOVE_TOPIC, payload: topic });
+    const setFieldOfStudy = (fieldOfStudy: string) => dispatch({ type: DRAFT_ACTIONS.ADD_FIELD_OF_STUDY, payload: fieldOfStudy });
     const addThesis = (thesis: string) => dispatch({ type: DRAFT_ACTIONS.ADD_THESIS, payload: thesis });
 
-    return { draft: state, addTopic, addFieldOfStudy, addThesis };
+    return { draft: state, addTopic, removeTopic, setFieldOfStudy, addThesis };
 }
 
 export function useDraft() {
     const context = useContext(DraftContext);
-    const { draft, addTopic, addFieldOfStudy, addThesis } = context;
-    return { draft, addTopic, addFieldOfStudy, addThesis };
+    const { draft, addTopic, removeTopic, setFieldOfStudy, addThesis } = context;
+    return { draft, addTopic, removeTopic, setFieldOfStudy, addThesis };
 }

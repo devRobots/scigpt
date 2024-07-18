@@ -1,5 +1,5 @@
 export interface Draft {
-    topic: string;
+    topics: string[];
     fieldOfStudy: string;
     thesis: string;
     objectives: string[];

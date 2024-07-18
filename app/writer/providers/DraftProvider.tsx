@@ -3,21 +3,23 @@ import { createContext, ReactNode } from 'react';
 
 export const DraftContext = createContext({
   draft: {
-    topic: '',
+    topics: [''],
     fieldOfStudy: '',
     thesis: ''
   },
   addTopic: (value: string) => {},
-  addFieldOfStudy: (value: string) => {},
+  removeTopic: (value: string) => {},
+  setFieldOfStudy: (value: string) => {},
   addThesis: (value: string) => {}
 });
 
 export default function DraftProvider({ children }: { children: ReactNode }) {
-  const { draft, addTopic, addFieldOfStudy, addThesis } = useDraftReducer();
+  const { draft, addTopic, removeTopic, setFieldOfStudy, addThesis } =
+    useDraftReducer();
 
   return (
     <DraftContext.Provider
-      value={{ draft, addTopic, addFieldOfStudy, addThesis }}
+      value={{ draft, addTopic, removeTopic, setFieldOfStudy, addThesis }}
     >
       {children}
     </DraftContext.Provider>

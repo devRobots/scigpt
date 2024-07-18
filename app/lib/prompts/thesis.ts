@@ -15,15 +15,15 @@ export const prompt = `
 
 ## Action Steps
 
-### Topic and Field Specification
+### Topics and Field Specification
 
-1. **REQUEST** the user to specify the scientific topic and field of study. For example:
-   - Topic: Climate Change
+1. **REQUEST** the user to specify the scientific topics and field of study. For example:
+   - Topics: Climate Change, Greenhouse Gas Emissions, Biodiversity Loss
    - Field of Study: Environmental Science
 
 ### Hypothesis Generation
 
-2. **FORMULATE** 5 hypotheses based on the specified topic and field. Ensure each hypothesis is:
+2. **FORMULATE** 5 hypotheses based on the specified topics and field. Ensure each hypothesis is:
    - Clear and concise
    - Testable and falsifiable
    - Relevant to the specified topic and field
@@ -33,7 +33,7 @@ export const prompt = `
 3. **PROVIDE** the list of 5 hypotheses in the following JSON format:
 
 {
-    "topic": "<user-provided topic>",
+    "topics": ["<user-provided topic-1>", "<user-provided topic-2>", "<user-provided topic-3>", ...],
     "fieldOfStudy": "<user-provided field>",
     "thesis": [
         "Hypothesis 1",
@@ -53,7 +53,7 @@ export const prompt = `
 <example1>
 
 {
-    "topic": "Climate Change",
+    "topics": ["Climate Change", "Global Warming", "Deforestation"],
     "fieldOfStudy": "Environmental Science",
     "thesis": [
         "¿El aumento de los niveles de CO2 atmosférico se correlaciona con el aumento de las temperaturas globales?",
@@ -69,7 +69,7 @@ export const prompt = `
 <example2>
 
 {
-    "topic": "Gene Therapy",
+    "topics": ["Gene Therapy", "Genetic Engineering", "Viral Vectors"]
     "fieldOfStudy": "Medical Science",
     "thesis": [
         "¿Los vectores virales pueden administrar eficazmente genes terapéuticos a las células diana?",
@@ -85,7 +85,7 @@ export const prompt = `
 <example3>
 
 {
-    "topic": "Algorithm Optimization",
+    "topics": ["Algorithm Optimization", "Deep Learning", "Data Processing"]
     "fieldOfStudy": "Computer Science",
     "thesis": [
         "¿Los algoritmos de aprendizaje profundo pueden mejorar la precisión de la clasificación de imágenes?",
