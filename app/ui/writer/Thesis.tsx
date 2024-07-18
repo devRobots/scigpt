@@ -1,15 +1,11 @@
+import { generateThesis } from '@/app/lib/thesis';
 import { Radio, RadioGroup } from '@nextui-org/radio';
 import { cn } from '@nextui-org/react';
 
-export function ThesisItem({
-  children,
-  value
-}: {
-  children: React.ReactNode;
-  value: string;
-}) {
+export function ThesisItem({ value }: { value: string }) {
   return (
     <Radio
+      key={value}
       value={value}
       classNames={{
         base: cn(
@@ -19,20 +15,27 @@ export function ThesisItem({
         )
       }}
     >
-      {children}
+      {value}
     </Radio>
   );
 }
 
-export default function ThesisList({ thesis }: { thesis: string[] }) {
-  const hasThesis = thesis ? thesis.length > 0 : false;
-  return hasThesis ? (
+export default async function ThesisList({
+  topics,
+  fieldOfStudy
+}: {
+  topics: string[];
+  fieldOfStudy: string;
+}) {
+  const thesis = await generateThesis(topics, fieldOfStudy);
+
+  if (!thesis) return <p>No thesis generated</p>;
+
+  return (
     <RadioGroup className="w-full">
       {thesis.map((str) => {
-        return <ThesisItem value={str}>{str}</ThesisItem>;
+        return <ThesisItem value={str} />;
       })}
     </RadioGroup>
-  ) : (
-    <p>No thesis generated</p>
   );
 }
