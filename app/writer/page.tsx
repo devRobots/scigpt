@@ -1,8 +1,8 @@
 'use client';
 
-import { mate } from '@/app/components/fonts';
-import FieldOfStudySelector from '@/app/writer/components/FieldsOfStudySelector';
-import TopicsSelector from '@/app/writer/components/TopicsSelector';
+import { mate } from '@/app/ui/fonts';
+import FieldOfStudySelector from '@/app/ui/writer/FieldsOfStudySelector';
+import TopicsSelector from '@/app/ui/writer/TopicsSelector';
 import { Button } from '@nextui-org/button';
 import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card';
 import { useRouter } from 'next/navigation';

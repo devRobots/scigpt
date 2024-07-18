@@ -1,4 +1,4 @@
-import { mate } from '@/app/components/fonts';
+import { mate } from '@/app/ui/fonts';
 import { Button } from '@nextui-org/button';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
 import Image from 'next/image';

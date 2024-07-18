@@ -3,8 +3,8 @@
 import { useDraft } from '@/app/hooks/useDraft';
 import { usePager } from '@/app/hooks/usePager';
 import { useThesis } from '@/app/hooks/useThesis';
-import ThesisList from '@/app/writer/thesis/Thesis';
-import { Spinner } from '@nextui-org/react';
+import ThesisList from '@/app/ui/writer/Thesis';
+import { Card, CardBody, CardHeader } from '@nextui-org/card';
 import { useEffect } from 'react';
 
 export default function Thesis() {
@@ -19,9 +19,13 @@ export default function Thesis() {
   }, []);
 
   return (
-    <main className="p-8">
-      <h1 className="editorial-header mb-8">Thesis</h1>
-      {loading ? <Spinner /> : <ThesisList thesis={thesis} />}
-    </main>
+    <>
+      <Card className="h-fit p-2 sm:p-2">
+        <CardHeader className={'editorial-header'}>Thesis</CardHeader>
+        <CardBody className="h-fit gap-6">
+          <ThesisList thesis={thesis} />
+        </CardBody>
+      </Card>
+    </>
   );
 }

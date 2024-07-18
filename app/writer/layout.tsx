@@ -1,6 +1,6 @@
 'use client';
 
-import Breadcrumb from '@/app/writer/components/Breadcrumb';
+import Breadcrumb from '@/app/ui/writer/Breadcrumb';
 import DraftProvider from '@/app/writer/providers/DraftProvider';
 import PagerProvider from '@/app/writer/providers/PagerProvider';
 

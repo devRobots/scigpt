@@ -1,6 +1,6 @@
-import NavBar from '@/app/components/navbar';
 import '@/app/globals.css';
 import { NextUIProviders } from '@/app/providers';
+import NavBar from '@/app/ui/navbar';
 
 export const metadata = {
   title: 'SciGPT',
