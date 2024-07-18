@@ -2,19 +2,18 @@
 
 import { mate } from '@/app/components/fonts';
 import FieldOfStudySelector from '@/app/writer/studyFieldSelector';
+import { usePaper } from '@/hooks/usePaper';
 import { Button } from '@nextui-org/button';
 import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card';
 import { Textarea } from '@nextui-org/input';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 
 export default function Writer() {
   const router = useRouter();
-  const [query, setQuery] = useState('');
-  const [fieldOfStudy, setFieldOfStudy] = useState('');
+  const { paper, addTopic, addFieldOfStudy } = usePaper();
 
   const handleNext = () => {
-    router.push(`/writer/thesis?topic=${query}&fieldOfStudy=${fieldOfStudy}`);
+    router.push('/writer/thesis');
   };
 
   return (
@@ -29,11 +28,11 @@ export default function Writer() {
             minRows={2}
             placeholder="Escribe el tema de tu idea"
             size="lg"
-            value={query}
-            onValueChange={setQuery}
+            value={paper.topic}
+            onValueChange={addTopic}
           />
           <p>Selecciona el campo de estudio al que pertenece tu idea.</p>
-          <FieldOfStudySelector setFieldOfStudy={setFieldOfStudy} />
+          <FieldOfStudySelector setFieldOfStudy={addFieldOfStudy} />
         </CardBody>
         <CardFooter className="sm:flex sm:flex-col sm:items-end">
           <Button
