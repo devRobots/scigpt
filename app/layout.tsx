@@ -16,11 +16,13 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body>
         <NextUIProviders>
-          <NavBar />
-          {children}
-          <footer className="text-center text-foreground/70 text-sm p-4">
-            &copy; 2021 SciGPT
-          </footer>
+          <div className="flex flex-col h-screen justify-between">
+            <NavBar />
+            {children}
+            <footer className="text-center justify-center text-foreground/70 text-sm mb-4">
+              &copy; 2021 SciGPT
+            </footer>
+          </div>
         </NextUIProviders>
       </body>
     </html>

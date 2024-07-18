@@ -1,38 +1,62 @@
 'use client';
 
-import { mate } from '@/app/ui/fonts';
-import FieldOfStudySelector from '@/app/ui/writer/FieldsOfStudySelector';
-import TopicsSelector from '@/app/ui/writer/TopicsSelector';
 import { Button } from '@nextui-org/button';
-import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card';
-import Link from 'next/link';
+import { Card } from '@nextui-org/card';
+import { Input } from '@nextui-org/input';
+import { Divider } from '@nextui-org/react';
+import { useRouter } from 'next/navigation';
+import { getDraft } from '../lib/firebase/firestore';
 
 export default function Writer() {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push('/writer/new');
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const uuid = formData.get('uuid') as string;
+    if (!uuid) return;
+
+    const { draft } = await getDraft(uuid);
+    if (!draft) return;
+
+    router.push(`/writer/${uuid}/idea`);
+  };
+
   return (
-    <>
-      <Card className="h-fit p-2 sm:p-2">
-        <CardHeader className={mate.className + ' editorial-header'}>
-          Empecemos una idea
-        </CardHeader>
-        <CardBody className="h-fit gap-6">
-          <TopicsSelector />
-          <p>Selecciona el campo de estudio al que pertenece tu idea.</p>
-          <FieldOfStudySelector />
-        </CardBody>
-        <CardFooter className="sm:flex sm:flex-col sm:items-end">
-          <Link
-            href={{
-              pathname: '/writer/thesis',
-              query: {
-                topics: ['ai', 'nextjs'],
-                fieldOfStudy: 'Computer Science'
-              }
-            }}
+    <main className="flex flex-col my-auto p-8 h-10 items-center justify-center gap-8">
+      <section>
+        <Card className="w-fit gap-6 py-6 px-16">
+          <h1 className="text-lg">Escribe un nuevo articulo</h1>
+          <Button
+            className="super-button"
+            variant="shadow"
+            onClick={handleClick}
           >
-            <Button className="super-button w-full sm:w-auto">Siguiente</Button>
-          </Link>
-        </CardFooter>
-      </Card>
-    </>
+            Empieza a escribir
+          </Button>
+        </Card>
+      </section>
+      <Divider className="w-64" />
+      <section>
+        <Card className="w-fit gap-4 py-6 px-16">
+          <h2 className="text-lg">Continua donde lo dejaste</h2>
+          <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+            <Input
+              name="uuid"
+              placeholder="Buscar articulo"
+              variant="faded"
+              className="text-center"
+            />
+            <Button variant="flat" color="warning" type="submit">
+              Seguir editando
+            </Button>
+          </form>
+        </Card>
+      </section>
+    </main>
   );
 }

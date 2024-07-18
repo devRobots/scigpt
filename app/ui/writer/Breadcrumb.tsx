@@ -25,8 +25,8 @@ export default function Breadcrumb() {
       {steps.map((step) => (
         <BreadcrumbItem
           key={step.id}
-          isCurrent={path == step.path}
-          isDisabled={path != step.path}
+          isCurrent={path.endsWith(step.path)}
+          isDisabled={!path.endsWith(step.path)}
         >
           {step.title}
         </BreadcrumbItem>

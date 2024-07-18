@@ -7,8 +7,8 @@ import { FaArrowRight } from 'react-icons/fa6';
 
 export default function Chat() {
   return (
-    <main className="grid grid-cols-1 lg:grid-cols-2">
-      <article className="grid grid-cols-1 p-8 space-y-6 md:content-center">
+    <main className="columns-1 md:columns-2">
+      <article className="p-8 space-y-6 md:content-center">
         <div className="w-full flex flex-col md:items-end">
           <Image src="/logo.png" alt="logo" width={256} height={256} />
         </div>

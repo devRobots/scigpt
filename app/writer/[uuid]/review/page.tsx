@@ -1,7 +1,7 @@
 'use client';
 
 import { usePapers } from '@/app/hooks/usePapers';
-import PaperList from '@/app/writer/review/PapersReviews';
+import PaperList from '@/app/writer/[uuid]/review/PapersReviews';
 import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 

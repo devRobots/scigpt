@@ -11,10 +11,8 @@ export async function getDraft(uuid: string) {
   const draftRef = doc(db, DRAFT_COLLECTION, uuid);
   const draftSnap = await getDoc(draftRef);
 
-  if (!draftSnap.exists()) {
-    throw new Error('Draft not found');
-  }
-  return draftSnap.data();
+  if (!draftSnap.exists()) return { key: null, draft: null };
+  return { key: draftSnap.id, draft: draftSnap.data() };
 }
 
 export async function saveDraft(data: any) {

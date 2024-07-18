@@ -1,23 +1,23 @@
 
 export const steps = [
     {
-        id: 'writer-idea',
+        id: 'idea',
         title: 'Idea',
-        path: '/writer'
+        path: '/idea'
     },
     {
-        id: 'writer-thesis',
+        id: 'thesis',
         title: 'Tesis',
-        path: '/writer/thesis'
+        path: '/thesis'
     },
     {
-        id: 'writer-reviews',
+        id: 'reviews',
         title: 'Revision Literaria',
-        path: '/writer/review'
+        path: '/review'
     },
     {
-        id: 'writer-resume',
+        id: 'resume',
         title: 'Resumen',
-        path: '/writer/resume'
+        path: '/resume'
     }
 ];
