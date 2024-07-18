@@ -1,6 +1,6 @@
+import { DraftContext } from '@/app/providers/DraftProvider';
 import { DRAFT_ACTIONS, draftReducer } from "@/app/reducers/draft";
 import { Draft } from "@/app/types/draft";
-import { DraftContext } from '@/app/writer/providers/DraftProvider';
 import { useContext, useReducer } from 'react';
 
 

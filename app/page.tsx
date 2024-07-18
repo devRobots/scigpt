@@ -32,7 +32,7 @@ export default function Chat() {
       <article className="px-6 pb-4 md:px-12 md:py-10">
         <Card className="flex h-full p-4 md:p-8">
           <CardHeader className={mate.className + ' editorial-header'}>
-            Ensayo sobre la ceguera
+            Lorem ipsum dolor sit amet
           </CardHeader>
           <CardBody className={mate.className + ' editorial-body'}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis

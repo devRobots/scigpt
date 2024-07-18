@@ -14,16 +14,23 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { FaFeather, FaHouse, FaInfo } from 'react-icons/fa6';
 
+function checkRoute(path: string, route: string) {
+  if (route === '/writer') {
+    return path.startsWith(route);
+  }
+  return path === route;
+}
+
+const menuItems = [
+  { id: 'index', name: 'Inicio', path: '/' },
+  { id: 'editor', name: 'Editor', path: '/writer' },
+  { id: 'about', name: 'Acerca', path: '/about' }
+];
+
 export default function NavBar() {
   const path = usePathname();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const menuItems = [
-    { name: 'Inicio', path: '/', icon: <FaHouse className="mr-1" /> },
-    { name: 'Editor', path: '/writer', icon: <FaFeather className="mr-1" /> },
-    { name: 'Acerca', path: '/about', icon: <FaInfo /> }
-  ];
 
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen} shouldHideOnScroll>
@@ -38,24 +45,32 @@ export default function NavBar() {
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="end">
-        {menuItems.map((item, index) => (
-          <NavbarItem key={index} className="justify-items-center">
+        {menuItems.map((item) => (
+          <NavbarItem key={item.id} className="justify-items-center">
             <Link
               className={
-                item.path == path ? 'text-yellow-200' : 'text-foreground'
+                checkRoute(path, item.path)
+                  ? 'text-yellow-200'
+                  : 'text-foreground'
               }
               href={item.path}
               size="lg"
             >
-              {item.icon}
+              {item.name === 'Inicio' ? (
+                <FaHouse className="mr-1" />
+              ) : item.name === 'Editor' ? (
+                <FaFeather className="mr-1" />
+              ) : (
+                <FaInfo />
+              )}
               {item.name}
             </Link>
           </NavbarItem>
         ))}
       </NavbarContent>
       <NavbarMenu>
-        {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
+        {menuItems.map((item) => (
+          <NavbarMenuItem key={`${item.id}-sm`}>
             <Link
               className={
                 'w-full ' +
@@ -64,7 +79,13 @@ export default function NavBar() {
               href={item.path}
               size="lg"
             >
-              {item.icon}
+              {item.name === 'Inicio' ? (
+                <FaHouse className="mr-1" />
+              ) : item.name === 'Editor' ? (
+                <FaFeather className="mr-1" />
+              ) : (
+                <FaInfo />
+              )}
               {item.name}
             </Link>
           </NavbarMenuItem>

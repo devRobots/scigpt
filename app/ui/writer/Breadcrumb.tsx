@@ -1,10 +1,10 @@
-import { usePager } from '@/app/hooks/usePager';
 import { steps } from '@/app/lib/writerSteps';
 import { BreadcrumbItem, Breadcrumbs } from '@nextui-org/breadcrumbs';
+import { usePathname } from 'next/navigation';
 import { FaFeather } from 'react-icons/fa6';
 
 export default function Breadcrumb() {
-  const { page } = usePager();
+  const path = usePathname();
 
   return (
     <Breadcrumbs
@@ -25,8 +25,8 @@ export default function Breadcrumb() {
       {steps.map((step) => (
         <BreadcrumbItem
           key={step.id}
-          isCurrent={page == step.id}
-          isDisabled={page != step.id}
+          isCurrent={path == step.path}
+          isDisabled={path != step.path}
         >
           {step.title}
         </BreadcrumbItem>

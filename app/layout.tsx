@@ -1,5 +1,5 @@
 import '@/app/globals.css';
-import { NextUIProviders } from '@/app/providers';
+import { NextUIProviders } from '@/app/providers/NextUIProviders';
 import NavBar from '@/app/ui/navbar';
 
 export const metadata = {
