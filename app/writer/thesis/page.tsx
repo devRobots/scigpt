@@ -1,20 +1,20 @@
 'use client';
 
+import { useDraft } from '@/app/hooks/useDraft';
 import { usePager } from '@/app/hooks/usePager';
-import { usePaper } from '@/app/hooks/usePaper';
 import { useThesis } from '@/app/hooks/useThesis';
 import ThesisList from '@/app/writer/thesis/Thesis';
 import { useEffect } from 'react';
 
 export default function Thesis() {
-  const { paper } = usePaper();
+  const { draft } = useDraft();
   const { setPage } = usePager();
 
   const { thesis, loading, getThesis } = useThesis();
 
   useEffect(() => {
     setPage('2');
-    getThesis(paper.topic, paper.fieldOfStudy);
+    getThesis(draft.topic, draft.fieldOfStudy);
   }, []);
 
   return (

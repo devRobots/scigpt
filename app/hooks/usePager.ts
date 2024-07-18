@@ -1,4 +1,4 @@
-import { PagerContext } from '@/app/writer/PagerProvider';
+import { PagerContext } from '@/app/writer/providers/PagerProvider';
 import { useContext } from 'react';
 
 export function usePager() {

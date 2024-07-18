@@ -1,11 +1,11 @@
-export interface Paper {
+export interface Draft {
     topic: string;
     fieldOfStudy: string;
     thesis: string;
     objectives: string[];
 }
 
-export interface PaperReducerAction {
+export interface DraftAction {
     type: string;
     payload: string;
 }

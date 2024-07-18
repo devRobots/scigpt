@@ -1,26 +1,26 @@
-import { Paper, PaperReducerAction } from "@/app/types/internals";
+import { Draft, DraftAction } from "@/app/types/draft";
 
-export const PAPER_ACTIONS = {
+export const DRAFT_ACTIONS = {
     ADD_TOPIC: 'ADD_TOPIC',
     ADD_FIELD_OF_STUDY: 'ADD_FIELD_OF_STUDY',
     ADD_THESIS: 'ADD_THESIS',
     ADD_OBJECTIVES: 'ADD_OBJECTIVES'
 }
 
-export const paperReducer = (
-    state: Paper,
-    action: PaperReducerAction
+export const draftReducer = (
+    state: Draft,
+    action: DraftAction
 ) => {
     const { type, payload } = action;
 
     switch (type) {
-        case PAPER_ACTIONS.ADD_TOPIC:
+        case DRAFT_ACTIONS.ADD_TOPIC:
             return { ...state, topic: payload };
-        case PAPER_ACTIONS.ADD_FIELD_OF_STUDY:
+        case DRAFT_ACTIONS.ADD_FIELD_OF_STUDY:
             return { ...state, fieldOfStudy: payload };
-        case PAPER_ACTIONS.ADD_THESIS:
+        case DRAFT_ACTIONS.ADD_THESIS:
             return { ...state, thesis: payload };
-        case PAPER_ACTIONS.ADD_OBJECTIVES:
+        case DRAFT_ACTIONS.ADD_OBJECTIVES:
             return { ...state, objectives: [...state.objectives, payload] };
         default:
             return state;
