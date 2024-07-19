@@ -1,11 +1,6 @@
 
 export const steps = [
     {
-        id: 'idea',
-        title: 'Idea',
-        path: '/idea'
-    },
-    {
         id: 'thesis',
         title: 'Tesis',
         path: '/thesis'

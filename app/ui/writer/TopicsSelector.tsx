@@ -3,14 +3,20 @@ import { Input } from '@nextui-org/input';
 import { useState } from 'react';
 import { FaX } from 'react-icons/fa6';
 
-export default function TopicsSelector() {
+export default function TopicsSelector({
+  topics,
+  setTopics
+}: {
+  topics: string[];
+  setTopics: (topics: string[]) => void;
+}) {
   const [topic, setTopic] = useState('');
-  const [topics, setTopics] = useState<string[]>([]);
 
   const keyDownHandler = (e: { preventDefault: () => void; key: string }) => {
     if (topic === '') return;
     if (e.key !== 'Enter') return;
-    setTopics([...topics, topic]);
+    if (topics.includes(topic)) return;
+    setTopics([...topics, topic.trim()]);
     setTopic('');
   };
 
