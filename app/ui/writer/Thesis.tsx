@@ -34,7 +34,9 @@ export default async function ThesisList({
   return (
     <RadioGroup className="w-full">
       {thesis.map((str, index) => {
-        return <ThesisItem key={`${str}-${index}`} index={index + 1} value={str} />;
+        return (
+          <ThesisItem key={`${str}-${index}`} index={index + 1} value={str} />
+        );
       })}
     </RadioGroup>
   );
