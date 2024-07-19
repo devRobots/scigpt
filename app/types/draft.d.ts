@@ -1,11 +1,8 @@
 export interface Draft {
+    title: string;
     topics: string[];
     fieldOfStudy: string;
+    stage: string;
     thesis: string;
     objectives: string[];
-}
-
-export interface DraftAction {
-    type: string;
-    payload: string;
 }

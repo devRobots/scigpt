@@ -1,15 +1,17 @@
+import { getDraft } from '@/app/lib/firebase/firestore';
 import ThesisList from '@/app/ui/writer/Thesis';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
 import { Spinner } from '@nextui-org/react';
 import { Suspense } from 'react';
 
-export default function Thesis({
-  searchParams
-}: {
-  searchParams?: { topics: string[]; fieldOfStudy: string };
-}) {
-  const { topics, fieldOfStudy } = searchParams || {};
-  if (!topics || !fieldOfStudy) return <p>Invalid parameters</p>;
+export default async function Thesis({ params }: { params: { uuid: string } }) {
+  const { uuid } = params;
+  if (!uuid) return <p>Invalid parameters</p>;
+
+  const { draft } = await getDraft(uuid);
+  if (!draft) return <p>No draft found</p>;
+  // TODO: Redirect to the correct stage
+  // if (draft.stage !== 'thesis') return (<p>Invalid stage</p>);
 
   return (
     <>
@@ -17,7 +19,10 @@ export default function Thesis({
         <CardHeader className={'editorial-header'}>Thesis</CardHeader>
         <CardBody className="h-fit gap-6">
           <Suspense fallback={<Spinner />}>
-            <ThesisList topics={topics} fieldOfStudy={fieldOfStudy} />
+            <ThesisList
+              topics={draft?.topics}
+              fieldOfStudy={draft?.fieldOfStudy}
+            />
           </Suspense>
         </CardBody>
       </Card>

@@ -23,7 +23,7 @@ export default function Writer() {
     const { draft } = await getDraft(uuid);
     if (!draft) return;
 
-    router.push(`/writer/${uuid}/idea`);
+    router.push(`/writer/${uuid}/${draft.stage}`);
   };
 
   return (
