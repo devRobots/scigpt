@@ -2,20 +2,20 @@ import { generateThesis } from '@/app/lib/thesis';
 import { Radio, RadioGroup } from '@nextui-org/radio';
 import { cn } from '@nextui-org/react';
 
-export function ThesisItem({ value }: { value: string }) {
+export function ThesisItem({ index, value }: { index: number; value: string }) {
   return (
     <Radio
-      key={value}
       value={value}
+      description={value}
       classNames={{
         base: cn(
           'inline-flex m-0 bg-content1 hover:bg-content2 items-center justify-between',
-          'flex-row-reverse w-[40%] cursor-pointer rounded-lg gap-4 p-4 border-2 border-transparent',
+          'flex-row-reverse w-full cursor-pointer rounded-lg gap-4 p-4 border-2 border-transparent',
           'data-[selected=true]:border-primary'
         )
       }}
     >
-      {value}
+      {`Hipotesis ${index}`}
     </Radio>
   );
 }
@@ -33,8 +33,8 @@ export default async function ThesisList({
 
   return (
     <RadioGroup className="w-full">
-      {thesis.map((str) => {
-        return <ThesisItem value={str} />;
+      {thesis.map((str, index) => {
+        return <ThesisItem key={`${str}-${index}`} index={index + 1} value={str} />;
       })}
     </RadioGroup>
   );
