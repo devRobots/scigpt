@@ -1,19 +1,23 @@
 import { prompt } from '@/app/lib/prompts/thesis';
+import { createGoogleGenerativeAI } from '@ai-sdk/google';
 import { generateText } from 'ai';
-import { ollama } from "ollama-ai-provider";
+
 
 export async function generateThesis(topics: string[], fieldsOfStudy: string): Promise<string[]> {
     const seed = Math.floor(Math.random() * 1024);
     const input = `Topic: ${topics.join(", ")}\nField of Study: ${fieldsOfStudy}`;
 
+    const genAI = createGoogleGenerativeAI({ apiKey: "AIzaSyCpYfh9PVWNi4HKY2vP3M-jBEUuM82YKAo" });
+    const model = genAI.languageModel("models/gemini-1.5-flash-latest")
+
     const { text } = await generateText({
-        model: ollama('llama3'),
+        model: model,
         system: prompt,
         prompt: input,
         maxTokens: 400,
         temperature: 0.75,
         frequencyPenalty: 1.0,
-        seed: seed,
+        seed: seed
     });
 
     const data: ThesisAI = mapThesis(text);
