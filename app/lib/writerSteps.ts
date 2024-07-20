@@ -6,6 +6,11 @@ export const steps = [
         path: '/thesis'
     },
     {
+        id: 'objectives',
+        title: 'Objetivos',
+        path: '/objectives'
+    },
+    {
         id: 'reviews',
         title: 'Revision Literaria',
         path: '/review'

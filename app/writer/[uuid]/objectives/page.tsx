@@ -1,8 +1,8 @@
 'use client';
 
-import { useThesis } from '@/app/hooks/useThesis';
+import { useObjectives } from '@/app/hooks/useObjectives';
 import { getDraft, updateDraft } from '@/app/lib/firebase/firestore';
-import ThesisList from '@/app/ui/writer/Thesis';
+import ObjectiveList from '@/app/ui/writer/Objectives';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
 import { Button, Spinner } from '@nextui-org/react';
 import { useParams, useRouter } from 'next/navigation';
@@ -13,20 +13,23 @@ export default function Thesis() {
   const params = useParams();
   const uuid = params.uuid.toString() || '';
 
-  const [hypothesis, setHypothesis] = useState('');
-  const { thesis, loading, getThesis } = useThesis();
+  const { objectives, loading, getObjectives } = useObjectives();
+  const [selObjectives, setSelObjectives] = useState<string[]>([]);
 
   useEffect(() => {
     getDraft(uuid).then(({ draft }) => {
-      getThesis(draft?.topics, draft?.fieldOfStudy);
+      getObjectives(draft?.thesis, draft?.topics, draft?.fieldOfStudy);
     });
   }, []);
 
   const handleNext = () => {
-    if (!hypothesis) return;
+    if (selObjectives.length < 3) return;
 
-    updateDraft(uuid, { hypothesis, stage: 'objectives' }).then(() => {
-      router.push(`/writer/${uuid}/objectives`);
+    updateDraft(uuid, {
+      objectives: selObjectives,
+      stage: 'substantiation'
+    }).then(() => {
+      router.push(`/writer/${uuid}/substantiation`);
     });
   };
 
@@ -34,22 +37,27 @@ export default function Thesis() {
     <section className="flex w-full xl:w-3/5">
       <Card className="h-fit w-full p-2">
         <CardHeader className="flex flex-col items-start gap-3">
-          <h2 className={'editorial-header'}>Hipotesis</h2>
+          <h2 className={'editorial-header'}>Objectivos</h2>
           <p className="text-default-500">
-            La pregunta de investigación o hipotesis es el cuestionamiento
-            central que se busca responder a partir de una determinada
-            metodología. Esta será el núcleo que articule los diferentes
-            elementos dentro del proyecto.
+            Los objetivos representan las metas o fines que se esperan alcanzar
+            con la investigación. Estos también cumplen la función de
+            especificar las tareas y medios necesarios para responder la
+            pregunta. Además, detallan el tipo de acción que deberá desarrollar
+            el investigador para implementar una metodología.
           </p>
         </CardHeader>
         <CardBody className="h-fit gap-3">
           {!loading ? (
             <>
               <p className="font-semibold">
-                Seleccione a continuacion la hipotesis que le resulte mas
-                interesante para continuar con el proceso de redaccion:
+                Seleccione a continuacion por lo menos 3 objetivos que le
+                resulten mas interesantes para continuar con el proceso de
+                redaccion:
               </p>
-              <ThesisList hypothesis={thesis} setHypothesis={setHypothesis} />
+              <ObjectiveList
+                objectives={objectives}
+                setObjectives={setSelObjectives}
+              />
             </>
           ) : (
             <Spinner />
