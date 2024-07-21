@@ -1,5 +1,5 @@
+import { generateObjectives } from '@/app/lib/writer/ai';
 import { useCallback, useState } from 'react';
-import generateObjectives from '../lib/objectives';
 
 export function useObjectives() {
     const [objectives, setObjectives] = useState<string[]>([]);
