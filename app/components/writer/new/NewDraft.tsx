@@ -1,5 +1,5 @@
-import FieldOfStudySelector from '@/app/ui/writer/FieldsOfStudySelector';
-import TopicsSelector from '@/app/ui/writer/TopicsSelector';
+import FieldOfStudySelector from '@/app/components/writer/new/FieldsOfStudySelector';
+import TopicsSelector from '@/app/components/writer/new/TopicsSelector';
 import { Button } from '@nextui-org/button';
 import { Card, CardBody, CardFooter } from '@nextui-org/card';
 import { Input } from '@nextui-org/input';

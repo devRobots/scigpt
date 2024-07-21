@@ -1,6 +1,6 @@
 'use client';
 
-import Breadcrumb from '@/app/ui/writer/Breadcrumb';
+import Breadcrumb from '@/app/components/writer/Breadcrumb';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
