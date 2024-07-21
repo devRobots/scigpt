@@ -1,4 +1,4 @@
-import { tldr } from '@/app/lib/papers';
+import { tldr } from '@/app/lib/writer/papers';
 import { Paper } from '@/app/types/paper';
 import { Accordion, AccordionItem } from '@nextui-org/accordion';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';

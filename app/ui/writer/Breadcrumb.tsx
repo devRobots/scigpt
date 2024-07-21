@@ -1,4 +1,4 @@
-import { steps } from '@/app/lib/writerSteps';
+import { steps } from '@/app/lib/data/writerSteps';
 import { BreadcrumbItem, Breadcrumbs } from '@nextui-org/breadcrumbs';
 import { usePathname } from 'next/navigation';
 import { FaFeather } from 'react-icons/fa6';

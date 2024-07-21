@@ -1,4 +1,4 @@
-import { searchPapers } from '@/app/lib/papers';
+import { searchPapers } from '@/app/lib/writer/papers';
 import { Paper } from '@/app/types/paper';
 import { useCallback, useState } from 'react';
 
