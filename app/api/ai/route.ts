@@ -11,9 +11,9 @@ export async function POST(request: Request) {
         model: model,
         system: prompt,
         prompt: input,
-        maxTokens: 400,
         temperature: 0.75,
         frequencyPenalty: 1.0,
+        maxRetries: 3,
         seed: seed
     });
 

@@ -11,7 +11,6 @@ export function useObjectives() {
             setLoading(true);
             setError(null);
             const newObjectives = await generateObjectives(thesis, topics, fieldOfStudy);
-            console.log(newObjectives);
             setObjectives(newObjectives);
         } catch (e: any) {
             setError(e.message);
