@@ -1,8 +1,8 @@
 'use client';
 
+import ObjectiveList from '@/app/components/writer/Objectives';
 import { useObjectives } from '@/app/hooks/useObjectives';
 import { getDraft, updateDraft } from '@/app/lib/firebase/firestore';
-import ObjectiveList from '@/app/ui/writer/Objectives';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
 import { Button, Spinner } from '@nextui-org/react';
 import { useParams, useRouter } from 'next/navigation';
