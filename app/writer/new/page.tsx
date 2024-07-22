@@ -1,8 +1,8 @@
 'use client';
 
+import ModalUUID from '@/app/components/writer/new/ModalUUID';
+import NewDraft from '@/app/components/writer/new/NewDraft';
 import { saveDraft } from '@/app/lib/firebase/firestore';
-import ModalUUID from '@/app/ui/writer/ModalUUID';
-import NewDraft from '@/app/ui/writer/NewDraft';
 import { useState } from 'react';
 
 export default function Writer() {

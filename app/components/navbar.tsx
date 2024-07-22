@@ -1,5 +1,6 @@
 'use client';
 
+import { onAuthStateChanged } from '@/app/lib/firebase/auth';
 import { Link } from '@nextui-org/link';
 import {
   Navbar,
@@ -10,8 +11,9 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle
 } from '@nextui-org/navbar';
+import { User } from '@nextui-org/react';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaFeather, FaHouse, FaInfo } from 'react-icons/fa6';
 
 function checkRoute(path: string, route: string) {
@@ -29,8 +31,12 @@ const menuItems = [
 
 export default function NavBar() {
   const path = usePathname();
-
+  const [user, setUser] = useState<User>();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    onAuthStateChanged(setUser);
+  }, []);
 
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen} shouldHideOnScroll>
@@ -42,9 +48,20 @@ export default function NavBar() {
         <NavbarBrand>
           <p className="font-bold text-inherit">SciGPT</p>
         </NavbarBrand>
+        <NavbarContent className="flex sm:hidden gap-4" justify="end">
+          {user && (
+            <User
+              avatarProps={{
+                src: user.photoURL
+              }}
+              name={user.displayName}
+              description={user.email}
+            />
+          )}
+        </NavbarContent>
       </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="end">
+      <NavbarContent className="hidden sm:flex gap-4" justify="center">
         {menuItems.map((item) => (
           <NavbarItem key={item.id} className="justify-items-center">
             <Link
@@ -67,6 +84,17 @@ export default function NavBar() {
             </Link>
           </NavbarItem>
         ))}
+      </NavbarContent>
+      <NavbarContent className="hidden sm:flex gap-4" as="div" justify="end">
+        {user && (
+          <User
+            avatarProps={{
+              src: user.photoURL
+            }}
+            name={user.displayName}
+            description={user.email}
+          />
+        )}
       </NavbarContent>
       <NavbarMenu>
         {menuItems.map((item) => (
