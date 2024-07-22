@@ -1,6 +1,6 @@
 'use client';
 
-import ObjectiveList from '@/app/components/writer/objectives/Objectives';
+import ObjectiveList from '@/app/components/writer/Objectives';
 import { useObjectives } from '@/app/hooks/useObjectives';
 import { getDraft, updateDraft } from '@/app/lib/firebase/firestore';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
