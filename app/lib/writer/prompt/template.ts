@@ -95,10 +95,11 @@ function getFieldName(field: string) {
 }
 
 export function buildPrompt(input: Object, outputExamples: { [key: string]: any }[], target: string) {
+    const count = typeof outputExamples[0][target] === "string" ? 1 : outputExamples[0][target].length;
     return template({
         targetField: getFieldName(target),
         inputFields: Object.keys(input).map(getFieldName).join(", "),
-        targetCountResults: outputExamples[0][target].length,
+        targetCountResults: count,
         inputSchema: schematize(input),
         outputSchema: schematize(outputExamples[0]),
         outputExample1: JSON.stringify(outputExamples[0]),
