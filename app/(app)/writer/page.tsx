@@ -1,11 +1,11 @@
 'use client';
 
+import { getDraft } from '@/app/lib/firebase/firestore';
 import { Button } from '@nextui-org/button';
 import { Card } from '@nextui-org/card';
 import { Input } from '@nextui-org/input';
 import { Divider } from '@nextui-org/react';
 import { useRouter } from 'next/navigation';
-import { getDraft } from '../lib/firebase/firestore';
 
 export default function Writer() {
   const router = useRouter();
