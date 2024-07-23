@@ -1,6 +1,6 @@
 'use client';
 
-import { getDraft, updateDraft } from '@/app/lib/firebase/firestore';
+import { getDraft, updateDraft } from '@/app/lib/supabase/queries';
 import { generateSubstantiation } from '@/app/lib/writer/ai';
 import { Button } from '@nextui-org/button';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
@@ -20,10 +20,11 @@ export default function Substantiation() {
   useEffect(() => {
     setLoading(true);
     getDraft(uuid).then(({ draft }) => {
+      if (!draft) return;
       generateSubstantiation(
-        draft?.thesis,
-        draft?.topics,
-        draft?.fieldOfStudy
+        draft.thesis!,
+        draft.topics,
+        draft.field_of_study
       ).then((substantiation) => {
         setSubstantiation(substantiation);
         setLoading(false);

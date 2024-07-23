@@ -1,9 +1,9 @@
 import { updateSession } from '@/app/lib/supabase/middleware';
 import { type NextRequest } from 'next/server';
-import { createClient } from './app/lib/supabase/server';
+import { createClient } from './app/lib/supabase/middleware';
 
 export async function middleware(request: NextRequest) {
-    const supabase = createClient();
+    const { supabase } = createClient(request);
     const { data, error } = await supabase.auth.getUser();
 
     if (data?.user && request.nextUrl.pathname.startsWith('/login')) {

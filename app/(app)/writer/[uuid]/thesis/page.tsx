@@ -2,7 +2,7 @@
 
 import ThesisList from '@/app/components/writer/Thesis';
 import { useThesis } from '@/app/hooks/useThesis';
-import { getDraft, updateDraft } from '@/app/lib/firebase/firestore';
+import { getDraft, updateDraft } from '@/app/lib/supabase/queries';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
 import { Button, Spinner } from '@nextui-org/react';
 import { useParams, useRouter } from 'next/navigation';
@@ -18,7 +18,8 @@ export default function Thesis() {
 
   useEffect(() => {
     getDraft(uuid).then(({ draft }) => {
-      getThesis(draft?.topics, draft?.fieldOfStudy);
+      if (!draft) return;
+      getThesis(draft.topics, draft.field_of_study);
     });
   }, []);
 

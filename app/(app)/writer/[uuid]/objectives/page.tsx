@@ -2,7 +2,7 @@
 
 import ObjectiveList from '@/app/components/writer/Objectives';
 import { useObjectives } from '@/app/hooks/useObjectives';
-import { getDraft, updateDraft } from '@/app/lib/firebase/firestore';
+import { getDraft, updateDraft } from '@/app/lib/supabase/queries';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
 import { Button, Spinner } from '@nextui-org/react';
 import { useParams, useRouter } from 'next/navigation';
@@ -18,7 +18,8 @@ export default function Thesis() {
 
   useEffect(() => {
     getDraft(uuid).then(({ draft }) => {
-      getObjectives(draft?.thesis, draft?.topics, draft?.fieldOfStudy);
+      if (!draft) return;
+      getObjectives(draft.thesis!, draft.topics, draft.field_of_study);
     });
   }, []);
 

@@ -1,7 +1,7 @@
 'use client';
 
 import NewDraft from '@/app/components/writer/new/NewDraft';
-import { saveDraft } from '@/app/lib/firebase/firestore';
+import { saveDraft } from '@/app/lib/supabase/queries';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -29,8 +29,14 @@ export default function Writer() {
     const uuid = await saveDraft({
       title,
       topics,
-      fieldOfStudy,
-      stage: 'thesis'
+      field_of_study: fieldOfStudy,
+      stage: 'thesis',
+      uuid: undefined,
+      created_at: undefined,
+      thesis: undefined,
+      objectives: undefined,
+      methodology: undefined,
+      results: undefined
     });
 
     router.push(`/writer/${uuid}/thesis`);
