@@ -38,8 +38,8 @@ export default function Thesis() {
     <section className="flex w-full xl:w-3/5">
       <Card className="h-fit w-full p-2">
         <CardHeader className="flex flex-col items-start gap-3">
-          <h2 className={'editorial-header'}>Objectivos</h2>
-          <p className="text-default-500">
+          <h2 className={'editorial-header'}>Objetivos</h2>
+          <p className="text-default-800">
             Los objetivos representan las metas o fines que se esperan alcanzar
             con la investigación. Estos también cumplen la función de
             especificar las tareas y medios necesarios para responder la

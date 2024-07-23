@@ -80,9 +80,7 @@ export default function NavBar() {
           <NavbarItem key={item.id} className="justify-items-center">
             <Link
               className={
-                checkRoute(path, item.path)
-                  ? 'text-yellow-200'
-                  : 'text-foreground'
+                checkRoute(path, item.path) ? 'text-primary' : 'text-foreground'
               }
               href={item.path}
               size="lg"
@@ -116,7 +114,7 @@ export default function NavBar() {
             <Link
               className={
                 'w-full ' +
-                (item.path == path ? 'text-yellow-200' : 'text-foreground')
+                (item.path == path ? 'text-primary' : 'text-foreground')
               }
               href={item.path}
               size="lg"

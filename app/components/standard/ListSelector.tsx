@@ -33,7 +33,7 @@ export default function ListSelector({
       {items.map((v) => (
         <ListboxItem
           key={v.key}
-          className={v.key === value ? 'ring-yellow-200 ring-2' : ''}
+          className={(value == v.key && 'ring-primary ring-2') + ' gap-3'}
           description={v.description}
           startContent={<Icon name={v.icon} />}
         >

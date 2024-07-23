@@ -51,7 +51,7 @@ export default function Writer() {
   return (
     <main className="flex mb-auto justify-center">
       <section className="h-fit my-4 mx-4 sm:mt-2">
-        <Card className="p-2">
+        <Card className="p-1">
           <CardBody className="flex flex-col md:flex-row columns-1 md:columns-2 gap-6">
             <div className="flex flex-col w-full justify-center gap-8">
               <div className="flex flex-col gap-2">

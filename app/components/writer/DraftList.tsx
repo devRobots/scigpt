@@ -15,9 +15,9 @@ export default function Draft({ drafts }: { drafts: Draft[] }) {
               <Chip color="primary">{draft.stage}</Chip>
             </div>
           </CardHeader>
-          <CardBody className='flex flex-col gap-4'>
+          <CardBody className="flex flex-col gap-4">
             <p>Area de estudio: {draft.field_of_study}</p>
-            <div className='flex flex-row gap-1 flex-wrap'>
+            <div className="flex flex-row gap-1 flex-wrap">
               Temas:
               {draft.topics.map((topic) => (
                 <Chip key={topic} color="default">

@@ -16,10 +16,9 @@ export function RadioOption({
       classNames={{
         base: 'radio-item px-4',
         labelWrapper: 'flex-col-reverse',
-        control: 'w-5 h-5 bg-warning',
-        wrapper: 'border-warning',
-        label: 'text-yellow-600',
-        description: 'text-white/60 text-xs'
+        control: 'w-3 h-3',
+        label: 'text-secondary/90',
+        description: 'text-default-700 text-xs'
       }}
     >
       {value}
@@ -37,7 +36,7 @@ export default function RadioList({
   setValue: (value: string) => void;
 }) {
   return (
-    <RadioGroup className="w-full border-frame p-4" onValueChange={setValue}>
+    <RadioGroup className="w-full" onValueChange={setValue}>
       {items.map((value, i) => {
         return (
           <RadioOption

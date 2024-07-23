@@ -26,9 +26,12 @@ export default function InputTag({
   };
 
   return (
-    <div className="flex flex-col gap-3 border-default-100 rounded-small border-small p-3">
+    <div className="flex flex-col gap-3 border-frame p-3">
       <Input
         className="w-full"
+        classNames={{
+          inputWrapper: 'bg-default',
+        }}
         variant="faded"
         size="md"
         value={value}

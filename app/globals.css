@@ -43,18 +43,16 @@
     gap-2
     min-w-full
     rounded-md
-    bg-content2
+    bg-content2/50
     inline-flex
     justify-start
     cursor-pointer
-    data-[selected=true]:bg-yellow-200/10 
-    data-[selected=true]:border-warning 
+    data-[selected=true]:bg-content4
 }
 
 .border-frame {
     @apply
-    border-small
+    border-medium
     rounded-small 
     border-default-200
-    dark:border-default-100
 }

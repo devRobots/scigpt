@@ -36,7 +36,7 @@ export default function Thesis() {
       <Card className="h-fit w-full p-2">
         <CardHeader className="flex flex-col items-start gap-3">
           <h2 className={'editorial-header'}>Hipotesis</h2>
-          <p className="text-default-500">
+          <p className="text-default-800">
             La pregunta de investigación o hipotesis es el cuestionamiento
             central que se busca responder a partir de una determinada
             metodología. Esta será el núcleo que articule los diferentes
