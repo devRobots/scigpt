@@ -6,6 +6,11 @@ import { Card, CardBody, CardHeader } from '@nextui-org/card';
 import { FaGithub } from 'react-icons/fa6';
 
 export default function Login() {
+  const handleClick = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    signInWithOAuth();
+  };
+
   return (
     <main className="flex h-1 items-center justify-center">
       <Card className="w-fit py-6 px-16">
@@ -14,7 +19,7 @@ export default function Login() {
         </CardHeader>
         <CardBody>
           <Button
-            onClick={signInWithOAuth}
+            onClick={handleClick}
             className="super-button"
             variant="shadow"
             endContent={<FaGithub />}
