@@ -27,7 +27,6 @@ export async function generateObjectives(thesis: string, topics: string[], field
 export async function generateSubstantiation(thesis: string, topics: string[], fieldOfStudy: string) {
     const input = JSON.stringify({ thesis, topics, fieldOfStudy });
     const substantiationPrompt = promptSubstantiation();
-    console.log(substantiationPrompt);
     const response = await fetchAI(input, substantiationPrompt);
     return response.substantiation;
 }

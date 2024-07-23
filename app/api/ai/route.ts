@@ -1,8 +1,15 @@
+import { createClient } from '@/app/lib/supabase/server';
 import { google } from '@ai-sdk/google';
 import { generateText } from 'ai';
 
 
 export async function POST(request: Request) {
+    const supabase = createClient();
+    const { data: session, error } = await supabase.auth.getUser();
+    if (!session || error) {
+        return new Response('Unauthorized', { status: 401 });
+    }
+
     const { input, prompt } = await request.json();
     const seed = Math.floor(Math.random() * 1024);
     const model = google("models/gemini-1.5-flash-latest");

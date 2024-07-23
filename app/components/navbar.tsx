@@ -1,6 +1,6 @@
 'use client';
 
-import { onAuthStateChanged } from '@/app/lib/firebase/auth';
+import { createClient } from '@/app/lib/supabase/client';
 import { Link } from '@nextui-org/link';
 import {
   Navbar,
@@ -31,11 +31,25 @@ const menuItems = [
 
 export default function NavBar() {
   const path = usePathname();
+  const supabase = createClient();
   const [user, setUser] = useState<User>();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    onAuthStateChanged(setUser);
+    const fetchData = async () => {
+      const { data, error } = await supabase.auth.getUser();
+      if (error || !data?.user) return;
+
+      const { user } = data;
+      const { user_metadata, email } = user;
+      const { name, avatar_url } = user_metadata;
+      setUser({
+        displayName: name,
+        photoURL: avatar_url,
+        email: email || ''
+      });
+    };
+    fetchData();
   }, []);
 
   return (
