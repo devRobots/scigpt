@@ -1,4 +1,4 @@
-import { createClient } from '@/app/lib/supabase/server';
+import { createClient } from '@/app/lib/supabase/core/server';
 import { google } from '@ai-sdk/google';
 import { generateText } from 'ai';
 

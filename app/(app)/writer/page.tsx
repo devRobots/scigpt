@@ -1,17 +1,28 @@
 'use client';
 
+import DraftList from '@/app/components/writer/DraftList';
+import { getDraftsByUserID } from '@/app/lib/supabase/queries';
 import { Button } from '@nextui-org/button';
 import { Card } from '@nextui-org/card';
 import { Divider } from '@nextui-org/react';
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { FaPlus } from 'react-icons/fa6';
 
 export default function Writer() {
   const router = useRouter();
+  const [drafts, setDrafts] = useState<Draft[]>([]);
 
   const handleClick = () => {
     router.push('/writer/new');
   };
+
+  useEffect(() => {
+    getDraftsByUserID().then((drafts: Draft[]) => {
+      if (drafts.length === 0) return;
+      setDrafts(drafts);
+    });
+  }, []);
 
   return (
     <main className="flex flex-col my-auto p-8 h-5/6 items-center justify-center gap-8">
@@ -33,9 +44,13 @@ export default function Writer() {
       </div>
       <Divider className="w-full" />
       <section className="flex flex-col h-full items-center justify-center">
-        <Card className="w-fit gap-6 py-6 px-16">
-          <h2 className="text-lg">No hay articulos</h2>
-        </Card>
+        {drafts.length != 0 ? (
+          <DraftList drafts={drafts} />
+        ) : (
+          <Card className="w-fit gap-6 py-6 px-16">
+            <h2 className="text-lg">No hay articulos</h2>
+          </Card>
+        )}
       </section>
     </main>
   );

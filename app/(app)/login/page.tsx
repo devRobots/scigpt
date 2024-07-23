@@ -1,6 +1,6 @@
 'use client';
 
-import { signInWithOAuth } from '@/app/lib/auth/client';
+import { signInWithOAuth } from '@/app/lib/supabase/auth';
 import { Button } from '@nextui-org/button';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
 import { FaGithub } from 'react-icons/fa6';

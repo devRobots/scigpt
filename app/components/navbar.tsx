@@ -1,6 +1,6 @@
 'use client';
 
-import { createClient } from '@/app/lib/supabase/client';
+import { createClient } from '@/app/lib/supabase/core/client';
 import { Link } from '@nextui-org/link';
 import {
   Navbar,

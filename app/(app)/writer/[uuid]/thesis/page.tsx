@@ -26,7 +26,7 @@ export default function Thesis() {
   const handleNext = () => {
     if (!hypothesis) return;
 
-    updateDraft(uuid, { hypothesis, stage: 'objectives' }).then(() => {
+    updateDraft(uuid, { thesis: hypothesis, stage: 'objectives' }).then(() => {
       router.push(`/writer/${uuid}/objectives`);
     });
   };

@@ -36,7 +36,7 @@ export default function Substantiation() {
     if (substantiation.length < 200) return;
 
     updateDraft(uuid, {
-      substantiation,
+      resume: substantiation,
       stage: 'review'
     }).then(() => {
       router.push(`/writer/${uuid}/review`);

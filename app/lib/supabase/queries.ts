@@ -1,4 +1,4 @@
-import { createClient } from "@/app/lib/supabase/client";
+import { createClient } from "@/app/lib/supabase/core/client";
 
 const DRAFT_TABLE = 'draft';
 
@@ -17,5 +17,13 @@ export async function saveDraft(draft: Draft) {
 export async function updateDraft(uuid: string, data: any) {
     const supabase = createClient();
     await supabase.from(DRAFT_TABLE).update(data).eq('uuid', uuid);
+}
+
+export async function getDraftsByUserID() {
+    const supabase = createClient();
+    const userData = await supabase.auth.getUser();
+    const user_id = userData?.data?.user?.id;
+    const { data, error } = await supabase.from(DRAFT_TABLE).select().eq('user_id', user_id).order('created_at', { ascending: false });
+    return data || [];
 }
 

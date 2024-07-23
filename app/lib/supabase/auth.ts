@@ -1,6 +1,6 @@
 'use client';
 
-import { createClient } from '@/app/lib/supabase/client';
+import { createClient } from '@/app/lib/supabase/core/client';
 import { MouseEvent } from 'react';
 
 export async function signInWithOAuth(e: MouseEvent<HTMLButtonElement>) {

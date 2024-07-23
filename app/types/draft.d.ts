@@ -3,6 +3,7 @@ interface Draft {
     stage: string;
     topics: string[];
     field_of_study: string;
+    user_id: string | undefined;
     uuid: string | undefined;
     created_at: string | undefined;
     thesis: string | undefined;

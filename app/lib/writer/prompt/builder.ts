@@ -1,4 +1,4 @@
-import { buildPrompt } from "./template";
+import { buildPrompt } from "@/app/lib/writer/prompt/template";
 
 export function promptThesis() {
     const input = {
