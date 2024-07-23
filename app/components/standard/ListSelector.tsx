@@ -25,7 +25,7 @@ export default function ListSelector({
       variant="faded"
       hideSelectedIcon={false}
       disallowEmptySelection={true}
-      className="w-auto border-default-200 dark:border-default-100 rounded-small border-small"
+      className="w-auto border-frame"
       selectionMode="single"
       selectedKeys={value}
       onSelectionChange={onSelectionChange}

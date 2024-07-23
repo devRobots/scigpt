@@ -1,6 +1,6 @@
 'use client';
 
-import ThesisList from '@/app/components/writer/Thesis';
+import RadioList from '@/app/components/standard/RadioList';
 import { useThesis } from '@/app/hooks/useThesis';
 import { getDraft, updateDraft } from '@/app/lib/supabase/queries';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
@@ -21,7 +21,7 @@ export default function Thesis() {
       if (!draft) return;
       getThesis(draft.topics, draft.field_of_study);
     });
-  }, []);
+  }, [getThesis, uuid]);
 
   const handleNext = () => {
     if (!hypothesis) return;
@@ -50,7 +50,12 @@ export default function Thesis() {
                 Seleccione a continuacion la hipotesis que le resulte mas
                 interesante para continuar con el proceso de redaccion:
               </p>
-              <ThesisList hypothesis={thesis} setHypothesis={setHypothesis} />
+
+              <RadioList
+                name="Hipotesis"
+                items={thesis}
+                setValue={setHypothesis}
+              />
             </>
           ) : (
             <Spinner />

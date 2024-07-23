@@ -36,3 +36,25 @@
     text-justify 
     self-center;
 }
+
+.radio-item {
+    @apply
+    m-0
+    gap-2
+    min-w-full
+    rounded-md
+    bg-content2
+    inline-flex
+    justify-start
+    cursor-pointer
+    data-[selected=true]:bg-yellow-200/10 
+    data-[selected=true]:border-warning 
+}
+
+.border-frame {
+    @apply
+    border-small
+    rounded-small 
+    border-default-200
+    dark:border-default-100
+}

@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function Draft({ drafts }: { drafts: Draft[] }) {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-row gap-4">
       {drafts.map((draft) => (
         <Card key={draft.uuid} className="w-96 p-2">
           <CardHeader className="flex flex-col items-start gap-2">
