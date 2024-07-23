@@ -15,6 +15,7 @@ export default function ObjectiveList({
       {objectives.map((value, index) => {
         return (
           <Checkbox
+            key={`${value.split(' ')[0]}-${index}`}
             classNames={{
               base: cn(
                 'inline-flex w-full bg-content1 m-0',

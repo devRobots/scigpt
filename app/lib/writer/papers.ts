@@ -1,52 +1,23 @@
 import { Paper, PaperAPIResponse } from "@/app/types/paper";
 
-const SEMANTIC_SCHOLAR_API_URL: string = "https://www.semanticscholar.org/api/1/search";
 const SCIHUB_URL: string = "https://sci-hub.st";
-
-export async function fecthPapers(query: string, page: number = 1): Promise<PaperAPIResponse[]> {
-    const raw = await fetch(SEMANTIC_SCHOLAR_API_URL,
-        {
-            cache: 'force-cache',
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                "queryString": query,
-                "page": page,
-                "pageSize": 10,
-                "sort": "relevance",
-                "authors": [],
-                "coAuthors": [],
-                "venues": [],
-                "requireViewablePdf": true,
-                "hydrateWithDdb": true,
-                "includeTldrs": true,
-                "performTitleMatch": true,
-                "includeBadges": true,
-                "getQuerySuggestions": false,
-                "cues": [
-                    "CitedByLibraryPaperCue",
-                    "CitesYourPaperCue",
-                    "CitesLibraryPaperCue"
-                ],
-                "includePdfVisibility": true
-            })
-        }
-    );
-    const data = await raw.json();
-    return data.results;
-}
 
 export async function searchPapers(query: string, limit: number = 10): Promise<Paper[]> {
     const results: Paper[] = [];
     let page: number = 1;
 
     while (results.length < limit) {
-        const data = await fecthPapers(query, page);
+        const raw = await fetch("/api/papers", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ query, page })
+        });
+        const data = await raw.json();
         if (data.length === 0) break;
-        data.forEach((raw) => {
-            const paper = mapPaper(raw);
+        data.forEach((item: PaperAPIResponse) => {
+            const paper = mapPaper(item);
             if (paper.url === "" || paper.abstract === "") return;
             results.push(paper);
         });

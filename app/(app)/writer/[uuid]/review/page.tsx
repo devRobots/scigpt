@@ -31,7 +31,7 @@ export default function References() {
   };
 
   return (
-    <main className="flex flex-col p-8">
+    <main className="flex flex-col p-2">
       <div className="flex flex-row w-full justify-between">
         <h1 className="editorial-header mb-8">Papers</h1>
         <Button className="super-button" onClick={handleNext}>

@@ -31,12 +31,12 @@ const menuItems = [
 
 export default function NavBar() {
   const path = usePathname();
-  const supabase = createClient();
   const [user, setUser] = useState<User>();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
+      const supabase = createClient();
       const { data, error } = await supabase.auth.getUser();
       if (error || !data?.user) return;
 
