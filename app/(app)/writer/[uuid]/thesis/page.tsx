@@ -1,5 +1,6 @@
 'use client';
 
+import InputEnhancer from '@/app/components/ai/InputEnhancer';
 import RadioList from '@/app/components/standard/RadioList';
 import { useThesis } from '@/app/hooks/useThesis';
 import { getDraft, updateDraft } from '@/app/lib/supabase/queries';

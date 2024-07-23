@@ -133,3 +133,25 @@ export function promptSubstantiation() {
     ];
     return buildPrompt(input, outputExamples, "substantiation");
 }
+
+export function promptTextImprovement() {
+    const input = {
+        text: "<user-provided text>"
+    };
+    const outputExamples = [
+        {
+            text: "La urbanización acelerada es un fenómeno global que ha transformado el paisaje urbano y ha tenido un impacto significativo en el medio ambiente.",
+            improvedText: "La urbanización acelerada es un fenómeno global que ha transformado el paisaje urbano y ha tenido un impacto significativo en el medio ambiente, especialmente en términos de sostenibilidad y conservación de recursos naturales."
+        },
+        {
+            text: "La terapia génica es una estrategia terapéutica innovadora que tiene el potencial de tratar enfermedades genéticas raras de manera efectiva.",
+            improvedText: "La terapia génica es una estrategia terapéutica innovadora con un gran potencial para tratar enfermedades genéticas raras de manera efectiva y segura."
+        },
+        {
+            text: "Los algoritmos de aprendizaje profundo han demostrado ser eficaces en la predicción del comportamiento del consumidor en diversas aplicaciones.",
+            improvedText: "Los algoritmos de aprendizaje profundo han demostrado ser eficaces en la predicción del comportamiento del consumidor en diversas aplicaciones, como la recomendación de productos y la personalización de contenidos."
+        }
+    ];
+
+    return buildPrompt(input, outputExamples, "improvedText");
+}

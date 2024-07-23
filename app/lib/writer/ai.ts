@@ -1,4 +1,4 @@
-import { promptObjectives, promptSubstantiation, promptThesis } from '@/app/lib/writer/prompt/builder';
+import { promptObjectives, promptSubstantiation, promptTextImprovement, promptThesis } from '@/app/lib/writer/prompt/builder';
 
 export async function fetchAI(input: string, prompt: string) {
     const response = await fetch("/api/ai", {
@@ -29,4 +29,11 @@ export async function generateSubstantiation(thesis: string, topics: string[], f
     const substantiationPrompt = promptSubstantiation();
     const response = await fetchAI(input, substantiationPrompt);
     return response.substantiation;
+}
+
+export async function improveText(text: string) {
+    const input = JSON.stringify({ text });
+    const improveTextPrompt = promptTextImprovement();
+    const response = await fetchAI(input, improveTextPrompt);
+    return response.improvedText;
 }
