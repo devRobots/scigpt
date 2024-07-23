@@ -1,16 +1,16 @@
 'use client';
 
-import ModalUUID from '@/app/components/writer/new/ModalUUID';
 import NewDraft from '@/app/components/writer/new/NewDraft';
 import { saveDraft } from '@/app/lib/firebase/firestore';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 export default function Writer() {
+  const router = useRouter();
   const [title, setTitle] = useState('');
   const [topics, setTopics] = useState<string[]>([]);
   const [fieldOfStudy, setFieldOfStudy] = useState('');
   const [error, setError] = useState('');
-  const [uuid, setUuid] = useState('');
 
   const handleClick = async () => {
     if (title.length < 5) {
@@ -32,7 +32,8 @@ export default function Writer() {
       fieldOfStudy,
       stage: 'thesis'
     });
-    setUuid(uuid);
+
+    router.push(`/writer/${uuid}/thesis`);
   };
 
   return (
@@ -47,7 +48,6 @@ export default function Writer() {
           setFieldOfStudy={setFieldOfStudy}
           handleClick={handleClick}
         />
-        <ModalUUID uuid={uuid} />
       </section>
     </main>
   );
