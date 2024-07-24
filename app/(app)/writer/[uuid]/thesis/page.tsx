@@ -1,7 +1,6 @@
 'use client';
 
-import InputEnhancer from '@/app/components/ai/InputEnhancer';
-import RadioList from '@/app/components/standard/RadioList';
+import RadioListAI from '@/app/components/ai/RadioListAI';
 import { useThesis } from '@/app/hooks/useThesis';
 import { getDraft, updateDraft } from '@/app/lib/supabase/queries';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
@@ -52,10 +51,11 @@ export default function Thesis() {
                 interesante para continuar con el proceso de redaccion:
               </p>
 
-              <RadioList
+              <RadioListAI
                 name="Hipotesis"
-                items={thesis}
+                initialItems={thesis}
                 setValue={setHypothesis}
+                maxItems={10}
               />
             </>
           ) : (

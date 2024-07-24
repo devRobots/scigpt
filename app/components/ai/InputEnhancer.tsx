@@ -21,6 +21,12 @@ export default function InputEnhancer({ handler }: { handler: any }) {
     setIsEnhanceable(true);
   };
 
+  const onAdd = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    handler(value);
+    setValue('');
+  };
+
   return (
     <div className="flex flex-row">
       <Textarea
@@ -36,7 +42,7 @@ export default function InputEnhancer({ handler }: { handler: any }) {
       <div className="flex flex-col -ml-0">
         <Button
           className="bg-default-300 rounded-b-none rounded-l-none"
-          onClick={() => handler(value)}
+          onClick={onAdd}
         >
           <FaPlus />
         </Button>
