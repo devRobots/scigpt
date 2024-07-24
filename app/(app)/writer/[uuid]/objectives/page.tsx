@@ -28,9 +28,9 @@ export default function Thesis() {
 
     updateDraft(uuid, {
       objectives: selObjectives,
-      stage: 'substantiation'
+      stage: 'review'
     }).then(() => {
-      router.push(`/writer/${uuid}/substantiation`);
+      router.push(`/writer/${uuid}/review`);
     });
   };
 

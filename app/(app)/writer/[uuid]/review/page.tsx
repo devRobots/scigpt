@@ -2,7 +2,7 @@
 
 import PaperList from '@/app/components/writer/PapersReviews';
 import { usePapers } from '@/app/hooks/usePapers';
-import { updateDraft } from '@/app/lib/supabase/queries';
+import { getDraft, updateDraft } from '@/app/lib/supabase/queries';
 import { Button } from '@nextui-org/button';
 import { useParams, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
@@ -15,9 +15,12 @@ export default function References() {
   const { papers, loading, getPapers } = usePapers();
 
   useEffect(() => {
-    const query = 'Hola';
-    getPapers(query);
-  }, []);
+    getDraft(uuid).then(({ draft }) => {
+      if (!draft) return;
+      const query = draft.topics.join(' OR ');
+      getPapers(query);
+    });
+  }, [getPapers, uuid]);
 
   const handleNext = () => {
     if (papers.length < 3) return;
@@ -31,7 +34,7 @@ export default function References() {
   };
 
   return (
-    <main className="flex flex-col p-2">
+    <main className="flex flex-col w-full p-2">
       <div className="flex flex-row w-full justify-between">
         <h1 className="editorial-header mb-8">Papers</h1>
         <Button className="super-button" onClick={handleNext}>
