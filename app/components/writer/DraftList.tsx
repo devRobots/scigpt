@@ -4,8 +4,16 @@ import { Chip } from '@nextui-org/react';
 import Link from 'next/link';
 
 export default function Draft({ drafts }: { drafts: Draft[] }) {
+  if (drafts.length === 0) {
+    return (
+      <Card className="w-fit gap-6 py-6 px-16">
+        <h2 className="text-lg">No se encontraron articulos</h2>
+      </Card>
+    );
+  }
+
   return (
-    <div className="flex flex-row gap-4">
+    <div className="flex w-full flex-row gap-4">
       {drafts.map((draft) => (
         <Card key={draft.uuid} className="w-96 p-2">
           <CardHeader className="flex flex-col items-start gap-2">

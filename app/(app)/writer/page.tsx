@@ -12,6 +12,7 @@ import { FaPlus } from 'react-icons/fa6';
 export default function Writer() {
   const router = useRouter();
   const [drafts, setDrafts] = useState<Draft[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const handleClick = () => {
     router.push('/writer/new');
@@ -19,8 +20,8 @@ export default function Writer() {
 
   useEffect(() => {
     getDraftsByUserID().then((drafts: Draft[]) => {
-      if (drafts.length === 0) return;
       setDrafts(drafts);
+      setLoading(false);
     });
   }, []);
 
@@ -43,12 +44,12 @@ export default function Writer() {
         </Button>
       </div>
       <Divider className="w-full" />
-      <section className="flex flex-col h-full items-center justify-center">
-        {drafts.length != 0 ? (
+      <section className="flex flex-col w-full h-full items-center justify-center">
+        {!loading ? (
           <DraftList drafts={drafts} />
         ) : (
           <Card className="w-fit gap-6 py-6 px-16">
-            <h2 className="text-lg">No hay articulos</h2>
+            <h2 className="text-lg">Cargando...</h2>
           </Card>
         )}
       </section>

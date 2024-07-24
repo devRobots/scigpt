@@ -114,7 +114,9 @@ export default function NavBar() {
             <Link
               className={
                 'w-full ' +
-                (item.path == path ? 'text-primary' : 'text-foreground')
+                (checkRoute(path, item.path)
+                  ? 'text-primary'
+                  : 'text-foreground')
               }
               href={item.path}
               size="lg"
