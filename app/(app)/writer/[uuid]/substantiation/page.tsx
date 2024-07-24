@@ -5,7 +5,6 @@ import { generateSubstantiation } from '@/app/lib/writer/ai';
 import { Button } from '@nextui-org/button';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
 import { Textarea } from '@nextui-org/input';
-import { Spinner } from '@nextui-org/spinner';
 import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -30,7 +29,7 @@ export default function Substantiation() {
         setLoading(false);
       });
     });
-  }, []);
+  }, [uuid]);
 
   const handleNext = () => {
     if (substantiation.length < 200) return;
@@ -44,11 +43,11 @@ export default function Substantiation() {
   };
 
   return (
-    <section className="flex w-full xl:w-3/5">
+    <section className="flex w-full xl:w-3/5 p-2">
       <Card className="h-fit w-full p-2">
         <CardHeader className="flex flex-col items-start gap-3">
           <h2 className={'editorial-header'}>Justificación</h2>
-          <p className="text-default-500">
+          <p className="text-default-800">
             La justificación abarca las razones por las cuales es pertinente
             realizar una investigación. En esta fase del anteproyecto se busca
             convencer a una audiencia particular sobre por qué y para qué se
@@ -56,19 +55,19 @@ export default function Substantiation() {
           </p>
         </CardHeader>
         <CardBody className="h-fit gap-3">
+          <p className="font-semibold">
+            Escribe la justificación de tu proyecto:
+          </p>
           <Textarea
-            label="Escribe la justificación de tu proyecto:"
-            labelPlacement="outside"
-            className="w-full"
+            className="w-full justify-evenly"
             placeholder="Generando..."
+            isDisabled={loading}
             minRows={10}
             maxRows={25}
             value={substantiation}
             onValueChange={(value) => setSubstantiation(value)}
-            size="lg"
-          >
-            {loading ?? <Spinner />}
-          </Textarea>
+            variant="faded"
+          />
         </CardBody>
         <CardHeader className="flex justify-end">
           <Button color="success" className="super-button" onClick={handleNext}>
