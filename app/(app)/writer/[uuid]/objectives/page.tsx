@@ -1,6 +1,6 @@
 'use client';
 
-import ObjectiveList from '@/app/components/writer/Objectives';
+import CheckListAI from '@/app/components/ai/CheckListAI';
 import { useObjectives } from '@/app/hooks/useObjectives';
 import { getDraft, updateDraft } from '@/app/lib/supabase/queries';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
@@ -21,7 +21,7 @@ export default function Thesis() {
       if (!draft) return;
       getObjectives(draft.thesis!, draft.topics, draft.field_of_study);
     });
-  }, []);
+  }, [getObjectives, uuid]);
 
   const handleNext = () => {
     if (selObjectives.length < 3) return;
@@ -35,7 +35,7 @@ export default function Thesis() {
   };
 
   return (
-    <section className="flex w-full xl:w-3/5">
+    <section className="flex w-full xl:w-3/5 p-2">
       <Card className="h-fit w-full p-2">
         <CardHeader className="flex flex-col items-start gap-3">
           <h2 className={'editorial-header'}>Objetivos</h2>
@@ -55,9 +55,10 @@ export default function Thesis() {
                 resulten mas interesantes para continuar con el proceso de
                 redaccion:
               </p>
-              <ObjectiveList
-                objectives={objectives}
-                setObjectives={setSelObjectives}
+              <CheckListAI
+                name="Objetivo"
+                initialItems={objectives}
+                setValues={setSelObjectives}
               />
             </>
           ) : (

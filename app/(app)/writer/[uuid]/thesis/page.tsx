@@ -32,7 +32,7 @@ export default function Thesis() {
   };
 
   return (
-    <section className="flex w-full xl:w-3/5">
+    <section className="flex w-full xl:w-3/5 md:p-8">
       <Card className="h-fit w-full p-2">
         <CardHeader className="flex flex-col items-start gap-3">
           <h2 className={'editorial-header'}>Hipotesis</h2>

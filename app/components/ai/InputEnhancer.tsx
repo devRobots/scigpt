@@ -23,7 +23,10 @@ export default function InputEnhancer({ handler }: { handler: any }) {
 
   const onAdd = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    handler(value);
+    const proccesedValue = value.trim();
+    setValue(proccesedValue);
+    if (!proccesedValue) return;
+    handler(proccesedValue);
     setValue('');
   };
 
