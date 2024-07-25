@@ -1,6 +1,7 @@
 'use client';
 
 import RadioListAI from '@/app/components/ai/RadioListAI';
+import { useDraft } from '@/app/hooks/useDraft';
 import { useThesis } from '@/app/hooks/useThesis';
 import { getDraft, updateDraft } from '@/app/lib/supabase/queries';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
@@ -15,13 +16,11 @@ export default function Thesis() {
 
   const [hypothesis, setHypothesis] = useState('');
   const { thesis, loading, getThesis } = useThesis();
+  const { cache, draft, loading: l, genThesis } = useDraft(uuid);
 
   useEffect(() => {
-    getDraft(uuid).then(({ draft }) => {
-      if (!draft) return;
-      getThesis(draft.topics, draft.field_of_study);
-    });
-  }, [getThesis, uuid]);
+    genThesis();
+  }, [genThesis, uuid]);
 
   const handleNext = () => {
     if (!hypothesis) return;
@@ -44,7 +43,7 @@ export default function Thesis() {
           </p>
         </CardHeader>
         <CardBody className="h-fit gap-3">
-          {!loading ? (
+          {!l ? (
             <>
               <p className="font-semibold">
                 Seleccione a continuacion la hipotesis que le resulte mas
@@ -53,7 +52,7 @@ export default function Thesis() {
 
               <RadioListAI
                 name="Hipotesis"
-                initialItems={thesis}
+                initialItems={cache?.thesis || []}
                 setValue={setHypothesis}
                 maxItems={10}
               />
