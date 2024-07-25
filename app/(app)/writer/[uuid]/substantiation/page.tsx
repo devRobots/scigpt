@@ -44,7 +44,7 @@ export default function Substantiation() {
 
   return (
     <section className="flex w-full xl:w-3/5 p-2">
-      <Card className="h-fit w-full p-2">
+      <Card className="main-card">
         <CardHeader className="flex flex-col items-start gap-3">
           <h2 className={'editorial-header'}>Justificación</h2>
           <p className="text-default-800">

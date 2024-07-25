@@ -33,7 +33,7 @@ export default function InputEnhancer({ handler }: { handler: any }) {
   return (
     <div className="flex flex-row">
       <Textarea
-        classNames={{ inputWrapper: 'rounded-r-none' }}
+        classNames={{ inputWrapper: 'rounded-r-none bg-default' }}
         value={value}
         onValueChange={onValueChange}
         variant="faded"

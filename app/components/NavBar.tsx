@@ -65,8 +65,10 @@ export default function NavBar() {
         <NavbarContent className="flex sm:hidden gap-4" justify="end">
           {user && (
             <User
+              className="flex flex-row-reverse"
               avatarProps={{
-                src: user.photoURL
+                src: user.photoURL,
+                size: 'sm'
               }}
               name={user.displayName}
               description={user.email}
@@ -100,8 +102,10 @@ export default function NavBar() {
       <NavbarContent className="hidden sm:flex gap-4" as="div" justify="end">
         {user && (
           <User
+            className="flex flex-row-reverse"
             avatarProps={{
-              src: user.photoURL
+              src: user.photoURL,
+              size: 'sm'
             }}
             name={user.displayName}
             description={user.email}
