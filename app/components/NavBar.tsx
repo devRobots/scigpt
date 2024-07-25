@@ -1,6 +1,5 @@
 'use client';
 
-import { createClient } from '@/app/lib/supabase/core/client';
 import { Link } from '@nextui-org/link';
 import {
   Navbar,
@@ -29,27 +28,37 @@ const menuItems = [
   { id: 'about', name: 'Acerca', path: '/about' }
 ];
 
+function getUserFromCookie() {
+  const cookies = document.cookie.split(';');
+  const userCookieMatch = cookies.filter((c) =>
+    c.includes('sb-jjcduwakfvdvsmuugoqd-auth-token')
+  );
+  if (userCookieMatch.length != 2) return null;
+  const userCookieRaw1 = userCookieMatch[0].split('=')[1];
+  const userCookieRaw2 = userCookieMatch[1].split('=')[1];
+  const userCookieRaw = userCookieRaw1 + userCookieRaw2;
+  const userCookieEnc = userCookieRaw?.replace('base64-', '');
+  const base64Buffer = Buffer.from(userCookieEnc || '', 'base64');
+  const userCookieDec = base64Buffer.toString('utf-8');
+  return JSON.parse(userCookieDec);
+}
+
 export default function NavBar() {
   const path = usePathname();
   const [user, setUser] = useState<User>();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const supabase = createClient();
-      const { data, error } = await supabase.auth.getUser();
-      if (error || !data?.user) return;
+    const { user } = getUserFromCookie();
+    if (!user) return;
 
-      const { user } = data;
-      const { user_metadata, email } = user;
-      const { name, avatar_url } = user_metadata;
-      setUser({
-        displayName: name,
-        photoURL: avatar_url,
-        email: email || ''
-      });
-    };
-    fetchData();
+    const { user_metadata, email } = user;
+    const { name, avatar_url } = user_metadata;
+    setUser({
+      displayName: name,
+      photoURL: avatar_url,
+      email: email || ''
+    });
   }, []);
 
   return (

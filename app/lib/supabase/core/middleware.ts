@@ -30,6 +30,15 @@ export const createClient = (request: NextRequest) => {
 
 export const updateSession = async (request: NextRequest) => {
     const { supabase, response } = createClient(request);
-    await supabase.auth.getUser();
+    const { data } = await supabase.auth.getUser();
+
+    if (data?.user && request.nextUrl.pathname.startsWith('/login')) {
+        return Response.redirect(new URL('/writer', request.url));
+    }
+    if (!data?.user && request.nextUrl.pathname.startsWith('/write')) {
+        return Response.redirect(new URL('/login', request.url));
+    }
+
+    response.user = data?.user;
     return response;
 };
