@@ -40,7 +40,7 @@ function getUserFromCookie() {
   const userCookieEnc = userCookieRaw?.replace('base64-', '');
   const base64Buffer = Buffer.from(userCookieEnc || '', 'base64');
   const userCookieDec = base64Buffer.toString('utf-8');
-  return JSON.parse(userCookieDec);
+  return userCookieDec ? JSON.parse(userCookieDec).user : null;
 }
 
 export default function NavBar() {
@@ -49,7 +49,7 @@ export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const { user } = getUserFromCookie();
+    const user = getUserFromCookie();
     if (!user) return;
 
     const { user_metadata, email } = user;

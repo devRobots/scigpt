@@ -39,6 +39,5 @@ export const updateSession = async (request: NextRequest) => {
         return Response.redirect(new URL('/login', request.url));
     }
 
-    response.user = data?.user;
     return response;
 };

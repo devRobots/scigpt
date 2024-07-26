@@ -2,6 +2,7 @@
 
 import DraftList from '@/app/components/writer/DraftList';
 import { getDraftsByUserID } from '@/app/lib/supabase/queries';
+import { Draft } from '@/app/types/draft';
 import { Button } from '@nextui-org/button';
 import { Card } from '@nextui-org/card';
 import { Divider } from '@nextui-org/react';

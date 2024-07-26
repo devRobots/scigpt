@@ -37,16 +37,20 @@ export default function RadioList({
 }) {
   return (
     <RadioGroup className="w-full" onValueChange={setValue}>
-      {items.map((value, i) => {
-        return (
-          <RadioOption
-            key={`${value}-${i}`}
-            value={value}
-            name={name}
-            index={i}
-          />
-        );
-      })}
+      {items.length > 0 ? (
+        items.map((value, i) => {
+          return (
+            <RadioOption
+              key={`${value}-${i}`}
+              value={value}
+              name={name}
+              index={i}
+            />
+          );
+        })
+      ) : (
+        <p>No hay opciones disponibles</p>
+      )}
     </RadioGroup>
   );
 }
