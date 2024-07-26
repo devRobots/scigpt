@@ -2,8 +2,7 @@
 
 import RadioListAI from '@/app/components/ai/RadioListAI';
 import { useDraft } from '@/app/hooks/useDraft';
-import { useThesis } from '@/app/hooks/useThesis';
-import { getDraft, updateDraft } from '@/app/lib/supabase/queries';
+import { updateDraft } from '@/app/lib/supabase/queries';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
 import { Button, Spinner } from '@nextui-org/react';
 import { useParams, useRouter } from 'next/navigation';
@@ -14,18 +13,17 @@ export default function Thesis() {
   const params = useParams();
   const uuid = params.uuid.toString() || '';
 
-  const [hypothesis, setHypothesis] = useState('');
-  const { thesis, loading, getThesis } = useThesis();
-  const { cache, draft, loading: l, genThesis } = useDraft(uuid);
+  const [thesis, setThesis] = useState('');
+  const { thesisList, loading, genThesis } = useDraft(uuid);
 
   useEffect(() => {
     genThesis();
-  }, [genThesis, uuid]);
+  }, [genThesis]);
 
   const handleNext = () => {
-    if (!hypothesis) return;
+    if (!thesis) return;
 
-    updateDraft(uuid, { thesis: hypothesis, stage: 'objectives' }).then(() => {
+    updateDraft(uuid, { thesis: thesis, stage: 'objectives' }).then(() => {
       router.push(`/writer/${uuid}/objectives`);
     });
   };
@@ -43,7 +41,7 @@ export default function Thesis() {
           </p>
         </CardHeader>
         <CardBody className="h-fit gap-3">
-          {!l ? (
+          {!loading ? (
             <>
               <p className="font-semibold">
                 Seleccione a continuacion la hipotesis que le resulte mas
@@ -52,8 +50,8 @@ export default function Thesis() {
 
               <RadioListAI
                 name="Hipotesis"
-                initialItems={cache?.thesis || []}
-                setValue={setHypothesis}
+                initialItems={thesisList || []}
+                setValue={setThesis}
                 maxItems={10}
               />
             </>

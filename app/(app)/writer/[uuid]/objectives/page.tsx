@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 
 import CheckListAI from '@/app/components/ai/CheckListAI';
-import { useObjectives } from '@/app/hooks/useObjectives';
-import { getDraft, updateDraft } from '@/app/lib/supabase/queries';
+import { useDraft } from '@/app/hooks/useDraft';
+import { updateDraft } from '@/app/lib/supabase/queries';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
 import { Button, Spinner } from '@nextui-org/react';
 import { useParams, useRouter } from 'next/navigation';
@@ -13,15 +14,12 @@ export default function Thesis() {
   const params = useParams();
   const uuid = params.uuid.toString() || '';
 
-  const { objectives, loading, getObjectives } = useObjectives();
   const [selObjectives, setSelObjectives] = useState<string[]>([]);
+  const { objectivesList, loading, genObjectives } = useDraft(uuid);
 
   useEffect(() => {
-    getDraft(uuid).then(({ draft }) => {
-      if (!draft) return;
-      getObjectives(draft.thesis!, draft.topics, draft.field_of_study);
-    });
-  }, [getObjectives, uuid]);
+    genObjectives();
+  }, []);
 
   const handleNext = () => {
     if (selObjectives.length < 3) return;
@@ -57,7 +55,7 @@ export default function Thesis() {
               </p>
               <CheckListAI
                 name="Objetivo"
-                initialItems={objectives}
+                initialItems={objectivesList || []}
                 setValues={setSelObjectives}
               />
             </>

@@ -40,16 +40,22 @@ export default function CheckList({
 }) {
   return (
     <CheckboxGroup className="w-full" onValueChange={setValues}>
-      {items.map((item, index) => {
-        return (
-          <Check
-            key={`${name}-${index}`}
-            name={name}
-            index={index}
-            item={item}
-          />
-        );
-      })}
+      {items.length > 0 ? (
+        items.map((item, index) => {
+          return (
+            <Check
+              key={`${name}-${index}`}
+              name={name}
+              index={index}
+              item={item}
+            />
+          );
+        })
+      ) : (
+        <p className="text-default-700">
+          No hay {name.toLowerCase()}s disponibles
+        </p>
+      )}
     </CheckboxGroup>
   );
 }

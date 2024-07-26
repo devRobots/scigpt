@@ -41,7 +41,7 @@ export async function saveCache(cache: Cache) {
     await supabase.from(CACHE_TABLE).insert(cache);
 }
 
-export async function updateCacheByDraftUUI(draft_uuid: string, data: any) {
+export async function updateCacheByDraftUUID(draft_uuid: string, data: any) {
     const supabase = createClient();
     await supabase.from(CACHE_TABLE).update(data).eq('draft_uuid', draft_uuid);
 }
