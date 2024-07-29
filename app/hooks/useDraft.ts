@@ -2,7 +2,6 @@
 import { generateObjectives, generateThesis } from '@/app/lib/writer/ai';
 import { getDraft } from '@/app/lib/supabase/queries';
 import { useCallback, useState } from 'react';
-import { set } from 'zod';
 
 export function useDraft(uuid: string) {
   const [error, setError] = useState(null);
@@ -38,7 +37,7 @@ export function useDraft(uuid: string) {
 
       const draft = await getDraft(uuid);
       if (!draft) throw new Error('Draft not found');
-      
+
       const { thesis, topics, field_of_study } = draft;
       const data = await generateObjectives(thesis!, topics, field_of_study);
       setObjectivesList(data);
