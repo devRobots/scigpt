@@ -11,11 +11,3 @@ export interface Draft {
     methodology?: string;
     results?: string;
 }
-
-export interface Cache {
-    uuid?: string;
-    draft_uuid: string;
-    created_at?: string;
-    thesis?: string[];
-    objectives?: string[];
-}

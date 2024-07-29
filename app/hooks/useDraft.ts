@@ -1,69 +1,60 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { generateObjectives, generateThesis } from '@/app/lib/writer/ai';
-import { getCacheByDraftUUID, getDraft, updateCacheByDraftUUID } from '@/app/lib/supabase/queries';
-import { useCallback, useEffect, useState } from 'react';
-import type { Cache, Draft } from '@/app/types/draft';
+import { getDraft } from '@/app/lib/supabase/queries';
+import { useCallback, useState } from 'react';
+import { set } from 'zod';
 
 export function useDraft(uuid: string) {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const [cache, setCache] = useState<Cache | null>(null);
-  const [draft, setDraft] = useState<Draft | null>(null);
-
-  const fetchDraft = useCallback(async () => {
-    if (draft) return;
-    const data = await getDraft(uuid);
-    setDraft(data);
-  }, [uuid]);
-
-  const fetchCache = useCallback(async () => {
-    if (cache) return;
-    const data = await getCacheByDraftUUID(uuid);
-    setCache(data);
-  }, [uuid]);
-
-  useEffect(() => {
-    async function updateCache() {
-      if (!cache) return;
-      await updateCacheByDraftUUID(uuid, cache);
-    }
-    updateCache();
-  }, [cache]);
-
-  async function genList(target: string, handler: any) {
-    try {
-      await fetchCache();
-      if (cache && cache[target as keyof Cache]) return;
-      await fetchDraft();
-      if (!draft) throw new Error('Draft not found');
-      const data = await handler(draft);
-      setCache({ draft_uuid: uuid, [target]: data });
-    } catch (e: any) {
-      setError(e.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const [thesisList, setThesisList] = useState<string[]>([]);
+  const [objectivesList, setObjectivesList] = useState<string[]>([]);
 
   const genThesis = useCallback(async () => {
-    genList('thesis', (draft: Draft) => {
+    try {
+      setError(null);
+      setLoading(true);
+
+      const draft = await getDraft(uuid);
+      if (!draft) throw new Error('Draft not found');
+
       const { topics, field_of_study } = draft;
-      return generateThesis(topics, field_of_study);
-    });
+      const data = await generateThesis(topics, field_of_study);
+      setThesisList(data);
+    }
+    catch (e: any) {
+      setError(e.message);
+    }
+    finally {
+      setLoading(false);
+    }
   }, [uuid]);
 
   const genObjectives = useCallback(async () => {
-    genList('objectives', (draft: Draft) => {
+    try {
+      setError(null);
+      setLoading(true);
+
+      const draft = await getDraft(uuid);
+      if (!draft) throw new Error('Draft not found');
+      
       const { thesis, topics, field_of_study } = draft;
-      return generateObjectives(thesis!, topics, field_of_study);
-    });
+      const data = await generateObjectives(thesis!, topics, field_of_study);
+      setObjectivesList(data);
+    }
+    catch (e: any) {
+      setError(e.message);
+    }
+    finally {
+      setLoading(false);
+    }
   }, [uuid]);
 
   return {
-    thesisList: cache?.thesis,
-    objectivesList: cache?.objectives,
-    draft, loading, error,
+    thesisList: thesisList,
+    objectivesList: objectivesList,
+    loading, error,
     genThesis, genObjectives
   };
 }
