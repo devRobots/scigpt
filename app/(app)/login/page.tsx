@@ -1,31 +1,15 @@
-'use client';
-
-import { signInWithOAuth } from '@/app/lib/supabase/auth';
-import { Button } from '@nextui-org/button';
+import { OAuth } from '@/app/components/standard/OAuth';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
-import { FaGithub } from 'react-icons/fa6';
 
 export default function Login() {
-  const handleClick = (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    signInWithOAuth();
-  };
-
   return (
     <main className="flex h-1 items-center justify-center">
       <Card className="w-fit py-6 px-16">
         <CardHeader>
           <h1 className="text-2xl">Inicia sesión en SciGPT</h1>
         </CardHeader>
-        <CardBody>
-          <Button
-            onClick={handleClick}
-            className="super-button"
-            variant="shadow"
-            endContent={<FaGithub />}
-          >
-            Iniciar sesión
-          </Button>
+        <CardBody className='items-center'>
+          <OAuth />
         </CardBody>
       </Card>
     </main>

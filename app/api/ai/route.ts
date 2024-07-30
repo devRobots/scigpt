@@ -1,11 +1,9 @@
-import { createClient } from '@/app/lib/supabase/core/server';
 import { google } from '@ai-sdk/google';
 import { generateText } from 'ai';
 
 
 export async function POST(request: Request) {
-    const supabase = createClient();
-    const { data: session, error } = await supabase.auth.getUser();
+    const { data: session, error } = { data: null, error: null };
     if (!session || error) {
         return new Response('Unauthorized', { status: 401 });
     }
