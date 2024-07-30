@@ -4,7 +4,7 @@ import BigInput from '@/app/components/standard/BigInput';
 import InputTag from '@/app/components/standard/InputTag';
 import ListSelector from '@/app/components/standard/ListSelector';
 import { fieldsOfStudy as items } from '@/app/lib/data/fieldsOfStudy';
-import { saveDraft } from '@/app/lib/supabase/queries';
+import { saveDraft } from '@/app/lib/firebase/firestore';
 import { Button } from '@nextui-org/button';
 import { Card, CardBody, CardFooter } from '@nextui-org/card';
 import { useRouter } from 'next/navigation';
@@ -35,14 +35,8 @@ export default function Writer() {
       title,
       topics,
       field_of_study: fieldOfStudy,
-      stage: 'thesis',
-      uuid: undefined,
-      created_at: undefined,
-      thesis: undefined,
-      objectives: undefined,
-      methodology: undefined,
-      results: undefined,
-      user_id: undefined
+      owner: 'ysrosast@gmail.com',
+      stage: 'thesis'
     });
 
     router.push(`/writer/${uuid}/thesis`);

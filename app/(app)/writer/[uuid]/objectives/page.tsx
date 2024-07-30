@@ -3,7 +3,7 @@
 
 import CheckListAI from '@/app/components/ai/CheckListAI';
 import { useDraft } from '@/app/hooks/useDraft';
-import { updateDraft } from '@/app/lib/supabase/queries';
+import { updateDraft } from '@/app/lib/firebase/firestore';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
 import { Button, Spinner } from '@nextui-org/react';
 import { useParams, useRouter } from 'next/navigation';

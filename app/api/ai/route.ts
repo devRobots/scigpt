@@ -1,10 +1,11 @@
+import { auth } from '@/auth';
 import { google } from '@ai-sdk/google';
 import { generateText } from 'ai';
 
 
 export async function POST(request: Request) {
-    const { data: session, error } = { data: null, error: null };
-    if (!session || error) {
+    const session = auth();
+    if (!session) {
         return new Response('Unauthorized', { status: 401 });
     }
 

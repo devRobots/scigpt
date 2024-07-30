@@ -2,7 +2,7 @@
 
 import PaperList from '@/app/components/writer/PapersReviews';
 import { usePapers } from '@/app/hooks/usePapers';
-import { getDraft, updateDraft } from '@/app/lib/supabase/queries';
+import { getDraft, updateDraft } from '@/app/lib/firebase/firestore';
 import { Button } from '@nextui-org/button';
 import { useParams, useRouter } from 'next/navigation';
 import { useEffect } from 'react';

@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { generateObjectives, generateThesis } from '@/app/lib/writer/ai';
-import { getDraft } from '@/app/lib/supabase/queries';
+import { getDraft } from '@/app/lib/firebase/firestore';
 import { useCallback, useState } from 'react';
 
 export function useDraft(uuid: string) {

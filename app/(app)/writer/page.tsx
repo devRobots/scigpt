@@ -1,7 +1,7 @@
 'use client';
 
 import DraftList from '@/app/components/writer/DraftList';
-import { getDraftsByUserID } from '@/app/lib/supabase/queries';
+import { getDraftsByOwner } from '@/app/lib/firebase/firestore';
 import { Draft } from '@/app/types/draft';
 import { Button } from '@nextui-org/button';
 import { Card } from '@nextui-org/card';
@@ -20,7 +20,7 @@ export default function Writer() {
   };
 
   useEffect(() => {
-    getDraftsByUserID().then((drafts: Draft[]) => {
+    getDraftsByOwner().then((drafts: Draft[]) => {
       setDrafts(drafts);
       setLoading(false);
     });

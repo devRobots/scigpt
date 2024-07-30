@@ -1,6 +1,6 @@
 'use client';
 
-import { getDraft, updateDraft } from '@/app/lib/supabase/queries';
+import { getDraft, updateDraft } from '@/app/lib/firebase/firestore';
 import { generateSubstantiation } from '@/app/lib/writer/ai';
 import { Button } from '@nextui-org/button';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
