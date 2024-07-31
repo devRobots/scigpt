@@ -9,11 +9,13 @@ export function PaperCard({ paper }: { paper: Paper }) {
     <Card key={paper.url} className="w-full">
       <CardHeader>
         <div className="flex flex-col gap-1">
-          <p className="text-md font-bold">{paper.title}</p>
+          <div className="flex flex-row gap-2">
+            <Chip size="sm">{paper.year}</Chip>
+            <p className="text-md font-bold">{paper.title}</p>
+          </div>
           <span className="text-sm text-default-500">
             {tldr(paper.authors, 3)}
           </span>
-          <Chip size="sm">{paper.year}</Chip>
         </div>
       </CardHeader>
       <CardBody>
@@ -22,9 +24,9 @@ export function PaperCard({ paper }: { paper: Paper }) {
         </Accordion>
       </CardBody>
       <CardHeader>
-        <div className="flex gap-2">
+        <div className="flex gap-2 items-center">
           <span className="text-sm text-default-500">Citations: </span>
-          <Chip size="sm" color="primary">
+          <Chip size="sm" color="default">
             {paper.citationCount}
           </Chip>
           <span className="text-sm text-default-500">Fields of study: </span>
