@@ -1,4 +1,3 @@
-import { steps } from '@/app/lib/data/writerSteps';
 import { BreadcrumbItem, Breadcrumbs } from '@nextui-org/breadcrumbs';
 import { usePathname } from 'next/navigation';
 import {
@@ -17,7 +16,7 @@ export default function Breadcrumb() {
       underline="hover"
       className="pb-8"
       classNames={{
-        list: 'bg-gradient-to-br from-yellow-200 to-amber-100 shadow-small'
+        list: 'bg-gradient-to-br from-yellow-100 to-amber-300 shadow-small'
       }}
       itemClasses={{
         item: 'text-black',
@@ -26,29 +25,46 @@ export default function Breadcrumb() {
       variant="solid"
       size="lg"
     >
-      {steps.map(
-        (step) =>
-          step && (
-            <BreadcrumbItem
-              key={step.id}
-              isCurrent={path.endsWith(step.path)}
-              isDisabled={!path.endsWith(step.path)}
-            >
-              {step.icon === 'FaQuestion' ? (
-                <FaCircleQuestion />
-              ) : step.icon === 'FaBullseye' ? (
-                <FaBullseye />
-              ) : step.icon === 'FaBook' ? (
-                <FaBook />
-              ) : step.icon === 'IoSparkles' ? (
-                <IoSparkles />
-              ) : step.icon === 'FaFileExport' ? (
-                <FaFileExport />
-              ) : null}
-              <p className="hidden sm:flex">{step.title}</p>
-            </BreadcrumbItem>
-          )
-      )}
+      <BreadcrumbItem
+        key="breadcrumb-0"
+        isDisabled={!path.includes('thesis')}
+        isCurrent
+      >
+        <FaCircleQuestion />
+        <p className="hidden sm:flex">Hipotesis</p>
+      </BreadcrumbItem>
+      <BreadcrumbItem
+        key="breadcrumb-1"
+        isDisabled={!path.includes('objectives')}
+        isCurrent
+      >
+        <FaBullseye />
+        <p className="hidden sm:flex">Objetivos</p>
+      </BreadcrumbItem>
+      <BreadcrumbItem
+        key="breadcrumb-2"
+        isDisabled={!path.includes('review')}
+        isCurrent
+      >
+        <FaBook />
+        <p className="hidden sm:flex">Revision Literaria</p>
+      </BreadcrumbItem>
+      <BreadcrumbItem
+        key="breadcrumb-3"
+        isDisabled={!path.includes('writer')}
+        isCurrent
+      >
+        <IoSparkles />
+        <p className="hidden sm:flex">Redaccion IA</p>
+      </BreadcrumbItem>
+      <BreadcrumbItem
+        key="breadcrumb-4"
+        isDisabled={!path.includes('finish')}
+        isCurrent
+      >
+        <FaFileExport />
+        <p className="hidden sm:flex">Exportar</p>
+      </BreadcrumbItem>
     </Breadcrumbs>
   );
 }
