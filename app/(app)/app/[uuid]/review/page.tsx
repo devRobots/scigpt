@@ -5,6 +5,7 @@ import InputSearchAI from '@/app/components/ai/InputSearchAI';
 import PaperList from '@/app/components/writer/PapersReviews';
 import { useDraft } from '@/app/hooks/useDraft';
 import { usePapers } from '@/app/hooks/usePapers';
+import { Pages, App } from '@/app/lib/data/consts';
 import { updateDraft } from '@/app/lib/firebase/firestore';
 import { Button } from '@nextui-org/button';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
@@ -33,9 +34,9 @@ export default function References() {
 
     updateDraft(uuid, {
       papers: papers,
-      stage: 'method'
+      stage: App.Writer
     }).then(() => {
-      router.push(`/app/${uuid}/writer`);
+      router.push(`${Pages.Writer}/${uuid}/${App.Writer}`);
     });
   };
 

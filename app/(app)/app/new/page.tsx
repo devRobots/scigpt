@@ -3,8 +3,9 @@
 import BigInput from '@/app/components/standard/BigInput';
 import InputTag from '@/app/components/standard/InputTag';
 import ListSelector from '@/app/components/standard/ListSelector';
-import { fieldsOfStudy as items } from '@/app/lib/data/fieldsOfStudy';
+import { App, fieldsOfStudy as items, Pages } from '@/app/lib/data/consts';
 import { saveDraft } from '@/app/lib/firebase/firestore';
+import { type Draft } from '@/app/types/draft';
 import { Button } from '@nextui-org/button';
 import { Card, CardBody, CardFooter } from '@nextui-org/card';
 import { useRouter } from 'next/navigation';
@@ -36,10 +37,10 @@ export default function Writer() {
       topics,
       field_of_study: fieldOfStudy,
       owner: 'ysrosast@gmail.com',
-      stage: 'thesis'
-    });
+      stage: App.Hipothesis
+    } as Draft);
 
-    router.push(`/writer/${uuid}/thesis`);
+    router.push(`${Pages.Writer}/${uuid}/${App.Hipothesis}`);
   };
 
   return (

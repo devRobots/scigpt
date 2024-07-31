@@ -1,6 +1,7 @@
 'use client';
 
 import DraftList from '@/app/components/writer/DraftList';
+import { Pages, App } from '@/app/lib/data/consts';
 import { getDraftsByOwner } from '@/app/lib/firebase/firestore';
 import { Draft } from '@/app/types/draft';
 import { Button } from '@nextui-org/button';
@@ -16,7 +17,7 @@ export default function Writer() {
   const [loading, setLoading] = useState(true);
 
   const handleClick = () => {
-    router.push('/writer/new');
+    router.push(`${Pages.Writer}/${App.New}`);
   };
 
   useEffect(() => {

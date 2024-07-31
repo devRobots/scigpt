@@ -1,3 +1,19 @@
+export enum Pages {
+    Home = "/",
+    Writer = "/app",
+    About = "/about"
+}
+
+export enum App {
+    Hipothesis = "thesis",
+    Objectives = "objectives",
+    PaperReview = "review",
+    Writer = "writer",
+    Export = "finish",
+
+    New = "new"
+}
+
 export const fieldsOfStudy = [
     {
         key: "Computer Science",

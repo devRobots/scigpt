@@ -2,6 +2,7 @@
 
 import RadioListAI from '@/app/components/ai/RadioListAI';
 import { useDraft } from '@/app/hooks/useDraft';
+import { Pages, App } from '@/app/lib/data/consts';
 import { updateDraft } from '@/app/lib/firebase/firestore';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
 import { Button, Spinner } from '@nextui-org/react';
@@ -23,8 +24,8 @@ export default function Thesis() {
   const handleNext = () => {
     if (!thesis) return;
 
-    updateDraft(uuid, { thesis: thesis, stage: 'objectives' }).then(() => {
-      router.push(`/app/${uuid}/objectives`);
+    updateDraft(uuid, { thesis: thesis, stage: App.Objectives }).then(() => {
+      router.push(`${Pages.Writer}/${uuid}/${App.Objectives}`);
     });
   };
 

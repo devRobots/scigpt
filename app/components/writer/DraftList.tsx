@@ -3,6 +3,7 @@ import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card';
 import { Chip } from '@nextui-org/react';
 import Link from 'next/link';
 import { type Draft } from '@/app/types/draft';
+import { Pages } from '@/app/lib/data/consts';
 
 export default function Draft({ drafts }: { drafts: Draft[] }) {
   if (drafts.length === 0) {
@@ -36,7 +37,10 @@ export default function Draft({ drafts }: { drafts: Draft[] }) {
             </div>
           </CardBody>
           <CardFooter>
-            <Link href={`/app/${draft.id}/${draft.stage}`} className="w-full">
+            <Link
+              href={`${Pages.Writer}/${draft.id}/${draft.stage}`}
+              className="w-full"
+            >
               <Button variant="shadow" className="w-full">
                 Editar
               </Button>

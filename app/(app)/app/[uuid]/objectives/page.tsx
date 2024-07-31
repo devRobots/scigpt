@@ -3,6 +3,7 @@
 
 import CheckListAI from '@/app/components/ai/CheckListAI';
 import { useDraft } from '@/app/hooks/useDraft';
+import { App, Pages } from '@/app/lib/data/consts';
 import { updateDraft } from '@/app/lib/firebase/firestore';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
 import { Button, Spinner } from '@nextui-org/react';
@@ -26,9 +27,9 @@ export default function Thesis() {
 
     updateDraft(uuid, {
       objectives: selObjectives,
-      stage: 'review'
+      stage: App.Writer
     }).then(() => {
-      router.push(`/app/${uuid}/writer`);
+      router.push(`${Pages.Writer}/${uuid}/${App.Writer}`);
     });
   };
 
