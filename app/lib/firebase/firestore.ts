@@ -20,11 +20,16 @@ export async function updateDraft(uuid: string, data: any) {
     await updateDoc(docRef, data);
 }
 
-export async function getDraftsByOwner() {
-    const owner = "ysrosast@gmail.com";
+export async function getDraftsByOwner(owner: string) {
     const draftRef = collection(db, DRAFT_COLLECTION);
     const q = query(draftRef, where("owner", "==", owner));
     const querySnapshot = await getDocs(q);
-    const drafts = querySnapshot.docs.map(doc => doc.data() as Draft);
+    const drafts = querySnapshot.docs.map(doc => {
+        const data = doc.data();
+        return {
+            id: doc.id,
+            ...data
+        } as Draft;
+    });
     return drafts || [];
 }
