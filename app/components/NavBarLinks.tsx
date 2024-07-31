@@ -1,25 +1,30 @@
 import { Link } from '@nextui-org/link';
-import { NavbarItem } from '@nextui-org/navbar';
+import { NavbarItem, NavbarMenuItem } from '@nextui-org/navbar';
 import { FaHouse, FaFeather, FaInfo } from 'react-icons/fa6';
-import { links } from '@/app/lib/data/navbarLinks';
 
-export default function NavBarLinks() {
+export default function NavBarLinks({ isMenu }: { isMenu?: boolean }) {
+  const ItemType = isMenu ? NavbarMenuItem : NavbarItem;
+
   return (
     <>
-      {links.map((item) => (
-        <NavbarItem key={item.id} className="justify-items-center">
-          <Link className="text-white" href={item.path} size="lg">
-            {item.name === 'Inicio' ? (
-              <FaHouse className="mr-1" />
-            ) : item.name === 'Editor' ? (
-              <FaFeather className="mr-1" />
-            ) : (
-              <FaInfo />
-            )}
-            {item.name}
-          </Link>
-        </NavbarItem>
-      ))}
+      <ItemType key="navbaritem-0" className="justify-items-center">
+        <Link className="text-white" href="/" size="lg">
+          <FaHouse className="mr-1" />
+          Inicio
+        </Link>
+      </ItemType>
+      <ItemType key="navbaritem-1" className="justify-items-center">
+        <Link className="text-white" href="/app" size="lg">
+          <FaFeather className="mr-1" />
+          Editor
+        </Link>
+      </ItemType>
+      <ItemType key="navbaritem-2" className="justify-items-center">
+        <Link className="text-white" href="/about" size="lg">
+          <FaInfo />
+          Acerca
+        </Link>
+      </ItemType>
     </>
   );
 }
