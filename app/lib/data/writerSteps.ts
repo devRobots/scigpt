@@ -1,7 +1,7 @@
 export const steps = [
     {
         id: 'thesis',
-        title: 'Tesis',
+        title: 'Hipotesis',
         path: '/thesis',
         icon: 'FaQuestion'
     },
@@ -12,21 +12,21 @@ export const steps = [
         icon: 'FaBullseye'
     },
     {
-        id: 'substantiation',
-        title: 'Justificacion',
-        path: '/substantiation',
-        icon: 'FaFileSignature'
-    },
-    {
         id: 'reviews',
         title: 'Revision Literaria',
         path: '/review',
         icon: 'FaBook'
     },
     {
-        id: 'resume',
-        title: 'Resumen',
-        path: '/resume',
-        icon: 'FaFileAlt'
+        id: 'writer',
+        title: 'Redaccion IA',
+        path: '/writer',
+        icon: 'IoSparkles'
+    },
+    {
+        id: 'export',
+        title: 'Exportar',
+        path: '/export',
+        icon: 'FaFileExport'
     }
 ];

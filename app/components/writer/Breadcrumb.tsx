@@ -5,9 +5,9 @@ import {
   FaBook,
   FaBullseye,
   FaCircleQuestion,
-  FaFileCode,
-  FaFileSignature
+  FaFileExport
 } from 'react-icons/fa6';
+import { IoSparkles } from 'react-icons/io5';
 
 export default function Breadcrumb() {
   const path = usePathname();
@@ -40,10 +40,10 @@ export default function Breadcrumb() {
                 <FaBullseye />
               ) : step.icon === 'FaBook' ? (
                 <FaBook />
-              ) : step.icon === 'FaFileSignature' ? (
-                <FaFileSignature />
-              ) : step.icon === 'FaFileAlt' ? (
-                <FaFileCode />
+              ) : step.icon === 'IoSparkles' ? (
+                <IoSparkles />
+              ) : step.icon === 'FaFileExport' ? (
+                <FaFileExport />
               ) : null}
               <p className="hidden sm:flex">{step.title}</p>
             </BreadcrumbItem>

@@ -28,7 +28,7 @@ export default function Thesis() {
       objectives: selObjectives,
       stage: 'review'
     }).then(() => {
-      router.push(`/writer/${uuid}/review`);
+      router.push(`/app/${uuid}/writer`);
     });
   };
 

@@ -35,7 +35,7 @@ export default function References() {
       papers: papers,
       stage: 'method'
     }).then(() => {
-      router.push(`/writer/${uuid}/method`);
+      router.push(`/app/${uuid}/writer`);
     });
   };
 

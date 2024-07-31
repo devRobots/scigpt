@@ -24,7 +24,7 @@ export default function Thesis() {
     if (!thesis) return;
 
     updateDraft(uuid, { thesis: thesis, stage: 'objectives' }).then(() => {
-      router.push(`/writer/${uuid}/objectives`);
+      router.push(`/app/${uuid}/objectives`);
     });
   };
 
