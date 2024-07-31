@@ -1,4 +1,5 @@
 export interface Draft {
+    id: string;
     owner: string;
     title: string;
     stage: string;

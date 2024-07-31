@@ -2,6 +2,7 @@ import { Button } from '@nextui-org/button';
 import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card';
 import { Chip } from '@nextui-org/react';
 import Link from 'next/link';
+import { type Draft } from '@/app/types/draft';
 
 export default function Draft({ drafts }: { drafts: Draft[] }) {
   if (drafts.length === 0) {
@@ -15,7 +16,7 @@ export default function Draft({ drafts }: { drafts: Draft[] }) {
   return (
     <div className="flex w-full flex-row gap-4">
       {drafts.map((draft) => (
-        <Card key={draft.uuid} className="w-96 p-2">
+        <Card key={draft.id} className="w-96 p-2">
           <CardHeader className="flex flex-col items-start gap-2">
             <h2 className="text-2xl">Titulo: {draft.title}</h2>
             <div className="flex flex-row gap-1">
@@ -35,10 +36,7 @@ export default function Draft({ drafts }: { drafts: Draft[] }) {
             </div>
           </CardBody>
           <CardFooter>
-            <Link
-              href={`/writer/${draft.uuid}/${draft.stage}`}
-              className="w-full"
-            >
+            <Link href={`/app/${draft.id}/${draft.stage}`} className="w-full">
               <Button variant="shadow" className="w-full">
                 Editar
               </Button>
