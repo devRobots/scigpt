@@ -4,6 +4,7 @@ import { Card, CardBody, CardHeader } from '@nextui-org/card';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaArrowRight } from 'react-icons/fa6';
+import { Pages } from '@/app/lib/data/consts';
 
 export default function Chat() {
   return (
@@ -17,7 +18,7 @@ export default function Chat() {
           Transforma el estado del arte en magia con tu asistente de IA
         </p>
         <div className="w-full flex flex-col md:items-end">
-          <Link href="/writer">
+          <Link href={Pages.Writer}>
             <Button
               radius="lg"
               size="lg"
