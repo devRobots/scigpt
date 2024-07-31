@@ -5,7 +5,7 @@ import {
   NavbarMenu,
   NavbarMenuToggle
 } from '@nextui-org/navbar';
-import UserButton from './UserButton';
+import UserButton from '../../UserButton';
 import NavBarLinks from './NavBarLinks';
 
 export default function NavBar() {
