@@ -17,11 +17,11 @@ export default function RootLayout({
     <html lang="es" suppressHydrationWarning={true}>
       <body>
         <NextUIProviders>
-          <main className="scifi-dark flex flex-col h-screen justify-between"> 
+          <main className="scifi-dark flex flex-col h-screen justify-between">
             <NavBar />
             {children}
             <footer className="text-center justify-center text-foreground/70 text-sm mb-4">
-              &copy; 2021 SciGPT
+              SciGPT hecho con ❤️ por @devRobots
             </footer>
           </main>
         </NextUIProviders>

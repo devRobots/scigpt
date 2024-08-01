@@ -1,7 +1,8 @@
 export enum Pages {
   Home = '/',
   Writer = '/app',
-  About = '/about'
+  About = '/about',
+  Login = '/login',
 }
 
 export enum App {
