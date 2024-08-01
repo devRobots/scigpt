@@ -1,4 +1,4 @@
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 const SEMANTIC_SCHOLAR_API_URL: string =
   'https://www.semanticscholar.org/api/1/search';
@@ -34,5 +34,5 @@ export async function POST(request: NextRequest) {
     })
   });
   const data = await raw.json();
-  return Response.json(data.results);
+  return NextResponse.json(data.results);
 }
