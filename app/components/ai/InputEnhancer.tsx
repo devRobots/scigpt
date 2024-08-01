@@ -1,3 +1,5 @@
+'use client';
+
 import { improveText } from '@/app/lib/writer/ai';
 import { Button } from '@nextui-org/button';
 import { Textarea } from '@nextui-org/input';

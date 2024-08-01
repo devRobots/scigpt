@@ -1,37 +1,8 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-'use client';
+import ObjectivesForm from '@/app/components/writer/ObjectivesForm';
+import { Card, CardHeader } from '@nextui-org/card';
 
-import CheckListAI from '@/app/components/ai/CheckListAI';
-import { useDraft } from '@/app/hooks/useDraft';
-import { App, Pages } from '@/app/lib/data/consts';
-import { updateDraft } from '@/app/lib/firebase/firestore';
-import { Card, CardBody, CardHeader } from '@nextui-org/card';
-import { Button, Spinner } from '@nextui-org/react';
-import { useParams, useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
-
-export default function Thesis() {
-  const router = useRouter();
-  const params = useParams();
-  const uuid = params.uuid.toString() || '';
-
-  const [selObjectives, setSelObjectives] = useState<string[]>([]);
-  const { objectivesList, loading, genObjectives } = useDraft(uuid);
-
-  useEffect(() => {
-    genObjectives();
-  }, []);
-
-  const handleNext = () => {
-    if (selObjectives.length < 3) return;
-
-    updateDraft(uuid, {
-      objectives: selObjectives,
-      stage: App.Writer
-    }).then(() => {
-      router.push(`${Pages.Writer}/${uuid}/${App.Writer}`);
-    });
-  };
+export default function Thesis({ params }: { params: { uuid: string } }) {
+  const uuid = params.uuid;
 
   return (
     <section className="flex w-full xl:w-3/5 p-2">
@@ -46,29 +17,7 @@ export default function Thesis() {
             el investigador para implementar una metodología.
           </p>
         </CardHeader>
-        <CardBody className="h-fit gap-3">
-          {!loading ? (
-            <>
-              <p className="font-semibold">
-                Seleccione a continuacion por lo menos 3 objetivos que le
-                resulten mas interesantes para continuar con el proceso de
-                redaccion:
-              </p>
-              <CheckListAI
-                name="Objetivo"
-                initialItems={objectivesList || []}
-                setValues={setSelObjectives}
-              />
-            </>
-          ) : (
-            <Spinner />
-          )}
-        </CardBody>
-        <CardHeader className="flex justify-end">
-          <Button color="success" className="super-button" onClick={handleNext}>
-            Next
-          </Button>
-        </CardHeader>
+        <ObjectivesForm uuid={uuid} />
       </Card>
     </section>
   );

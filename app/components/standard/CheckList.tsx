@@ -17,7 +17,7 @@ export function Check({
       <div className="w-full flex flex-col sm:flex-row items-start sm:items-center gap-2">
         <div className="flex flex-row sm:flex-col items-center justify-center gap-1 min-w-20">
           <span className="text-default-700 text-xs justify-center">
-            Objetivo {index + 1}
+            {name} {index + 1}
           </span>
           <Chip color="primary" size="sm" variant="flat">
             {item.split(' ')[0]}
@@ -31,15 +31,13 @@ export function Check({
 
 export default function CheckList({
   name,
-  items,
-  setValues
+  items
 }: {
   name: string;
   items: string[];
-  setValues: (value: string[]) => void;
 }) {
   return (
-    <CheckboxGroup className="w-full" onValueChange={setValues}>
+    <CheckboxGroup className="w-full">
       {items.length > 0 ? (
         items.map((item, index) => {
           return (

@@ -1,6 +1,8 @@
+'use client';
+
+import CheckList from '@/app/components/standard/CheckList';
+import InputEnhancer from '@/app/components/ai/InputEnhancer';
 import { useState } from 'react';
-import CheckList from '../standard/CheckList';
-import InputEnhancer from './InputEnhancer';
 
 const VERBS = [
   'analizar',
@@ -18,12 +20,10 @@ const VERBS = [
 export default function CheckListAI({
   name,
   initialItems,
-  setValues,
   maxItems
 }: {
   name: string;
   initialItems: any[];
-  setValues: any;
   maxItems?: number;
 }) {
   const [items, setItems] = useState(initialItems);
@@ -37,7 +37,7 @@ export default function CheckListAI({
 
   return (
     <div className="flex flex-col border-frame p-2 gap-2">
-      <CheckList name={name} items={items} setValues={setValues} />
+      <CheckList name={name} items={items} />
       <InputEnhancer handler={appendItem} />
     </div>
   );
