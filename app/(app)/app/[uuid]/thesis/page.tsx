@@ -1,33 +1,8 @@
-'use client';
+import ThesisForm from '@/app/components/writer/ThesisForm';
+import { Card, CardHeader } from '@nextui-org/card';
 
-import RadioListAI from '@/app/components/ai/RadioListAI';
-import { useDraft } from '@/app/hooks/useDraft';
-import { Pages, App } from '@/app/lib/data/consts';
-import { updateDraft } from '@/app/lib/firebase/firestore';
-import { Card, CardBody, CardHeader } from '@nextui-org/card';
-import { Button, Spinner } from '@nextui-org/react';
-import { useParams, useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
-
-export default function Thesis() {
-  const router = useRouter();
-  const params = useParams();
-  const uuid = params.uuid.toString() || '';
-
-  const [thesis, setThesis] = useState('');
-  const { thesisList, loading, genThesis } = useDraft(uuid);
-
-  useEffect(() => {
-    genThesis();
-  }, [genThesis]);
-
-  const handleNext = () => {
-    if (!thesis) return;
-
-    updateDraft(uuid, { thesis: thesis, stage: App.Objectives }).then(() => {
-      router.push(`${Pages.Writer}/${uuid}/${App.Objectives}`);
-    });
-  };
+export default function Thesis({ params }: { params: { uuid: string } }) {
+  const uuid = params.uuid;
 
   return (
     <section className="flex w-full xl:w-3/5 p-0 md:p-8">
@@ -41,30 +16,7 @@ export default function Thesis() {
             elementos dentro del proyecto.
           </p>
         </CardHeader>
-        <CardBody className="h-fit gap-3">
-          {!loading ? (
-            <>
-              <p className="font-semibold">
-                Seleccione a continuacion la hipotesis que le resulte mas
-                interesante para continuar con el proceso de redaccion:
-              </p>
-
-              <RadioListAI
-                name="Hipotesis"
-                initialItems={thesisList || []}
-                setValue={setThesis}
-                maxItems={10}
-              />
-            </>
-          ) : (
-            <Spinner />
-          )}
-        </CardBody>
-        <CardHeader className="flex justify-end">
-          <Button color="success" className="super-button" onClick={handleNext}>
-            Next
-          </Button>
-        </CardHeader>
+        <ThesisForm uuid={uuid} />
       </Card>
     </section>
   );

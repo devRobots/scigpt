@@ -28,15 +28,13 @@ export function RadioOption({
 
 export default function RadioList({
   name,
-  items,
-  setValue
+  items
 }: {
   name: string;
   items: string[];
-  setValue: (value: string) => void;
 }) {
   return (
-    <RadioGroup className="w-full" onValueChange={setValue}>
+    <RadioGroup name="thesis" className="w-full">
       {items.length > 0 ? (
         items.map((value, i) => {
           return (

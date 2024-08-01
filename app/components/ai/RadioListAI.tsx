@@ -1,3 +1,5 @@
+'use client';
+
 import RadioList from '@/app/components/standard/RadioList';
 import { useState } from 'react';
 import InputEnhancer from './InputEnhancer';
@@ -5,12 +7,10 @@ import InputEnhancer from './InputEnhancer';
 export default function RadioListAI({
   name,
   initialItems,
-  setValue,
   maxItems
 }: {
   name: string;
   initialItems: any[];
-  setValue: any;
   maxItems?: number;
 }) {
   const [items, setItems] = useState(initialItems);
@@ -23,7 +23,7 @@ export default function RadioListAI({
 
   return (
     <div className="flex flex-col border-frame p-2 gap-3">
-      <RadioList name={name} items={items} setValue={setValue} />
+      <RadioList name={name} items={items} />
       <InputEnhancer handler={appendItem} />
     </div>
   );
