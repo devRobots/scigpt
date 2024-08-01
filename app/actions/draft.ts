@@ -1,10 +1,10 @@
-"use server";
+'use server';
 
 import { App, Pages } from '@/app/lib/data/consts';
 import { saveDraft } from '@/app/lib/firebase/firestore';
+import { Draft } from '@/app/types/draft';
 import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
-import { Draft } from '@/app/types/draft';
 
 export async function submitDraft(formData: FormData) {
     const title = formData.get('titulo');

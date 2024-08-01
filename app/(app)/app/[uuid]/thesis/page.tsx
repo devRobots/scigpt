@@ -15,7 +15,7 @@ export default async function Thesis({ params }: { params: { uuid: string } }) {
   const draft = await getDraft(uuid);
   if (!draft) redirect(Pages.Writer);
 
-  const { stage, topics, field_of_study } = draft;
+  const { stage } = draft;
   if (stage !== 'thesis') redirect(`${Pages.Writer}/${uuid}/${stage}`);
 
   return (
@@ -38,7 +38,7 @@ export default async function Thesis({ params }: { params: { uuid: string } }) {
               interesante para continuar con el proceso de redaccion:
             </p>
             <Suspense fallback={<SkeletonRadioListAI />}>
-              <ThesisList topics={topics} field_of_study={field_of_study} />
+              <ThesisList draft={draft} />
             </Suspense>
           </CardBody>
           <CardHeader className="card-action-footer">

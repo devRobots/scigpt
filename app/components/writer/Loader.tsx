@@ -6,17 +6,15 @@ import { Suspense } from 'react';
 import { FaCheck } from 'react-icons/fa6';
 
 export async function Ready({ load, from }: { load: string; from: Draft }) {
-  const { topics, field_of_study, thesis } = from;
-
   switch (load) {
     case 'abstract':
       if (from.abstract) break;
-      const abstract = await generateAbstract(thesis!, topics, field_of_study);
+      const abstract = await generateAbstract(from);
       await updateDraft(from.id, { abstract });
       break;
     case 'keywords':
       if (from.keywords) break;
-      const keywords = await generateKeywords(thesis!, topics, field_of_study);
+      const keywords = await generateKeywords(from);
       await updateDraft(from.id, { keywords });
       break;
     case 'introduction':
