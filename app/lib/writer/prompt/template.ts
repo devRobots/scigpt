@@ -28,7 +28,7 @@ const template = (data: any) => `
 
 ### Output
 
-3. **PROVIDE** the list of ${data.targetCountResults} ${data.targetField} in the following JSON format: ${'outputSchema'}
+3. **PROVIDE** the list of ${data.targetCountResults} ${data.targetField} in the following JSON format: ${data.outputSchema}
 
 ## Examples of ${data.targetField}
 
