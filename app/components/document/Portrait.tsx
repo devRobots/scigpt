@@ -2,12 +2,12 @@ import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/react';
 
 export default function Portrait({
   title,
-  field_of_study,
+  fieldOfStudy,
   author,
   email
 }: {
   title: string;
-  field_of_study: string;
+  fieldOfStudy: string;
   author: string;
   email: string;
 }) {
@@ -25,7 +25,7 @@ export default function Portrait({
           </div>
         </CardBody>
         <CardFooter className="flex-col justify-center">
-          <p>{field_of_study}</p>
+          <p>{fieldOfStudy}</p>
           <p>{2024}</p>
         </CardFooter>
       </Card>

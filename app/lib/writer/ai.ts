@@ -21,40 +21,40 @@ export async function fetchAI(input: string, prompt: string) {
 }
 
 export async function generateThesis(draft: Draft) {
-  const { topics, field_of_study } = draft;
-  const input = JSON.stringify({ topics, field_of_study });
+  const { topics, fieldOfStudy } = draft;
+  const input = JSON.stringify({ topics, fieldOfStudy });
   const thesisPrompt = promptThesis();
   const response = await fetchAI(input, thesisPrompt);
   return response.thesis;
 }
 
 export async function generateObjectives(draft: Draft) {
-  const { thesis, topics, field_of_study } = draft;
-  const input = JSON.stringify({ thesis, topics, field_of_study });
+  const { thesis, topics, fieldOfStudy } = draft;
+  const input = JSON.stringify({ thesis, topics, fieldOfStudy });
   const objectivesPrompt = promptObjectives();
   const response = await fetchAI(input, objectivesPrompt);
   return response.objectives;
 }
 
 export async function generateQueries(draft: Draft) {
-  const { thesis, topics, field_of_study } = draft;
-  const input = JSON.stringify({ thesis, topics, field_of_study });
+  const { thesis, topics, fieldOfStudy } = draft;
+  const input = JSON.stringify({ thesis, topics, fieldOfStudy });
   const queriesPrompt = promptQueries();
   const response = await fetchAI(input, queriesPrompt);
   return response.queries;
 }
 
 export async function generateKeywords(draft: Draft) {
-  const { thesis, topics, field_of_study } = draft;
-  const input = JSON.stringify({ thesis, topics, field_of_study });
+  const { thesis, topics, fieldOfStudy } = draft;
+  const input = JSON.stringify({ thesis, topics, fieldOfStudy });
   const keywordsPrompt = promptKeywords();
   const response = await fetchAI(input, keywordsPrompt);
   return response.keywords;
 }
 
 export async function generateAbstract(draft: Draft) {
-  const { thesis, topics, field_of_study } = draft;
-  const input = JSON.stringify({ thesis, topics, field_of_study });
+  const { thesis, topics, fieldOfStudy } = draft;
+  const input = JSON.stringify({ thesis, topics, fieldOfStudy });
   const abstractPrompt = promptAbstract();
   const response = await fetchAI(input, abstractPrompt);
   return response.abstract;

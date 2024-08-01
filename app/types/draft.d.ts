@@ -4,7 +4,7 @@ export interface Draft {
   title: string;
   stage: string;
   topics: string[];
-  field_of_study: string;
+  fieldOfStudy: string;
   thesis?: string;
   objectives?: string;
   abstract?: string;

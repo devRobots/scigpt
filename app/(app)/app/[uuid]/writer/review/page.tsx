@@ -20,7 +20,7 @@ export default async function Page({ params }: { params: { uuid: string } }) {
   const {
     title,
     topics,
-    field_of_study,
+    fieldOfStudy,
     thesis,
     objectives,
     abstract,
@@ -31,7 +31,7 @@ export default async function Page({ params }: { params: { uuid: string } }) {
     <div className="flex flex-col items-center justify-center gap-4">
       <Portrait
         title={thesis!}
-        field_of_study={field_of_study}
+        fieldOfStudy={fieldOfStudy}
         author={name!}
         email={email!}
       />

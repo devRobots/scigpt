@@ -32,7 +32,7 @@ export default async function PersonalDrafts() {
             </div>
           </CardHeader>
           <CardBody className="flex flex-col gap-4">
-            <p>Area de estudio: {draft.field_of_study}</p>
+            <p>Area de estudio: {draft.fieldOfStudy}</p>
             <div className="flex flex-row gap-1 flex-wrap">
               Temas:
               {draft.topics.map((topic) => (

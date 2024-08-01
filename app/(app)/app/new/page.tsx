@@ -31,7 +31,7 @@ export default function Writer() {
                 <span className="text-lg justify-end">
                   Selecciona un area de estudio
                 </span>
-                <ListSelector name="field_of_study" items={items} />
+                <ListSelector name="fieldOfStudy" items={items} />
               </div>
             </CardBody>
             <CardFooter className="card-action-footer">

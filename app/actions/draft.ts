@@ -9,10 +9,10 @@ import { redirect } from 'next/navigation';
 export async function submitDraft(formData: FormData) {
     const title = formData.get('titulo');
     const topics = formData.getAll('topics');
-    const field_of_study = formData.get('field_of_study');
+    const fieldOfStudy = formData.get('fieldOfStudy');
 
-    if (!title || !topics || !field_of_study) {
-        console.log(title, topics, field_of_study);
+    if (!title || !topics || !fieldOfStudy) {
+        console.log(title, topics, fieldOfStudy);
         return;
     }
 
@@ -20,7 +20,7 @@ export async function submitDraft(formData: FormData) {
     const owner = session!.user!.email
 
     const uuid = await saveDraft({
-        title, topics, field_of_study, owner, stage: App.Hipothesis
+        title, topics, fieldOfStudy, owner, stage: App.Hipothesis
     } as Draft);
     redirect(`${Pages.Writer}/${uuid}/${App.Hipothesis}`);
 }
