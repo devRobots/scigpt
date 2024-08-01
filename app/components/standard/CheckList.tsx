@@ -13,7 +13,11 @@ export function Check({
   index: number;
 }) {
   return (
-    <Checkbox className="radio-item px-4" value={item}>
+    <Checkbox
+      name={name.toLowerCase()}
+      className="radio-item px-4"
+      value={item}
+    >
       <div className="w-full flex flex-col sm:flex-row items-start sm:items-center gap-2">
         <div className="flex flex-row sm:flex-col items-center justify-center gap-1 min-w-20">
           <span className="text-default-700 text-xs justify-center">

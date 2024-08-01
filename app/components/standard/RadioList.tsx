@@ -34,7 +34,7 @@ export default function RadioList({
   items: string[];
 }) {
   return (
-    <RadioGroup name="thesis" className="w-full">
+    <RadioGroup name={name.toLowerCase()} className="w-full">
       {items.length > 0 ? (
         items.map((value, i) => {
           return (

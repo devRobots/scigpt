@@ -21,6 +21,7 @@ export async function ObjectivesList({ uuid }: { uuid: string }) {
 export default function ObjectivesForm({ uuid }: { uuid: string }) {
   return (
     <form action={submitObjectives}>
+      <input type="hidden" hidden name="uuid" value={uuid} />
       <CardBody className="h-fit gap-3">
         <p className="font-semibold">
           Seleccione a continuacion por lo menos 3 objetivos que le resulten mas
