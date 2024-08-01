@@ -6,8 +6,10 @@ import {
   promptThesis
 } from '@/app/lib/writer/prompt/builder';
 
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL;
+
 export async function fetchAI(input: string, prompt: string) {
-  const response = await fetch('/api/ai', {
+  const response = await fetch('https://scigpt.vercel.app/api/ai', {
     method: 'POST',
     body: JSON.stringify({ input, prompt }),
     headers: { 'Content-Type': 'application/json' }
