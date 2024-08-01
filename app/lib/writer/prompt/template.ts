@@ -28,7 +28,7 @@ const template = (data: any) => `
 
 ### Output
 
-3. **PROVIDE** the list of ${data.targetCountResults} ${data.targetField} in the following JSON format: ${"outputSchema"}
+3. **PROVIDE** the list of ${data.targetCountResults} ${data.targetField} in the following JSON format: ${'outputSchema'}
 
 ## Examples of ${data.targetField}
 
@@ -63,47 +63,58 @@ ${data.outputExample3}
 `;
 
 function schematizeObject(object: Record<string, any>) {
-    const keys = Object.keys(object);
-    const schema: Record<string, string> = {};
-    keys.forEach((key: string) => {
-        const type = typeof object[key];
-        const value = object[key];
+  const keys = Object.keys(object);
+  const schema: Record<string, string> = {};
+  keys.forEach((key: string) => {
+    const type = typeof object[key];
+    const value = object[key];
 
-        if (Array.isArray(value)) { schema[key] = schematizeArray(value); }
-        else if (type === "object") { schema[key] = schematizeObject(object[key]); }
-        else { schema[key] = "<user-provided " + key + ">"; }
-    });
-    return JSON.stringify(schema, null, 2);
+    if (Array.isArray(value)) {
+      schema[key] = schematizeArray(value);
+    } else if (type === 'object') {
+      schema[key] = schematizeObject(object[key]);
+    } else {
+      schema[key] = '<user-provided ' + key + '>';
+    }
+  });
+  return JSON.stringify(schema, null, 2);
 }
 function schematizeArray(object: any[]): string {
-    let schema: any[] = [];
-    let count = 1;
-    for (const item of object as any) {
-        if (Array.isArray(item)) schema.push(schematizeArray(item));
-        else if (typeof item === "object") schema.push(schematizeObject(item));
-        else schema.push(`<user-provided item-${count}>`);
-        count++;
-    }
-    return `[${schema.join(", ")}]`;
+  let schema: any[] = [];
+  let count = 1;
+  for (const item of object as any) {
+    if (Array.isArray(item)) schema.push(schematizeArray(item));
+    else if (typeof item === 'object') schema.push(schematizeObject(item));
+    else schema.push(`<user-provided item-${count}>`);
+    count++;
+  }
+  return `[${schema.join(', ')}]`;
 }
 function schematize(object: Record<string, any> | any[]) {
-    if (Array.isArray(object)) return schematizeArray(object);
-    return schematizeObject(object);
+  if (Array.isArray(object)) return schematizeArray(object);
+  return schematizeObject(object);
 }
 function getFieldName(field: string) {
-    return field.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();;
+  return field.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();
 }
 
-export function buildPrompt(input: Object, outputExamples: { [key: string]: any }[], target: string) {
-    const count = typeof outputExamples[0][target] === "string" ? 1 : outputExamples[0][target].length;
-    return template({
-        targetField: getFieldName(target),
-        inputFields: Object.keys(input).map(getFieldName).join(", "),
-        targetCountResults: count,
-        inputSchema: schematize(input),
-        outputSchema: schematize(outputExamples[0]),
-        outputExample1: JSON.stringify(outputExamples[0]),
-        outputExample2: JSON.stringify(outputExamples[1]),
-        outputExample3: JSON.stringify(outputExamples[2])
-    });
+export function buildPrompt(
+  input: Object,
+  outputExamples: { [key: string]: any }[],
+  target: string
+) {
+  const count =
+    typeof outputExamples[0][target] === 'string'
+      ? 1
+      : outputExamples[0][target].length;
+  return template({
+    targetField: getFieldName(target),
+    inputFields: Object.keys(input).map(getFieldName).join(', '),
+    targetCountResults: count,
+    inputSchema: schematize(input),
+    outputSchema: schematize(outputExamples[0]),
+    outputExample1: JSON.stringify(outputExamples[0]),
+    outputExample2: JSON.stringify(outputExamples[1]),
+    outputExample3: JSON.stringify(outputExamples[2])
+  });
 }

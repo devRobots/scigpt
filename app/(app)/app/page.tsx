@@ -1,9 +1,10 @@
-import PersonalDrafts from '@/app/components/writer/PersonalDrafts';
 import { Pages, App } from '@/app/lib/data/consts';
 import { Button } from '@nextui-org/button';
 import { Divider } from '@nextui-org/react';
 import Link from 'next/link';
 import { FaPlus } from 'react-icons/fa6';
+
+import PersonalDrafts from '@/app/components/writer/PersonalDrafts';
 
 export default function Writer() {
   return (

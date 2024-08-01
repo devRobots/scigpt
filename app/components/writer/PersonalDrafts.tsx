@@ -1,11 +1,11 @@
+import { Pages } from '@/app/lib/data/consts';
+import { getDraftsByOwner } from '@/app/lib/firebase/firestore';
+import { Draft } from '@/app/types/draft';
+import { auth } from '@/auth';
 import { Button } from '@nextui-org/button';
 import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card';
 import { Chip } from '@nextui-org/react';
 import Link from 'next/link';
-import { Pages } from '@/app/lib/data/consts';
-import { Draft } from '@/app/types/draft';
-import { auth } from '@/auth';
-import { getDraftsByOwner } from '@/app/lib/firebase/firestore';
 
 export default async function PersonalDrafts() {
   const session = await auth();

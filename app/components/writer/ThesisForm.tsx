@@ -1,11 +1,12 @@
 import { submitThesis } from '@/app/actions/thesis';
-import RadioListAI from '@/app/components/ai/RadioListAI';
-import SkeletonRadioListAI from '@/app/components/skeletons/RadioListAI';
 import { getDraft } from '@/app/lib/firebase/firestore';
 import { generateThesis } from '@/app/lib/writer/ai';
 import { Button } from '@nextui-org/button';
 import { CardBody, CardHeader } from '@nextui-org/card';
 import { Suspense } from 'react';
+
+import RadioListAI from '@/app/components/ai/RadioListAI';
+import SkeletonRadioListAI from '@/app/components/skeletons/RadioListAI';
 
 export async function ThesisList({ uuid }: { uuid: string }) {
   const draft = await getDraft(uuid);

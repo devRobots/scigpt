@@ -1,7 +1,8 @@
-import Icon from '@/app/components/standard/Icon';
 import { Listbox, ListboxItem } from '@nextui-org/listbox';
 import { Selection } from '@react-types/shared';
 import { useState } from 'react';
+
+import Icon from '@/app/components/standard/Icon';
 
 export default function ListSelector({
   items,

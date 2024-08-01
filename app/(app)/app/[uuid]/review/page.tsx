@@ -1,16 +1,20 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 
-import InputSearchAI from '@/app/components/ai/InputSearchAI';
-import PaperList from '@/app/components/writer/PapersReviews';
-import { useDraft } from '@/app/hooks/useDraft';
-import { usePapers } from '@/app/hooks/usePapers';
 import { Pages, App } from '@/app/lib/data/consts';
 import { updateDraft } from '@/app/lib/firebase/firestore';
 import { Button } from '@nextui-org/button';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
 import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+
+import { useDraft } from '@/app/hooks/useDraft';
+import { usePapers } from '@/app/hooks/usePapers';
+
+import InputSearchAI from '@/app/components/ai/InputSearchAI';
+import PaperList from '@/app/components/writer/PapersReviews';
+
+/* eslint-disable react-hooks/exhaustive-deps */
 
 export default function References() {
   const router = useRouter();

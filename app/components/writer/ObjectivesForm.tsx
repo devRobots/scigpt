@@ -1,11 +1,12 @@
 import { submitObjectives } from '@/app/actions/objectives';
-import CheckListAI from '@/app/components/ai/CheckListAI';
 import { getDraft } from '@/app/lib/firebase/firestore';
 import { generateObjectives } from '@/app/lib/writer/ai';
-import SkeletonCheckListAI from '@/app/components/skeletons/CheckListAI';
-import { CardBody, CardFooter } from '@nextui-org/card';
 import { Button } from '@nextui-org/button';
+import { CardBody, CardFooter } from '@nextui-org/card';
 import { Suspense } from 'react';
+
+import CheckListAI from '@/app/components/ai/CheckListAI';
+import SkeletonCheckListAI from '@/app/components/skeletons/CheckListAI';
 
 export async function ObjectivesList({ uuid }: { uuid: string }) {
   const draft = await getDraft(uuid);

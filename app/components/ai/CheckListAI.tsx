@@ -1,8 +1,9 @@
 'use client';
 
-import CheckList from '@/app/components/standard/CheckList';
-import InputEnhancer from '@/app/components/ai/InputEnhancer';
 import { useState } from 'react';
+
+import InputEnhancer from '@/app/components/ai/InputEnhancer';
+import CheckList from '@/app/components/standard/CheckList';
 
 const VERBS = [
   'analizar',

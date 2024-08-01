@@ -62,6 +62,5 @@
 }
 
 .text-finish {
-  @apply
-  bg-gradient-to-r from-primary to-danger bg-clip-text text-transparent
+  @apply bg-gradient-to-r from-primary to-danger bg-clip-text text-transparent;
 }

@@ -1,5 +1,6 @@
-import ObjectivesForm from '@/app/components/writer/ObjectivesForm';
 import { Card, CardHeader } from '@nextui-org/card';
+
+import ObjectivesForm from '@/app/components/writer/ObjectivesForm';
 
 export default function Thesis({ params }: { params: { uuid: string } }) {
   const uuid = params.uuid;

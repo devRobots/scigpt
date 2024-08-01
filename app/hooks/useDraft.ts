@@ -1,6 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { generateObjectives, generateQueries, generateThesis } from '@/app/lib/writer/ai';
 import { getDraft } from '@/app/lib/firebase/firestore';
+import {
+  generateObjectives,
+  generateQueries,
+  generateThesis
+} from '@/app/lib/writer/ai';
 import { useCallback, useState } from 'react';
 
 export function useDraft(uuid: string) {
@@ -22,11 +26,9 @@ export function useDraft(uuid: string) {
       const { topics, field_of_study } = draft;
       const data = await generateThesis(topics, field_of_study);
       setThesisList(data);
-    }
-    catch (e: any) {
+    } catch (e: any) {
       setError(e.message);
-    }
-    finally {
+    } finally {
       setLoading(false);
     }
   }, [uuid]);
@@ -42,11 +44,9 @@ export function useDraft(uuid: string) {
       const { thesis, topics, field_of_study } = draft;
       const data = await generateObjectives(thesis!, topics, field_of_study);
       setObjectivesList(data);
-    }
-    catch (e: any) {
+    } catch (e: any) {
       setError(e.message);
-    }
-    finally {
+    } finally {
       setLoading(false);
     }
   }, [uuid]);
@@ -62,11 +62,9 @@ export function useDraft(uuid: string) {
       const { thesis, topics, field_of_study } = draft;
       const data = await generateQueries(thesis!, topics, field_of_study);
       setQueryList(data);
-    }
-    catch (e: any) {
+    } catch (e: any) {
       setError(e.message);
-    }
-    finally {
+    } finally {
       setLoading(false);
     }
   }, [uuid]);
@@ -75,7 +73,10 @@ export function useDraft(uuid: string) {
     thesisList: thesisList,
     queryList: queryList,
     objectivesList: objectivesList,
-    loading, error,
-    genThesis, genObjectives, genQueries
+    loading,
+    error,
+    genThesis,
+    genObjectives,
+    genQueries
   };
 }

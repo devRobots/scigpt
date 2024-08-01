@@ -1,10 +1,10 @@
+import { Pages } from '@/app/lib/data/consts';
 import { mate } from '@/app/ui/fonts';
 import { Button } from '@nextui-org/button';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaArrowRight } from 'react-icons/fa6';
-import { Pages } from '@/app/lib/data/consts';
 
 export default function Chat() {
   return (

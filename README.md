@@ -22,7 +22,7 @@ Para ejecutar este proyecto en tu entorno local, sigue estos pasos:
 
 1. Clona el repositorio:
 
-```bash	
+```bash
 git clone https://github.com/tu-usuario/tu-repositorio.git
 ```
 
@@ -33,7 +33,7 @@ npm install
 ```
 
 3. Ejecuta el proyecto:
-    
+
 ```bash
 npm run dev
 ```

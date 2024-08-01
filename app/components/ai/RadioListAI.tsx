@@ -1,8 +1,9 @@
 'use client';
 
+import { useState } from 'react';
+
 import InputEnhancer from '@/app/components/ai/InputEnhancer';
 import RadioList from '@/app/components/standard/RadioList';
-import { useState } from 'react';
 
 export default function RadioListAI({
   name,

@@ -1,8 +1,5 @@
 'use client';
 
-import BigInput from '@/app/components/standard/BigInput';
-import InputTag from '@/app/components/standard/InputTag';
-import ListSelector from '@/app/components/standard/ListSelector';
 import { App, fieldsOfStudy as items, Pages } from '@/app/lib/data/consts';
 import { saveDraft } from '@/app/lib/firebase/firestore';
 import { type Draft } from '@/app/types/draft';
@@ -10,6 +7,10 @@ import { Button } from '@nextui-org/button';
 import { Card, CardBody, CardFooter } from '@nextui-org/card';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+
+import BigInput from '@/app/components/standard/BigInput';
+import InputTag from '@/app/components/standard/InputTag';
+import ListSelector from '@/app/components/standard/ListSelector';
 
 export default function Writer() {
   const router = useRouter();

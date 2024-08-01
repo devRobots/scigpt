@@ -1,5 +1,6 @@
-import ThesisForm from '@/app/components/writer/ThesisForm';
 import { Card, CardHeader } from '@nextui-org/card';
+
+import ThesisForm from '@/app/components/writer/ThesisForm';
 
 export default function Thesis({ params }: { params: { uuid: string } }) {
   const uuid = params.uuid;

@@ -1,5 +1,6 @@
-import { OAuth } from '@/app/components/standard/OAuth';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
+
+import { OAuth } from '@/app/components/standard/OAuth';
 
 export default function Login() {
   return (
@@ -8,7 +9,7 @@ export default function Login() {
         <CardHeader>
           <h1 className="text-2xl">Inicia sesión en SciGPT</h1>
         </CardHeader>
-        <CardBody className='items-center'>
+        <CardBody className="items-center">
           <OAuth />
         </CardBody>
       </Card>

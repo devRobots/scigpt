@@ -30,7 +30,7 @@ export default function InputTag({
       <Input
         className="w-full"
         classNames={{
-          inputWrapper: 'bg-default',
+          inputWrapper: 'bg-default'
         }}
         variant="faded"
         size="md"
