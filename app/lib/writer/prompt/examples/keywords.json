@@ -1,0 +1,65 @@
+[
+    {
+        "thesis": "¿La urbanización acelerada contribuye al cambio climático?",
+        "topics": [
+            "Urbanization",
+            "Climate Change",
+            "Environmental Impact"
+        ],
+        "fieldOfStudy": "Environmental Science",
+        "keywords": [
+            "urbanización",
+            "cambio climático",
+            "impacto ambiental",
+            "desarrollo sostenible",
+            "ciudades sostenibles",
+            "emisiones de carbono",
+            "eficiencia energética",
+            "planificación urbana",
+            "transporte público",
+            "espacios verdes"
+        ]
+    },
+    {
+        "thesis": "¿La terapia génica puede ser una solución efectiva para enfermedades genéticas raras?",
+        "topics": [
+            "Gene Therapy",
+            "Rare Genetic Diseases",
+            "Medical Treatments"
+        ],
+        "fieldOfStudy": "Medical Science",
+        "keywords": [
+            "terapia génica",
+            "enfermedades genéticas raras",
+            "tratamientos médicos",
+            "ADN",
+            "genes",
+            "mutaciones genéticas",
+            "terapia génica ex vivo",
+            "terapia génica in vivo",
+            "vectores virales",
+            "ensayos clínicos"
+        ]
+    },
+    {
+        "thesis": "¿Los algoritmos de aprendizaje profundo pueden predecir el comportamiento del consumidor?",
+        "topics": [
+            "Deep Learning",
+            "Consumer Behavior",
+            "Predictive Analytics"
+        ],
+        "fieldOfStudy": "Computer Science",
+        "keywords": [
+            "algoritmos de aprendizaje profundo",
+            "comportamiento del consumidor",
+            "analítica predictiva",
+            "redes neuronales",
+            "aprendizaje automático",
+            "big data",
+            "inteligencia artificial",
+            "marketing digital",
+            "personalización",
+            "segmentación de mercado"
+        ]
+    }
+]

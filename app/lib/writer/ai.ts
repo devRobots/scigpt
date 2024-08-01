@@ -1,5 +1,6 @@
 import {
   promptAbstract,
+  promptKeywords,
   promptObjectives,
   promptQueries,
   promptTextImprovement,
@@ -45,6 +46,17 @@ export async function generateQueries(
   const queriesPrompt = promptQueries();
   const response = await fetchAI(input, queriesPrompt);
   return response.queries;
+}
+
+export async function generateKeywords(
+  thesis: string,
+  topics: string[],
+  fieldOfStudy: string
+) {
+  const input = JSON.stringify({ thesis, topics, fieldOfStudy });
+  const keywordsPrompt = promptKeywords();
+  const response = await fetchAI(input, keywordsPrompt);
+  return response.keywords;
 }
 
 export async function generateAbstract(

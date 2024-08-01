@@ -1,4 +1,5 @@
 import abstractExamples from '@/app/lib/writer/prompt/examples/abstract.json';
+import keywordsExamples from '@/app/lib/writer/prompt/examples/keywords.json';
 import objectivesExample from '@/app/lib/writer/prompt/examples/objectives.json';
 import thesisExample from '@/app/lib/writer/prompt/examples/thesis.json';
 import { buildPrompt } from '@/app/lib/writer/prompt/template';
@@ -86,6 +87,20 @@ export function promptQueries() {
   prompt += '- No wh questions allowed in the response.\n';
   prompt += '- The queries should be simple but concise.\n';
   return prompt;
+}
+
+export function promptKeywords() {
+  const input = {
+    thesis: '<user-provided thesis>',
+    topics: [
+      '<user-provided topic-1>',
+      '<user-provided topic-2>',
+      '<user-provided topic-3>',
+      '...'
+    ],
+    fieldOfStudy: '<user-provided fieldOfStudy>'
+  };
+  return buildPrompt(input, keywordsExamples, 'keywords');
 }
 
 export function promptAbstract() {
