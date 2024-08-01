@@ -1,8 +1,9 @@
 import { auth } from '@/auth';
 import { google } from '@ai-sdk/google';
 import { generateText } from 'ai';
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   const session = auth();
   if (!session) {
     return new Response('Unauthorized', { status: 401 });
@@ -25,5 +26,5 @@ export async function POST(request: Request) {
   const dataStart = text.indexOf('{');
   const dataEnd = text.lastIndexOf('}');
   const data = text.slice(dataStart, dataEnd + 1);
-  return Response.json(data);
+  return NextResponse.json(data);
 }
