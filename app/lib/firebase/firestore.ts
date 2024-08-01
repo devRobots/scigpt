@@ -1,17 +1,23 @@
 import { db } from '@/app/lib/firebase/core';
 import { Draft } from '@/app/types/draft';
 import {
-  doc,
-  collection,
-  getDoc,
-  updateDoc,
   addDoc,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  onSnapshot,
   query,
-  where,
-  getDocs
+  updateDoc,
+  where
 } from '@firebase/firestore';
 
 const DRAFT_COLLECTION = 'draft';
+
+export async function suscribeDraft(uuid: string, handler: (draft: Draft) => void) {
+  const docRef = doc(db, DRAFT_COLLECTION, uuid);
+  onSnapshot(docRef, (doc) => handler(doc.data() as Draft));
+}
 
 export async function getDraft(uuid: string) {
   const docRef = doc(db, DRAFT_COLLECTION, uuid);

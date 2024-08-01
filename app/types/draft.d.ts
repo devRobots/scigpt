@@ -7,6 +7,10 @@ export interface Draft {
   field_of_study: string;
   thesis?: string;
   objectives?: string;
+  keywords?: string[];
   methodology?: string;
   results?: string;
+  substantiation?: string;
+  references?: string;
+  bibliography?: string;
 }
