@@ -18,22 +18,22 @@ export async function Ready({ load, from }: { load: string; from: Draft }) {
       await updateDraft(from.id, { keywords });
       break;
     case 'introduction':
-      console.log('introduction');
+      // console.log('introduction');
       break;
     case 'methodology':
-      console.log('methodology');
+      // console.log('methodology');
       break;
     case 'results':
-      console.log('results');
+      // console.log('results');
       break;
     case 'discussion':
-      console.log('discussion');
+      // console.log('discussion');
       break;
     case 'conclusion':
-      console.log('conclusion');
+      // console.log('conclusion');
       break;
     case 'references':
-      console.log('references');
+      // console.log('references');
       break;
   }
 

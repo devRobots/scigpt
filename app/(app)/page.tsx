@@ -11,7 +11,7 @@ export default function Chat() {
     <main className="columns-1 md:columns-2">
       <article className="p-8 space-y-6 md:content-center">
         <div className="w-full flex flex-col md:items-end">
-          <Image src="/logo.png" alt="logo" width={256} height={256} />
+          <Image src="/main.webp" alt="main" width={256} height={256} />
         </div>
         <h1 className="title">Tu propio redactor de Articulos Cientificos</h1>
         <p className="w-full md:text-end text-lg">

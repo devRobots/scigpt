@@ -6,7 +6,6 @@ import { usePathname } from 'next/navigation';
 import { FaFeather, FaHouse, FaInfo } from 'react-icons/fa6';
 
 function isPath(path: string, pathname: string) {
-  console.log(path, pathname);
   if (pathname === '/') return path === '/';
   return path.startsWith(pathname);
 }

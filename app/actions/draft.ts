@@ -12,7 +12,6 @@ export async function submitDraft(formData: FormData) {
     const fieldOfStudy = formData.get('fieldOfStudy');
 
     if (!title || !topics || !fieldOfStudy) {
-        console.log(title, topics, fieldOfStudy);
         return;
     }
 

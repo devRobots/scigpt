@@ -1,5 +1,6 @@
 import { App, Pages } from '@/app/lib/data/consts';
 import { getDraft, suscribeDraft } from '@/app/lib/firebase/firestore';
+import Image from 'next/image';
 import { redirect } from 'next/navigation';
 
 import Loader from '@/app/components/writer/Loader';
@@ -22,14 +23,17 @@ export default async function Page({ params }: { params: { uuid: string } }) {
   });
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <div className="flex flex-col gap-4">
-        <h2 className="editorial-header">Redactando...</h2>
+    <div className="flex flex-col items-center justify-center h-screen gap-8">
+      <Image src="/writer.webp" width={256} height={256} alt="Editorial" />
+      <h2 className="editorial-header">Redactando...</h2>
+      <div className="flex flex-row gap-4">
         <div className="flex flex-col">
           <Loader text="Resumen" load="abstract" from={draft} />
           <Loader text="Palabras clave" load="keywords" from={draft} />
           <Loader text="Introduccion" load="introduction" from={draft} />
           <Loader text="Metodologia" load="methodology" from={draft} />
+        </div>
+        <div className="flex flex-col">
           <Loader text="Resultados" load="results" from={draft} />
           <Loader text="Discusion" load="discussion" from={draft} />
           <Loader text="Conclusion" load="conclusion" from={draft} />
