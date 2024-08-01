@@ -1,14 +1,12 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 
-import { Pages, App } from '@/app/lib/data/consts';
+import { App, Pages } from '@/app/lib/data/consts';
 import { updateDraft } from '@/app/lib/firebase/firestore';
 import { Button } from '@nextui-org/button';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
 import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-import { useDraft } from '@/app/hooks/useDraft';
 import { usePapers } from '@/app/hooks/usePapers';
 
 import InputSearchAI from '@/app/components/ai/InputSearchAI';
@@ -22,12 +20,7 @@ export default function References() {
   const uuid = params.uuid.toString() || '';
 
   const [query, setQuery] = useState('');
-  const { queryList, genQueries } = useDraft(uuid);
   const { papers, loading, getPapers } = usePapers();
-
-  useEffect(() => {
-    genQueries();
-  }, []);
 
   useEffect(() => {
     getPapers(query);
@@ -55,11 +48,7 @@ export default function References() {
             </Button>
           </div>
           <div className="w-full">
-            <InputSearchAI
-              name="articulos"
-              items={queryList}
-              setQuery={setQuery}
-            />
+            <InputSearchAI name="articulos" items={[]} setQuery={setQuery} />
           </div>
         </CardHeader>
         <CardBody>
