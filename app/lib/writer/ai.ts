@@ -7,7 +7,7 @@ import {
 } from '@/app/lib/writer/prompt/builder';
 
 export async function fetchAI(input: string, prompt: string) {
-  const response = await fetch('http://localhost:3000/api/ai', {
+  const response = await fetch('/api/ai', {
     method: 'POST',
     body: JSON.stringify({ input, prompt }),
     headers: { 'Content-Type': 'application/json' }
