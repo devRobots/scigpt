@@ -1,6 +1,7 @@
 import '@/app/globals.css';
 import { NextUIProviders } from '@/app/providers/NextUIProviders';
 
+import Footer from '@/app/components/core/Footer';
 import NavBar from '@/app/components/core/navbar/NavBar';
 
 export const metadata = {
@@ -20,9 +21,7 @@ export default function RootLayout({
           <main className="scifi-dark flex flex-col h-screen justify-between">
             <NavBar />
             {children}
-            <footer className="text-center justify-center text-foreground/70 text-sm mb-4">
-              SciGPT hecho con ❤️ por @devRobots
-            </footer>
+            <Footer />
           </main>
         </NextUIProviders>
       </body>
