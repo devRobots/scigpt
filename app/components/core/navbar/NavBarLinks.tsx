@@ -19,7 +19,6 @@ function menu(path: string, pathname: string) {
 export default function NavBarLinks({ isMenu }: { isMenu?: boolean }) {
   const path = usePathname();
   const ItemType = isMenu ? NavbarMenuItem : NavbarItem;
-  console.log(path);
 
   return (
     <>
