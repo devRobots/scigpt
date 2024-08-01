@@ -1,0 +1,40 @@
+[
+    {
+      "thesis": "¿La urbanización acelerada contribuye al cambio climático?",
+      "topics": ["Urbanization", "Climate Change", "Environmental Impact"],
+      "fieldOfStudy": "Environmental Science",
+      "queries": [
+        "impacto de la urbanización en la biodiversidad de los ecosistemas locales",
+        "urbanización acelerada en la calidad del aire y del agua en las ciudades",
+        "reducir las emisiones de gases de efecto invernadero en entornos urbanos",
+        "urbanización y los fenómenos meteorológicos extremos asociados al cambio climático",
+        "políticas de planificación urbana en la adaptación de las ciudades al cambio climático"
+      ]
+    },
+    {
+      "thesis":
+        "¿La terapia génica puede ser una solución efectiva para enfermedades genéticas raras?",
+      "topics": ["Gene Therapy", "Rare Genetic Diseases", "Medical Treatments"],
+      "fieldOfStudy": "Medical Science",
+      "queries": [
+        "eficacia de la terapia génica en el tratamiento de enfermedades genéticas raras",
+        "seguridad y tolerabilidad de la terapia génica en ensayos clínicos",
+        "desarrollo de vectores virales para la entrega de genes terapéuticos",
+        "edición genética y corrección de mutaciones genéticas en células humanas",
+        "aplicaciones de la terapia génica en enfermedades genéticas pediátricas"
+      ]
+    },
+    {
+      "thesis":
+        "¿Los algoritmos de aprendizaje profundo pueden predecir el comportamiento del consumidor?",
+      "topics": ["Deep Learning", "Consumer Behavior", "Predictive Analytics"],
+      "fieldOfStudy": "Computer Science",
+      "queries": [
+        "precisión de los algoritmos de aprendizaje profundo en la predicción del comportamiento del consumidor",
+        "aplicaciones de la analítica predictiva en la personalización de contenidos",
+        "privacidad de los datos y la transparencia en los modelos de aprendizaje automático",
+        "impacto de la inteligencia artificial en la toma de decisiones de los consumidores",
+        "desarrollo de modelos de lenguaje natural para la interacción humano-máquina"
+      ]
+    }
+  ]
