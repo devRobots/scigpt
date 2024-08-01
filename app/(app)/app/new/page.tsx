@@ -3,6 +3,7 @@ import { fieldsOfStudy as items } from '@/app/lib/data/consts';
 import { Button } from '@nextui-org/button';
 import { Card, CardBody, CardFooter } from '@nextui-org/card';
 
+import BackButton from '@/app/components/misc/BackButton';
 import BigInput from '@/app/components/standard/BigInput';
 import InputTag from '@/app/components/standard/InputTag';
 import ListSelector from '@/app/components/standard/ListSelector';
@@ -33,9 +34,10 @@ export default function Writer() {
                 <ListSelector name="field_of_study" items={items} />
               </div>
             </CardBody>
-            <CardFooter className="flex justify-end">
+            <CardFooter className="card-action-footer">
+              <BackButton label="Cancelar" />
               <Button className="super-button w-full sm:w-auto" type="submit">
-                Empezar
+                Crear
               </Button>
             </CardFooter>
           </form>

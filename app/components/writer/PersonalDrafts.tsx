@@ -21,9 +21,9 @@ export default async function PersonalDrafts() {
   }
 
   return (
-    <div className="flex w-full flex-row gap-4">
+    <div className="flex flex-col lg:flex-row gap-4">
       {drafts.map((draft) => (
-        <Card key={draft.id} className="w-96">
+        <Card key={draft.id} className="w-min-72 w-auto">
           <CardHeader className="flex flex-col items-start gap-2">
             <h2 className="text-2xl">Titulo: {draft.title}</h2>
             <div className="flex flex-row gap-1">

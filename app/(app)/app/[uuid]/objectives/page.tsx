@@ -2,10 +2,12 @@ import { submitObjectives } from '@/app/actions/objectives';
 import { Pages } from '@/app/lib/data/consts';
 import { getDraft } from '@/app/lib/firebase/firestore';
 import { Card, CardHeader } from '@nextui-org/card';
-import { Button, CardBody, CardFooter } from '@nextui-org/react';
+import { CardBody, CardFooter } from '@nextui-org/react';
 import { redirect } from 'next/navigation';
 import { Suspense } from 'react';
 
+import BackButton from '@/app/components/misc/BackButton';
+import SubmitButton from '@/app/components/misc/SubmitButton';
 import SkeletonCheckListAI from '@/app/components/skeletons/CheckListAI';
 import ObjectivesList from '@/app/components/writer/ObjectivesList';
 
@@ -18,7 +20,7 @@ export default async function Thesis({ params }: { params: { uuid: string } }) {
   if (stage !== 'objectives') redirect(`${Pages.Writer}/${uuid}/${stage}`);
 
   return (
-    <section className="flex w-full xl:w-3/5 p-2">
+    <section className="flex w-full xl:w-3/5 p-0">
       <Card className="main-card">
         <CardHeader className="flex flex-col items-start gap-3">
           <h2 className={'editorial-header'}>Objetivos</h2>
@@ -45,10 +47,9 @@ export default async function Thesis({ params }: { params: { uuid: string } }) {
               />
             </Suspense>
           </CardBody>
-          <CardFooter className="flex justify-end">
-            <Button color="success" className="super-button" type="submit">
-              Next
-            </Button>
+          <CardFooter className="card-action-footer">
+            <BackButton label="Salir" href={Pages.Writer} />
+            <SubmitButton label="Continuar" />
           </CardFooter>
         </form>
       </Card>
