@@ -1,28 +1,21 @@
+'use client';
+
 import { Chip } from '@nextui-org/chip';
 import { Input } from '@nextui-org/input';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FaX } from 'react-icons/fa6';
 
-export default function InputTag({
-  name,
-  setValues
-}: {
-  name: string;
-  setValues: (value: string[]) => void;
-}) {
+export default function InputTag({ name }: { name: string }) {
   const [value, setValue] = useState('');
-  const [values, setValues_] = useState([] as string[]);
+  const [values, setValues] = useState([] as string[]);
 
-  useEffect(() => {
-    setValues(values);
-  }, [values, setValues]);
-
-  const keyDownHandler = (e: { key: string }) => {
+  const keyDownHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (value === '') return;
     if (e.key !== 'Enter') return;
     if (values.includes(value)) return;
-    setValues_([...values, value.trim()]);
+    setValues([...values, value.trim()]);
     setValue('');
+    e.preventDefault();
   };
 
   return (
@@ -48,9 +41,10 @@ export default function InputTag({
               size="sm"
               className="text-sm hover:cursor-pointer"
               startContent={<FaX className="w-2 h-2 mx-2" />}
-              onClick={() => setValues_(values.filter((o) => o !== v))}
+              onClick={() => setValues(values.filter((o) => o !== v))}
             >
               {v}
+              <input type="hidden" name={name.toLowerCase()} value={v} />
             </Chip>
           ))
         ) : (
