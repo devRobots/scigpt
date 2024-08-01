@@ -1,25 +1,24 @@
-import { Card, CardBody } from '@nextui-org/card';
-import { Spinner } from '@nextui-org/spinner';
+import { Pages } from '@/app/lib/data/consts';
+import { getDraft } from '@/app/lib/firebase/firestore';
+import { redirect } from 'next/navigation';
 
-export default function Page() {
+import Loader from '@/app/components/writer/Loader';
+
+export default async function Page({ params }: { params: { uuid: string } }) {
+  const uuid = params.uuid;
+  const draft = await getDraft(uuid);
+  if (!draft) redirect(Pages.Writer);
+
   return (
     <div className="flex flex-col items-center justify-center h-screen gap-2">
       <h2 className={'editorial-header'}>Redactando...</h2>
-      <h4 className="text-default-800">Esto puede tardar unos minutos...</h4>
-      <Card className="w-full p-4">
-        <div className="flex flex-col">
-          <div className="flex gap-4 text-finish">Palabras clave</div>
-          <div className="flex gap-4">
-            Justificacion
-            <Spinner size="sm" />
-          </div>
-          <div className="flex gap-4 text-waiting">Metodologia</div>
-          <div className="flex gap-4 text-waiting">Resultados esperados</div>
-          <div className="flex gap-4 text-waiting">
-            Referencias y Bibliografia
-          </div>
-        </div>
-      </Card>
+      <div className="flex flex-col">
+        <Loader text="Palabras clave" />
+        <Loader text="Justificacion" />
+        <Loader text="Metodologia" />
+        <Loader text="Resultados esperados" />
+        <Loader text="Referencias y Bibliografia" />
+      </div>
     </div>
   );
 }

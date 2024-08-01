@@ -57,10 +57,11 @@
     p-0 sm:p-2;
 }
 
-.text-waiting {
-  @apply text-white/40;
-}
-
-.text-finish {
-  @apply bg-gradient-to-r from-primary to-danger bg-clip-text text-transparent;
+#check + #text-loader {
+  @apply 
+  bg-gradient-to-r 
+  from-warning-300 
+  to-primary 
+  bg-clip-text 
+  text-transparent;
 }
