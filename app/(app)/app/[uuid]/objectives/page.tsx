@@ -1,9 +1,21 @@
+import { submitObjectives } from '@/app/actions/objectives';
+import { Pages } from '@/app/lib/data/consts';
+import { getDraft } from '@/app/lib/firebase/firestore';
 import { Card, CardHeader } from '@nextui-org/card';
+import { Button, CardBody, CardFooter } from '@nextui-org/react';
+import { redirect } from 'next/navigation';
+import { Suspense } from 'react';
 
-import ObjectivesForm from '@/app/components/writer/ObjectivesForm';
+import SkeletonCheckListAI from '@/app/components/skeletons/CheckListAI';
+import ObjectivesList from '@/app/components/writer/ObjectivesList';
 
-export default function Thesis({ params }: { params: { uuid: string } }) {
+export default async function Thesis({ params }: { params: { uuid: string } }) {
   const uuid = params.uuid;
+  const draft = await getDraft(uuid);
+  if (!draft) redirect(Pages.Writer);
+
+  const { stage, topics, field_of_study, thesis } = draft;
+  if (stage !== 'objectives') redirect(`${Pages.Writer}/${uuid}/${stage}`);
 
   return (
     <section className="flex w-full xl:w-3/5 p-2">
@@ -18,7 +30,27 @@ export default function Thesis({ params }: { params: { uuid: string } }) {
             el investigador para implementar una metodología.
           </p>
         </CardHeader>
-        <ObjectivesForm uuid={uuid} />
+        <form action={submitObjectives}>
+          <input type="hidden" hidden name="uuid" value={uuid} />
+          <CardBody className="h-fit gap-3">
+            <p className="font-semibold">
+              Seleccione a continuacion por lo menos 3 objetivos que le resulten
+              mas interesantes para continuar con el proceso de redaccion:
+            </p>
+            <Suspense fallback={<SkeletonCheckListAI />}>
+              <ObjectivesList
+                topics={topics}
+                field_of_study={field_of_study}
+                thesis={thesis!}
+              />
+            </Suspense>
+          </CardBody>
+          <CardFooter className="flex justify-end">
+            <Button color="success" className="super-button" type="submit">
+              Next
+            </Button>
+          </CardFooter>
+        </form>
       </Card>
     </section>
   );
