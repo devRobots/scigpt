@@ -11,7 +11,7 @@ export default async function Page({ params }: { params: { uuid: string } }) {
   if (!draft) redirect(Pages.Writer);
   suscribeDraft(uuid, (draft) => {
     if (!draft.keywords) return;
-    if (!draft.substantiation) return;
+    if (!draft.abstract) return;
     if (!draft.methodology) return;
     if (!draft.results) return;
     if (!draft.references) return;
@@ -24,7 +24,7 @@ export default async function Page({ params }: { params: { uuid: string } }) {
       <h2 className={'editorial-header'}>Redactando...</h2>
       <div className="flex flex-col">
         <Loader text="Palabras clave" load="keywords" from={draft} />
-        <Loader text="Justificacion" load="substantiation" from={draft} />
+        <Loader text="Justificacion" load="abstract" from={draft} />
         <Loader text="Metodologia" load="methodology" from={draft} />
         <Loader text="Resultados esperados" load="results" from={draft} />
         <Loader text="Referencias" load="references" from={draft} />

@@ -74,3 +74,24 @@
   bg-clip-text 
   text-transparent;
 }
+
+.apa-format {
+  @apply
+  /* Width */
+  w-full
+  lg:w-[816px]
+  
+  /* Height */
+  h-[756px]
+  sm:h-[1056px]
+  sm:max-h-[1056px]
+
+  /* Padding */
+  p-2
+  sm:p-24
+
+  /* Border */
+  rounded-md
+  border-1
+  border-content2
+}
