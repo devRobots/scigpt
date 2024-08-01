@@ -1,5 +1,5 @@
+import abstractExamples from '@/app/lib/writer/prompt/examples/abstract.json';
 import objectivesExample from '@/app/lib/writer/prompt/examples/objectives.json';
-import substantationExamples from '@/app/lib/writer/prompt/examples/substantiation.json';
 import thesisExample from '@/app/lib/writer/prompt/examples/thesis.json';
 import { buildPrompt } from '@/app/lib/writer/prompt/template';
 
@@ -88,7 +88,7 @@ export function promptQueries() {
   return prompt;
 }
 
-export function promptSubstantiation() {
+export function promptAbstract() {
   const input = {
     thesis: '<user-provided thesis>',
     topics: [
@@ -99,7 +99,7 @@ export function promptSubstantiation() {
     ],
     fieldOfStudy: '<user-provided fieldOfStudy>'
   };
-  return buildPrompt(input, substantationExamples, 'substantiation');
+  return buildPrompt(input, abstractExamples, 'abstract');
 }
 
 export function promptTextImprovement() {

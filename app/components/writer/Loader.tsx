@@ -1,5 +1,5 @@
 import { updateDraft } from '@/app/lib/firebase/firestore';
-import { generateSubstantiation } from '@/app/lib/writer/ai';
+import { generateAbstract } from '@/app/lib/writer/ai';
 import { Draft } from '@/app/types/draft';
 import { Spinner } from '@nextui-org/react';
 import { Suspense } from 'react';
@@ -10,11 +10,11 @@ export async function Ready({ load, from }: { load: string; from: Draft }) {
     case 'keywords':
       console.log('keywords');
       break;
-    case 'substantiation':
-      if (from.substantiation) break;
+    case 'abstract':
+      if (from.abstract) break;
       const { topics, field_of_study, thesis } = from;
-      const substantiation = await generateSubstantiation(thesis!, topics, field_of_study);
-      await updateDraft(from.id, { substantiation });
+      const abstract = await generateAbstract(thesis!, topics, field_of_study);
+      await updateDraft(from.id, { abstract });
       break;
     case 'methodology':
       console.log('methodology');

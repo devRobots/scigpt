@@ -3,7 +3,7 @@
       "thesis": "¿La urbanización acelerada contribuye al cambio climático?",
       "topics": ["Urbanization", "Climate Change", "Environmental Impact"],
       "fieldOfStudy": "Environmental Science",
-      "substantiation":
+      "abstract":
         "La urbanización acelerada es un fenómeno global que ha transformado el paisaje urbano y ha tenido un impacto significativo en el medio ambiente. El aumento de la población en las ciudades ha llevado a la expansión de la infraestructura urbana, la deforestación de áreas naturales y la emisión de gases de efecto invernadero. Estos cambios han contribuido al cambio climático y sus efectos adversos, como el aumento de las temperaturas globales, la alteración de los patrones de precipitación y el aumento del nivel del mar. La urbanización también ha afectado la calidad del aire y del agua, la biodiversidad y los ecosistemas locales. Por lo tanto, es importante investigar cómo la urbanización acelerada contribuye al cambio climático y qué medidas se pueden tomar para mitigar sus impactos negativos."
     },
     {
@@ -11,7 +11,7 @@
         "¿La terapia génica puede ser una solución efectiva para enfermedades genéticas raras?",
       "topics": ["Gene Therapy", "Rare Genetic Diseases", "Medical Treatments"],
       "fieldOfStudy": "Medical Science",
-      "substantiation":
+      "abstract":
         "La terapia génica es una estrategia terapéutica innovadora que tiene el potencial de tratar enfermedades genéticas raras de manera efectiva. Al introducir genes terapéuticos en las células de un individuo, la terapia génica puede corregir mutaciones genéticas y restaurar la función normal de los genes afectados. Esta tecnología ha demostrado ser prometedora en el tratamiento de enfermedades genéticas raras, como la fibrosis quística, la distrofia muscular y la anemia de células falciformes. Los avances en la entrega de genes terapéuticos, la edición genética y la regulación de la expresión génica han mejorado la eficacia y seguridad de la terapia génica. Por lo tanto, es importante investigar cómo la terapia génica puede ser una solución efectiva para enfermedades genéticas raras y qué desafíos deben abordarse para su implementación clínica."
     },
     {
@@ -19,7 +19,7 @@
         "¿Los algoritmos de aprendizaje profundo pueden predecir el comportamiento del consumidor?",
       "topics": ["Deep Learning", "Consumer Behavior", "Predictive Analytics"],
       "fieldOfStudy": "Computer Science",
-      "substantiation":
+      "abstract":
         "Los algoritmos de aprendizaje profundo han demostrado ser eficaces en la predicción del comportamiento del consumidor en diversas aplicaciones, como la recomendación de productos, la personalización de contenidos y la segmentación de clientes. Estos modelos de inteligencia artificial pueden analizar grandes volúmenes de datos para identificar patrones y tendencias en el comportamiento de los consumidores. Al utilizar técnicas de aprendizaje profundo, como redes neuronales profundas y modelos de lenguaje natural, los algoritmos pueden predecir las preferencias, necesidades y acciones de los consumidores con precisión. La analítica predictiva basada en el aprendizaje profundo ha revolucionado el marketing y la publicidad al permitir a las empresas anticipar las demandas del mercado y adaptar sus estrategias comerciales en consecuencia. Por lo tanto, es importante investigar cómo los algoritmos de aprendizaje profundo pueden predecir el comportamiento del consumidor y qué implicaciones tienen para las empresas y los consumidores."
     }
   ]

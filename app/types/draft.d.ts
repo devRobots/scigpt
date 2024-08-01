@@ -10,7 +10,7 @@ export interface Draft {
   keywords?: string[];
   methodology?: string;
   results?: string;
-  substantiation?: string;
+  abstract?: string;
   references?: string;
   bibliography?: string;
 }

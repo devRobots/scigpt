@@ -1,7 +1,7 @@
 import {
+  promptAbstract,
   promptObjectives,
   promptQueries,
-  promptSubstantiation,
   promptTextImprovement,
   promptThesis
 } from '@/app/lib/writer/prompt/builder';
@@ -9,7 +9,7 @@ import {
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL;
 
 export async function fetchAI(input: string, prompt: string) {
-  const response = await fetch('https://scigpt.vercel.app/api/ai', {
+  const response = await fetch('http://localhost:3000/api/ai', {
     method: 'POST',
     body: JSON.stringify({ input, prompt }),
     headers: { 'Content-Type': 'application/json' }
@@ -47,15 +47,15 @@ export async function generateQueries(
   return response.queries;
 }
 
-export async function generateSubstantiation(
+export async function generateAbstract(
   thesis: string,
   topics: string[],
   fieldOfStudy: string
 ) {
   const input = JSON.stringify({ thesis, topics, fieldOfStudy });
-  const substantiationPrompt = promptSubstantiation();
-  const response = await fetchAI(input, substantiationPrompt);
-  return response.substantiation;
+  const abstractPrompt = promptAbstract();
+  const response = await fetchAI(input, abstractPrompt);
+  return response.abstract;
 }
 
 export async function improveText(text: string) {
