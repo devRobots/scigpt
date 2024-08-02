@@ -8,7 +8,7 @@ import { redirect } from 'next/navigation';
 
 export async function submitDraft(formData: FormData) {
     const title = formData.get('titulo');
-    const topics = formData.getAll('topics');
+    const topics = formData.getAll('temas');
     const fieldOfStudy = formData.get('fieldOfStudy');
 
     if (!title || !topics || !fieldOfStudy) {

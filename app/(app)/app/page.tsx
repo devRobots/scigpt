@@ -7,8 +7,8 @@ import PersonalDrafts from '@/app/components/writer/PersonalDrafts';
 
 export default function Writer() {
   return (
-    <main className="flex flex-col p-4 items-center justify-between lg:space-y-36 gap-8">
-      <div className="flex flex-col w-full sm:flex-row sm:items-center sm:justify-around gap-2">
+    <main className="content-full">
+      <section className="flex flex-col w-full sm:flex-row sm:items-center sm:justify-evenly gap-2">
         <div>
           <h1 className="text-4xl font-bold">Mis articulos</h1>
           <p className="text-lg text-default-900/40">
@@ -24,7 +24,7 @@ export default function Writer() {
             Nuevo
           </Button>
         </Link>
-      </div>
+      </section>
       <PersonalDrafts />
     </main>
   );

@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+.content-fit {
+  @apply
+  flex flex-col 
+
+  w-full
+  
+  items-center 
+  justify-center 
+  
+  p-4 
+  gap-8
+}
+
+.subcontent-full {
+  @apply
+  h-full
+  content-fit
+}
+
+.content-full {
+  @apply
+  content-fit
+  h-screen
+}
 
 .super-button {
   @apply text-gray-900 

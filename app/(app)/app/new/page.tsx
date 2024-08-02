@@ -10,29 +10,29 @@ import ListSelector from '@/app/components/standard/ListSelector';
 
 export default function Writer() {
   return (
-    <main className="flex flex-col items-center justify-center p-2">
-      <section className="h-fit mx-0 sm:mt-2 sm:mx-4">
+    <main className="content-fit">
+      <section className="xl:w-3/5">
         <Card className="p-1">
           <form action={submitDraft}>
             <CardBody className="flex flex-col md:flex-row columns-1 md:columns-2 gap-6">
-              <div className="flex flex-col w-full justify-center gap-8">
-                <div className="flex flex-col gap-2">
+              <section className="flex flex-col w-full justify-center gap-8">
+                <article className="flex flex-col gap-2">
                   <strong className="text-2xl">Nueva Redaccion</strong>
                   <BigInput name="Titulo" />
-                </div>
-                <div className="flex flex-col gap-3">
+                </article>
+                <article className="flex flex-col gap-3">
                   <span className="text-lg justify-end">
                     Escribe los temas de interes
                   </span>
-                  <InputTag name="topics" />
-                </div>
-              </div>
-              <div className="flex flex-col w-full gap-3">
+                  <InputTag name="temas" />
+                </article>
+              </section>
+              <article className="flex flex-col w-full gap-3">
                 <span className="text-lg justify-end">
                   Selecciona un area de estudio
                 </span>
                 <ListSelector name="fieldOfStudy" items={items} />
-              </div>
+              </article>
             </CardBody>
             <CardFooter className="card-action-footer">
               <BackButton label="Cancelar" />

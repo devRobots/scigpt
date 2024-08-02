@@ -18,11 +18,9 @@ export default function RootLayout({
     <html lang="es" suppressHydrationWarning={true}>
       <body>
         <NextUIProviders>
-          <main className="scifi-dark flex flex-col h-screen justify-between">
-            <NavBar />
-            {children}
-            <Footer />
-          </main>
+          <NavBar />
+          {children}
+          <Footer />
         </NextUIProviders>
       </body>
     </html>

@@ -5,7 +5,7 @@ import { OAuth } from '@/app/components/standard/OAuth';
 
 export default function Login() {
   return (
-    <main className="flex flex-col items-center justify-evenly gap-8">
+    <main className="content-full">
       <Image src="/login.webp" width={256} height={208} alt="login" />
       <Card className="w-fit py-6 px-16">
         <CardHeader>

@@ -7,23 +7,21 @@ import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card';
 import { Chip } from '@nextui-org/react';
 import Link from 'next/link';
 
+import NotFound from '@/app/components/core/NotFound';
+
 export default async function PersonalDrafts() {
   const session = await auth();
   const user_email = session!.user!.email!;
   const drafts: Draft[] = await getDraftsByOwner(user_email);
 
   if (drafts.length === 0) {
-    return (
-      <Card className="w-fit gap-6 py-6 px-16">
-        <h2 className="text-lg">No se encontraron articulos</h2>
-      </Card>
-    );
+    return <NotFound text="No se encontraron articulos" />;
   }
 
   return (
-    <div className="flex flex-col lg:flex-row gap-4">
+    <section className="subcontent-full lg:flex-row">
       {drafts.map((draft) => (
-        <Card key={draft.id} className="w-min-72 w-auto">
+        <Card key={draft.id} className="h-fit w-min-72 w-auto">
           <CardHeader className="flex flex-col items-start gap-2">
             <h2 className="text-2xl">Titulo: {draft.title}</h2>
             <div className="flex flex-row gap-1">
@@ -54,6 +52,6 @@ export default async function PersonalDrafts() {
           </CardFooter>
         </Card>
       ))}
-    </div>
+    </section>
   );
 }

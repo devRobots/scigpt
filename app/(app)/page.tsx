@@ -10,7 +10,7 @@ import TechBrands from '../components/web/TechBrands';
 
 export default function Chat() {
   return (
-    <main>
+    <main className="content-fit">
       <section className="p-4 md:8">
         <div className="w-full">
           <div className="flex lg:items-center lg:gap-8 xl:gap-32.5">
