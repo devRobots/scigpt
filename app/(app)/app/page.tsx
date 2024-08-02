@@ -1,4 +1,4 @@
-import { Pages, App } from '@/app/lib/data/consts';
+import { App, Pages } from '@/app/lib/data/consts';
 import { Button } from '@nextui-org/button';
 import Link from 'next/link';
 import { FaPlus } from 'react-icons/fa6';
@@ -7,8 +7,8 @@ import PersonalDrafts from '@/app/components/writer/PersonalDrafts';
 
 export default function Writer() {
   return (
-    <main className="flex flex-col my-auto p-8 h-5/6 items-center justify-center gap-8">
-      <div className="flex flex-col sm:flex-row w-full h-fit sm:items-center sm:justify-between gap-2 sm:gap-0">
+    <main className="flex flex-col p-4 items-center justify-between lg:space-y-36 gap-8">
+      <div className="flex flex-col w-full sm:flex-row sm:items-center sm:justify-around gap-2">
         <div>
           <h1 className="text-4xl font-bold">Mis articulos</h1>
           <p className="text-lg text-default-900/40">
@@ -25,9 +25,7 @@ export default function Writer() {
           </Button>
         </Link>
       </div>
-      <section className="flex h-screen items-center justify-center">
-        <PersonalDrafts />
-      </section>
+      <PersonalDrafts />
     </main>
   );
 }

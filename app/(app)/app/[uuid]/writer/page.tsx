@@ -23,7 +23,7 @@ export default async function Page({ params }: { params: { uuid: string } }) {
   });
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen gap-8">
+    <div className="flex flex-col items-center justify-center my-24 gap-8">
       <Image src="/writer.webp" width={256} height={256} alt="Editorial" />
       <h2 className="editorial-header">Redactando...</h2>
       <div className="flex flex-row gap-4">

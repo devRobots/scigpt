@@ -11,7 +11,7 @@ import UserButton from '@/app/components/core/navbar/UserButton';
 
 export default function NavBar() {
   return (
-    <Navbar shouldHideOnScroll>
+    <Navbar position="static">
       <NavbarContent>
         <NavbarMenuToggle className="sm:hidden" />
         <NavbarBrand>

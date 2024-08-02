@@ -13,8 +13,7 @@ export default function Breadcrumb() {
 
   return (
     <Breadcrumbs
-      underline="hover"
-      className="pb-8"
+      underline="none"
       classNames={{
         list: 'bg-gradient-to-br from-yellow-100 to-amber-300 shadow-small'
       }}

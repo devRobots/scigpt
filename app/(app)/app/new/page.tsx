@@ -10,7 +10,7 @@ import ListSelector from '@/app/components/standard/ListSelector';
 
 export default function Writer() {
   return (
-    <main className="flex flex-col items-center justify-center h-screen">
+    <main className="flex flex-col items-center justify-center p-2">
       <section className="h-fit mx-0 sm:mt-2 sm:mx-4">
         <Card className="p-1">
           <form action={submitDraft}>
