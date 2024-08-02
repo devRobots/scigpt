@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.title {
-  @apply text-4xl 
-    font-bold 
-    md:text-end 
-    md:text-6xl;
-}
 
 .super-button {
   @apply text-gray-900 
