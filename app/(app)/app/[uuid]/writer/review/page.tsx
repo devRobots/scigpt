@@ -28,13 +28,13 @@ export default async function Page({ params }: { params: { uuid: string } }) {
   } = draft;
 
   return (
-    <div className="flex flex-col items-center justify-center gap-4">
+    <section className="subcontent-full">
       <Portrait
         title={thesis!}
         fieldOfStudy={fieldOfStudy}
         author={name!}
         email={email!}
       />
-    </div>
+    </section>
   );
 }

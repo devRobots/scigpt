@@ -39,8 +39,9 @@
 }
 
 .editorial-header {
-  @apply font-extrabold
-    text-4xl;
+  @apply 
+  font-extrabold
+  text-4xl;
 }
 
 .editorial-body {

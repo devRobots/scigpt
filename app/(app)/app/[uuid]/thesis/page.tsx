@@ -19,10 +19,10 @@ export default async function Thesis({ params }: { params: { uuid: string } }) {
   if (stage !== 'thesis') redirect(`${Pages.Writer}/${uuid}/${stage}`);
 
   return (
-    <section className="flex w-full xl:w-3/5 p-0">
-      <Card className="main-card">
+    <section className="subcontent-full">
+      <Card className="xl:w-3/5">
         <CardHeader className="flex flex-col items-start gap-3">
-          <h2 className={'editorial-header'}>Hipotesis</h2>
+          <h2 className="editorial-header">Hipotesis</h2>
           <p className="text-default-800">
             La pregunta de investigación o hipotesis es el cuestionamiento
             central que se busca responder a partir de una determinada

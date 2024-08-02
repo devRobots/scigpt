@@ -1,11 +1,6 @@
 import { BreadcrumbItem, Breadcrumbs } from '@nextui-org/breadcrumbs';
 import { usePathname } from 'next/navigation';
-import {
-  FaBook,
-  FaBullseye,
-  FaCircleQuestion,
-  FaFileExport
-} from 'react-icons/fa6';
+import { FaBullseye, FaCircleQuestion, FaFileExport } from 'react-icons/fa6';
 import { IoSparkles } from 'react-icons/io5';
 
 export default function Breadcrumb() {
@@ -39,14 +34,6 @@ export default function Breadcrumb() {
       >
         <FaBullseye />
         <p className="hidden sm:flex">Objetivos</p>
-      </BreadcrumbItem>
-      <BreadcrumbItem
-        key="breadcrumb-2"
-        isDisabled={!path.includes('review')}
-        isCurrent
-      >
-        <FaBook />
-        <p className="hidden sm:flex">Revision Literaria</p>
       </BreadcrumbItem>
       <BreadcrumbItem
         key="breadcrumb-3"

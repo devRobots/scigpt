@@ -20,8 +20,8 @@ export default async function Thesis({ params }: { params: { uuid: string } }) {
   if (stage !== 'objectives') redirect(`${Pages.Writer}/${uuid}/${stage}`);
 
   return (
-    <section className="flex w-full xl:w-3/5 p-0">
-      <Card className="main-card">
+    <section className="subcontent-full">
+      <Card className="xl:w-3/5">
         <CardHeader className="flex flex-col items-start gap-3">
           <h2 className={'editorial-header'}>Objetivos</h2>
           <p className="text-default-800">

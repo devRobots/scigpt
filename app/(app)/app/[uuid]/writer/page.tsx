@@ -23,7 +23,7 @@ export default async function Page({ params }: { params: { uuid: string } }) {
   });
 
   return (
-    <div className="flex flex-col items-center justify-center my-24 gap-8">
+    <section className="subcontent-full my-24">
       <Image src="/writer.webp" width={256} height={230} alt="Editorial" />
       <h2 className="editorial-header">Redactando...</h2>
       <div className="flex flex-row gap-4">
@@ -40,6 +40,6 @@ export default async function Page({ params }: { params: { uuid: string } }) {
           <Loader text="Referencias" load="references" from={draft} />
         </div>
       </div>
-    </div>
+    </section>
   );
 }
