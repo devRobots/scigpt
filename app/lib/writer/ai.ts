@@ -19,8 +19,8 @@ export async function fetchAI(input: string, prompt: string) {
 }
 
 export async function generateThesis(draft: Draft) {
-  const { topics, fieldOfStudy } = draft;
-  const input = JSON.stringify({ topics, fieldOfStudy });
+  const { topics, approach, fieldOfStudy } = draft;
+  const input = JSON.stringify({ topics, approach, fieldOfStudy });
   const thesisPrompt = promptThesis();
   const response = await fetchAI(input, thesisPrompt);
   return response.thesis;

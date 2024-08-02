@@ -14,6 +14,7 @@ export function promptThesis() {
       '<user-provided topic-3>',
       '...'
     ],
+    approach: '<user-provided context>',
     fieldOfStudy: '<user-provided field>'
   };
   return buildPrompt(input, thesisExamples, 'thesis');

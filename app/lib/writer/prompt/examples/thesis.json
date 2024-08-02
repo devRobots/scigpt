@@ -6,6 +6,7 @@
             "Deforestation"
         ],
         "fieldOfStudy": "Environmental Science",
+        "approach": "como afecta el cambio climático a la biodiversidad",
         "thesis": [
             "¿El aumento de los niveles de CO2 atmosférico se correlaciona con el aumento de las temperaturas globales?",
             "¿El derretimiento de los casquetes polares contribuye al aumento del nivel del mar?",
@@ -21,6 +22,7 @@
             "Viral Vectors"
         ],
         "fieldOfStudy": "Medical Science",
+        "approach": "la terapia génica puede ser una solución efectiva para enfermedades genéticas raras?",
         "thesis": [
             "¿La terapia génica puede ser una solución efectiva para enfermedades genéticas raras?",
             "¿La ingeniería genética de plantas puede mejorar la seguridad alimentaria mundial?",
@@ -36,6 +38,7 @@
             "Data Science"
         ],
         "fieldOfStudy": "Computer Science",
+        "approach": "investiga si los algoritmos de aprendizaje profundo pueden predecir el comportamiento del consumidor",
         "thesis": [
             "¿Los algoritmos de aprendizaje profundo pueden predecir el comportamiento del consumidor?",
             "¿La inteligencia artificial puede mejorar la precisión del diagnóstico médico?",

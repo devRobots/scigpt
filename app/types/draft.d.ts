@@ -2,6 +2,7 @@ export interface Draft {
   id: string;
   owner: string;
   title: string;
+  approach: string;
   stage: string;
   topics: string[];
   fieldOfStudy: string;
