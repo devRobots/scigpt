@@ -1,10 +1,7 @@
 import {
-  promptAbstract,
-  promptKeywords,
-  promptObjectives,
+  promptDraftItem,
   promptQueries,
-  promptTextImprovement,
-  promptThesis
+  promptTextImprovement
 } from '@/app/lib/writer/prompt/builder';
 import { Draft } from '@/app/types/draft';
 
@@ -21,7 +18,7 @@ export async function fetchAI(input: string, prompt: string) {
 export async function generateThesis(draft: Draft) {
   const { topics, approach, fieldOfStudy } = draft;
   const input = JSON.stringify({ topics, approach, fieldOfStudy });
-  const thesisPrompt = promptThesis();
+  const thesisPrompt = promptDraftItem('thesis', input);
   const response = await fetchAI(input, thesisPrompt);
   return response.thesis;
 }
@@ -29,23 +26,15 @@ export async function generateThesis(draft: Draft) {
 export async function generateObjectives(draft: Draft) {
   const { thesis, topics, fieldOfStudy } = draft;
   const input = JSON.stringify({ thesis, topics, fieldOfStudy });
-  const objectivesPrompt = promptObjectives();
+  const objectivesPrompt = promptDraftItem('objectives', input);
   const response = await fetchAI(input, objectivesPrompt);
   return response.objectives;
-}
-
-export async function generateQueries(draft: Draft) {
-  const { thesis, topics, fieldOfStudy } = draft;
-  const input = JSON.stringify({ thesis, topics, fieldOfStudy });
-  const queriesPrompt = promptQueries();
-  const response = await fetchAI(input, queriesPrompt);
-  return response.queries;
 }
 
 export async function generateKeywords(draft: Draft) {
   const { thesis, topics, fieldOfStudy } = draft;
   const input = JSON.stringify({ thesis, topics, fieldOfStudy });
-  const keywordsPrompt = promptKeywords();
+  const keywordsPrompt = promptDraftItem('keywords', input);
   const response = await fetchAI(input, keywordsPrompt);
   return response.keywords;
 }
@@ -53,14 +42,22 @@ export async function generateKeywords(draft: Draft) {
 export async function generateAbstract(draft: Draft) {
   const { thesis, topics, fieldOfStudy } = draft;
   const input = JSON.stringify({ thesis, topics, fieldOfStudy });
-  const abstractPrompt = promptAbstract();
+  const abstractPrompt = promptDraftItem('abstract', input);
   const response = await fetchAI(input, abstractPrompt);
   return response.abstract;
 }
 
 export async function improveText(text: string) {
   const input = JSON.stringify({ text });
-  const improveTextPrompt = promptTextImprovement();
+  const improveTextPrompt = promptTextImprovement(input);
   const response = await fetchAI(input, improveTextPrompt);
   return response.improvedText;
+}
+
+export async function generateQueries(draft: Draft) {
+  const { thesis, topics, fieldOfStudy } = draft;
+  const input = JSON.stringify({ thesis, topics, fieldOfStudy });
+  const queriesPrompt = promptQueries(input);
+  const response = await fetchAI(input, queriesPrompt);
+  return response.queries;
 }
