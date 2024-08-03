@@ -103,7 +103,7 @@ export function buildPrompt(
   outputExamples: { [key: string]: any }[],
   target: string
 ) {
-  const count =
+  const count = !outputExamples[0][target] ? 0 :
     typeof outputExamples[0][target] === 'string'
       ? 1
       : outputExamples[0][target].length;

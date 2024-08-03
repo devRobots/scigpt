@@ -1,20 +1,24 @@
-import abstractExamples from '@/app/lib/writer/prompt/examples/abstract.json';
+import draftsExamples from '@/app/lib/writer/prompt/examples/drafts.json';
 import improveExamples from '@/app/lib/writer/prompt/examples/improve.json';
-import keywordsExamples from '@/app/lib/writer/prompt/examples/keywords.json';
-import objectivesExamples from '@/app/lib/writer/prompt/examples/objectives.json';
 import queriesExamples from '@/app/lib/writer/prompt/examples/queries.json';
-import thesisExamples from '@/app/lib/writer/prompt/examples/thesis.json';
 import { buildPrompt } from '@/app/lib/writer/prompt/template';
 
 export function promptDraftItem(item: string, input: any) {
-  const examples: { [key: string]: any } = {
-    thesis: thesisExamples,
-    objectives: objectivesExamples,
-    keywords: keywordsExamples,
-    abstract: abstractExamples
-  };
+  const examples: any[] = [];
+  const keys = Object.keys(input);
 
-  return buildPrompt(input, examples[item], item);
+  for (const example of draftsExamples) {
+    const exampleKeys = Object.keys(example);
+    const newExample: any = {};
+    for (const key of exampleKeys) {
+      if (keys.includes(key) || key === item) {
+        newExample[key as keyof any] = example[key as keyof typeof example];
+      }
+    }
+    examples.push(newExample);
+  }
+
+  return buildPrompt(input, examples, item);
 }
 
 export function promptTextImprovement(input: any) {

@@ -1,41 +1,19 @@
 import { updateDraft } from '@/app/lib/firebase/firestore';
-import { generateAbstract, generateKeywords } from '@/app/lib/writer/ai';
+import { generate } from '@/app/lib/writer/ai';
 import { Draft } from '@/app/types/draft';
 import { Spinner } from '@nextui-org/react';
 import { Suspense } from 'react';
 import { FaCheck } from 'react-icons/fa6';
 
+async function redact(item: string, draft: Draft) {
+  if (item === 'references') return;
+  if (draft[item as keyof Draft]) return;
+  const generated = await generate(item, draft);
+  if (generated) await updateDraft(draft.id, { [item]: generated });
+}
+
 export async function Ready({ load, from }: { load: string; from: Draft }) {
-  switch (load) {
-    case 'abstract':
-      if (from.abstract) break;
-      const abstract = await generateAbstract(from);
-      await updateDraft(from.id, { abstract });
-      break;
-    case 'keywords':
-      if (from.keywords) break;
-      const keywords = await generateKeywords(from);
-      await updateDraft(from.id, { keywords });
-      break;
-    case 'introduction':
-      // console.log('introduction');
-      break;
-    case 'methodology':
-      // console.log('methodology');
-      break;
-    case 'results':
-      // console.log('results');
-      break;
-    case 'discussion':
-      // console.log('discussion');
-      break;
-    case 'conclusion':
-      // console.log('conclusion');
-      break;
-    case 'references':
-      // console.log('references');
-      break;
-  }
+  await redact(load, from);
 
   return (
     <FaCheck

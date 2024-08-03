@@ -15,36 +15,65 @@ export async function fetchAI(input: string, prompt: string) {
   return JSON.parse(data);
 }
 
-export async function generateThesis(draft: Draft) {
-  const { topics, approach, fieldOfStudy } = draft;
-  const input = JSON.stringify({ topics, approach, fieldOfStudy });
-  const thesisPrompt = promptDraftItem('thesis', input);
-  const response = await fetchAI(input, thesisPrompt);
-  return response.thesis;
+function checkInput(input: any) {
+  const keys = Object.keys(input);
+  for (const key of keys) {
+    if (!input[key]) return false;
+  }
+  return true;
 }
 
-export async function generateObjectives(draft: Draft) {
-  const { thesis, topics, fieldOfStudy } = draft;
-  const input = JSON.stringify({ thesis, topics, fieldOfStudy });
-  const objectivesPrompt = promptDraftItem('objectives', input);
-  const response = await fetchAI(input, objectivesPrompt);
-  return response.objectives;
-}
+export async function generate(item: string, draft: Draft) {
+  const {
+    thesis, topics, approach,
+    fieldOfStudy, objectives,
+    keywords, abstract,
+    introduction, methodology,
+    results, discussion
+  } = draft;
 
-export async function generateKeywords(draft: Draft) {
-  const { thesis, topics, fieldOfStudy } = draft;
-  const input = JSON.stringify({ thesis, topics, fieldOfStudy });
-  const keywordsPrompt = promptDraftItem('keywords', input);
-  const response = await fetchAI(input, keywordsPrompt);
-  return response.keywords;
-}
+  let input = {};
+  if (item === 'thesis') input = {
+    topics, approach, fieldOfStudy
+  };
+  if (item === 'objectives') input = {
+    topics, fieldOfStudy, thesis
+  };
+  if (item === 'keywords') input = {
+    topics, approach, fieldOfStudy,
+    thesis
+  };
+  if (item === 'abstract') input = {
+    topics, approach, fieldOfStudy,
+    thesis, keywords
+  };
+  if (item === 'introduction') input = {
+    fieldOfStudy, thesis, objectives,
+    keywords, abstract
+  };
+  if (item === 'methodology') input = {
+    fieldOfStudy, thesis, objectives,
+    keywords, abstract, introduction
+  };
+  if (item === 'results') input = {
+    fieldOfStudy, thesis, objectives,
+    keywords, abstract, introduction,
+    methodology
+  };
+  if (item === 'discussion') input = {
+    fieldOfStudy, thesis, keywords,
+    abstract, introduction, results
+  };
+  if (item === 'conclusion') input = {
+    fieldOfStudy, thesis, objectives,
+    keywords, abstract, introduction,
+    methodology, results, discussion
+  };
 
-export async function generateAbstract(draft: Draft) {
-  const { thesis, topics, fieldOfStudy } = draft;
-  const input = JSON.stringify({ thesis, topics, fieldOfStudy });
-  const abstractPrompt = promptDraftItem('abstract', input);
-  const response = await fetchAI(input, abstractPrompt);
-  return response.abstract;
+  if (!checkInput(input)) return null;
+  const prompt = promptDraftItem(item, input);
+  const response = await fetchAI(JSON.stringify(input), prompt);
+  return response[item];
 }
 
 export async function improveText(text: string) {
