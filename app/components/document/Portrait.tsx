@@ -12,7 +12,7 @@ export default function Portrait({
   email: string;
 }) {
   return (
-    <div className="flex flex-col items-center justify-center gap-4">
+    <section className="flex flex-col items-center justify-center gap-4">
       <Card className="apa-format">
         <CardHeader className="justify-end sm:-mt-12">
           <p className="sm:-mr-12">1</p>
@@ -29,6 +29,6 @@ export default function Portrait({
           <p>{2024}</p>
         </CardFooter>
       </Card>
-    </div>
+    </section>
   );
 }
