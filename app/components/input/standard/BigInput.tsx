@@ -8,6 +8,7 @@ export default function BigInput({ name }: { name: string }) {
       label={name}
       size="lg"
       variant="underlined"
+      isRequired
     />
   );
 }

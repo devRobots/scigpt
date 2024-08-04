@@ -23,6 +23,7 @@ export default async function Writer() {
       <section className="xl:w-3/5">
         <Card className="p-1">
           <form action={submitDraft}>
+            <input type="hidden" hidden name="owner" value={user!.email!} />
             <CardBody className="flex flex-col md:flex-row columns-1 md:columns-2 gap-6">
               <section className="flex flex-col w-full gap-4">
                 <article className="flex flex-col gap-2">
@@ -30,10 +31,9 @@ export default async function Writer() {
                   <BigInput name="Titulo" />
                 </article>
                 <article className="flex flex-col gap-3">
-                  <span className="text-lg justify-end">
-                    Escribe sobre lo que quieres redactar
-                  </span>
                   <Textarea
+                    label="Escribe sobre lo que quieres redactar"
+                    labelPlacement="outside"
                     name="context"
                     variant="faded"
                     classNames={{ inputWrapper: 'bg-default' }}
@@ -41,19 +41,22 @@ export default async function Writer() {
                     rows={3}
                     minRows={3}
                     maxRows={3}
+                    isRequired
                   />
                 </article>
                 <article className="flex flex-col gap-3">
-                  <span className="text-lg justify-end">
+                  <p className="text-sm">
                     Escribe los temas de interes
-                  </span>
+                    <span className="text-danger">*</span>
+                  </p>
                   <InputTag name="temas" />
                 </article>
               </section>
               <article className="flex flex-col w-full gap-3">
-                <span className="text-lg justify-end">
+                <p className="text-sm">
                   Selecciona un area de estudio
-                </span>
+                  <span className="text-danger">*</span>
+                </p>
                 <ListSelector name="fieldOfStudy" items={items} />
               </article>
             </CardBody>
