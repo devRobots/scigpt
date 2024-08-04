@@ -1,9 +1,9 @@
 import { Pages } from '@/app/lib/data/consts';
 import { getDraft } from '@/app/lib/firebase/firestore';
 import { auth } from '@/auth';
+import { Card, CardBody } from '@nextui-org/react';
 import { redirect } from 'next/navigation';
 
-import Page from '@/app/components/document/Page';
 import ParagraphAI from '@/app/components/document/ParagraphAI';
 import Portrait from '@/app/components/document/Portrait';
 
@@ -43,42 +43,18 @@ export default async function ReviewPage({
         author={name!}
         email={email!}
       />
-      <Page
-        body={
-          <article className="flex flex-col h-full justify-evenly">
-            <ParagraphAI subtitle="Resumen" paragraph={abstract!} />
-            <ParagraphAI subtitle="Abstract" paragraph={abstract!} />
-            <ParagraphAI subtitle="Keywords" paragraph={keywords!.join(', ')} />
-          </article>
-        }
-        page={2}
-      />
-      <Page
-        body={
-          <article className="flex flex-col h-full justify-evenly">
-            <ParagraphAI subtitle="Introduccion" paragraph={introduction!} />
-            <ParagraphAI subtitle="Metodologia" paragraph={methodology!} />
-          </article>
-        }
-        page={3}
-      />
-      <Page
-        body={
-          <article className="flex flex-col h-full justify-evenly">
-            <ParagraphAI subtitle="Resultados" paragraph={results!} />
-            <ParagraphAI subtitle="Discusion" paragraph={discussion!} />
-          </article>
-        }
-        page={4}
-      />
-      <Page
-        body={
-          <article className="flex flex-col h-full gap-4">
-            <ParagraphAI subtitle="Conclusiones" paragraph={conclusion!} />
-          </article>
-        }
-        page={5}
-      />
+      <Card className="apa-format">
+        <CardBody className="flex gap-4">
+          <ParagraphAI subtitle="Resumen" paragraph={abstract!} />
+          <ParagraphAI subtitle="Abstract" paragraph={abstract!} />
+          <ParagraphAI subtitle="Keywords" paragraph={keywords!.join(', ')} />
+          <ParagraphAI subtitle="Introduccion" paragraph={introduction!} />
+          <ParagraphAI subtitle="Metodologia" paragraph={methodology!} />
+          <ParagraphAI subtitle="Resultados" paragraph={results!} />
+          <ParagraphAI subtitle="Discusion" paragraph={discussion!} />
+          <ParagraphAI subtitle="Conclusiones" paragraph={conclusion!} />
+        </CardBody>
+      </Card>
     </section>
   );
 }
