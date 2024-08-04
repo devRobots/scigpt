@@ -76,7 +76,7 @@ export function Loader({ draft }: { draft: Draft }) {
       }
       setStep(8);
       draft.stage = 'review';
-      await updateDraft(draft.id, { draft});
+      await updateDraft(draft.id, draft);
     };
     load();
   }, []);
@@ -98,7 +98,7 @@ export function Loader({ draft }: { draft: Draft }) {
         </div>
       </article>
       {step == 8 && (
-        <Link href={`/app/${draft.id}/writer/review`}>
+        <Link href={`/app/${draft.id}/review`}>
           <Button className="super-button" size="md" hidden={false}>
             Verificar
           </Button>
