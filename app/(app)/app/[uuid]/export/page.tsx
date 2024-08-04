@@ -1,8 +1,9 @@
 import { Pages } from '@/app/lib/data/consts';
 import { getDraft } from '@/app/lib/firebase/firestore';
-import { Card } from '@nextui-org/react';
 import { redirect } from 'next/navigation';
-import { FaFilePdf, FaFileWord } from 'react-icons/fa6';
+import { FaFileWord } from 'react-icons/fa6';
+
+import DownloadButton from '@/app/components/writer/DownloadButton';
 
 export default async function ExportPage({
   params
@@ -16,15 +17,14 @@ export default async function ExportPage({
   if (stage !== 'review') redirect(`${Pages.Writer}/${uuid}/${stage}`);
 
   return (
-    <section className="subcontent-full sm:my-40 flex-col sm:flex-row">
-      <Card className="w-72 h-72 items-center justify-evenly hover:cursor-pointer hover:bg-content3">
+    <section className="subcontent-full my-40 flex-col">
+      <DownloadButton draft={uuid}>
         <FaFileWord size={128} />
         <h2 className="text-xl">Exportar en Word</h2>
-      </Card>
-      <Card className="w-72 h-72 items-center justify-evenly hover:cursor-pointer hover:bg-content3">
-        <FaFilePdf size={128} />
-        <h2 className="text-xl">Exportar en PDF</h2>
-      </Card>
+      </DownloadButton>
+      <p className="text-center text-white/60">
+        Proximamente podras exportar tu redaccion en PDF y más formatos
+      </p>
     </section>
   );
 }
