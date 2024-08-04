@@ -30,7 +30,7 @@ export default function MainBanner() {
           </Link>
         </div>
       </article>
-      <article className="lg:w-2/5">
+      <article className="lg:w-96">
         <Card className="flex h-full p-4 md:p-8">
           <CardHeader className={mate.className + ' editorial-header'}>
             <h2>Transforma tus Ideas en Conocimiento</h2>
