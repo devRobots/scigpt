@@ -58,7 +58,7 @@ export default function Breadcrumb() {
       </BreadcrumbItem>
       <BreadcrumbItem
         key="breadcrumb-4"
-        isDisabled={!path.includes('finish')}
+        isDisabled={!path.includes('export')}
         isCurrent
       >
         <FaFileExport />

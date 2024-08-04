@@ -1,7 +1,9 @@
 import { Pages } from '@/app/lib/data/consts';
 import { getDraft } from '@/app/lib/firebase/firestore';
-import { Card, CardBody } from '@nextui-org/react';
+import { Button, Card, CardBody } from '@nextui-org/react';
+import Link from 'next/link';
 import { redirect } from 'next/navigation';
+import { FaArrowRight } from 'react-icons/fa6';
 
 import ParagraphAI from '@/app/components/document/ParagraphAI';
 
@@ -29,7 +31,7 @@ export default async function ReviewPage({
   } = draft;
 
   return (
-    <section className="subcontent-full">
+    <section className="subcontent-full flex-col">
       <Card className="apa-format">
         <CardBody className="flex gap-8">
           <h2 className="editorial-header text-center">{thesis!}</h2>
@@ -51,6 +53,17 @@ export default async function ReviewPage({
           </article>
         </CardBody>
       </Card>
+      <div className="w-full xl:w-fit xl:fixed xl:bottom-16 xl:right-8">
+        <Link href={`${Pages.Writer}/${uuid}/export`}>
+          <Button
+            size="lg"
+            className="super-button w-full"
+            endContent={<FaArrowRight />}
+          >
+            Exportar
+          </Button>
+        </Link>
+      </div>
     </section>
   );
 }
