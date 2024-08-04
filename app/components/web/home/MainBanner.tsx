@@ -9,7 +9,7 @@ export default function MainBanner() {
   return (
     <section className="flex flex-col lg:flex-row w-full items-center justify-center gap-8 my-8">
       <article className="flex flex-col w-full lg:w-2/5 gap-4">
-        <Image src="/main.webp" alt="main" width={200} height={303} />
+        <Image src="/main.webp" alt="main" width={200} height={237} />
         <h1 className="text-3xl font-bold sm:text-6xl">
           Crea Trabajos de Grado con IA
         </h1>
