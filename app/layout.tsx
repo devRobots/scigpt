@@ -8,12 +8,10 @@ export const metadata = {
   title: 'SciGPT',
   description: 'Crea trabajos de grado con IA',
   openGraph: {
-    type: 'website',
-    locale: 'es_ES',
+    title: 'SciGPT',
+    description: 'Crea trabajos de grado con IA.',
     url: 'https://scigpt.vercel.app/',
-    site_name: 'SciGPT',
-    title: 'Crea trabajos de grado con IA',
-    description: 'Bienvenido a una nueva era en la creación de conocimiento.',
+    siteName: 'SciGPT',
     images: [
       {
         url: '/banner.webp',
@@ -21,7 +19,9 @@ export const metadata = {
         height: 750,
         alt: 'SciGPT'
       }
-    ]
+    ],
+    locale: 'es_ES',
+    type: 'website'
   },
   robots: 'index, follow',
   keywords: 'IA, GPT, Trabajos de grado, Tesis, Investigación'
