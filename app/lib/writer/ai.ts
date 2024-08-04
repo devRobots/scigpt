@@ -8,7 +8,6 @@ import { Draft } from '@/app/types/draft';
 export async function fetchAI(input: string, prompt: string) {
   const base_api = "https://" + process.env.NEXT_PUBLIC_VERCEL_URL;
   const api_endpoint = `${base_api}/api/ai`;
-  console.log(api_endpoint);
   const response = await fetch(api_endpoint, {
     method: 'POST',
     body: JSON.stringify({ input, prompt }),
