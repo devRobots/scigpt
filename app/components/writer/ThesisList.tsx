@@ -1,7 +1,7 @@
 import { generate } from '@/app/lib/writer/ai';
 import { Draft } from '@/app/types/draft';
 
-import RadioListAI from '@/app/components/ai/RadioListAI';
+import RadioListAI from '@/app/components/input/ai/RadioListAI';
 
 export default async function ThesisList({ draft }: { draft: Draft }) {
   const thesisList: any[] = await generate('thesis', draft);

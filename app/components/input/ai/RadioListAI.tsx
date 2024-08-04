@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 
-import InputEnhancer from '@/app/components/ai/InputEnhancer';
-import RadioList from '@/app/components/standard/RadioList';
+import InputEnhancer from '@/app/components/input/ai/InputEnhancer';
+import RadioList from '@/app/components/input/standard/RadioList';
 
 export default function RadioListAI({
   name,

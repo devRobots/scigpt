@@ -62,6 +62,3 @@ export default function InputEnhancer({ handler }: { handler: any }) {
     </div>
   );
 }
-function onEffect(arg0: () => void, arg1: string[]) {
-  throw new Error('Function not implemented.');
-}

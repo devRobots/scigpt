@@ -1,7 +1,7 @@
 import { Checkbox, CheckboxGroup } from '@nextui-org/checkbox';
 import { Skeleton } from '@nextui-org/react';
 
-import SkeletonInputEnhancer from '@/app/components/skeletons/InputEnhancer';
+import SkeletonInputEnhancer from '@/app/components/input/skeletons/InputEnhancer';
 
 export function SkeletonCheck() {
   return (

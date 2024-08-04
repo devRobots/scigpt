@@ -4,10 +4,10 @@ import { Button } from '@nextui-org/button';
 import { Card, CardBody, CardFooter } from '@nextui-org/card';
 import { Textarea } from '@nextui-org/react';
 
-import BackButton from '@/app/components/misc/BackButton';
-import BigInput from '@/app/components/standard/BigInput';
-import InputTag from '@/app/components/standard/InputTag';
-import ListSelector from '@/app/components/standard/ListSelector';
+import BackButton from '@/app/components/input/misc/BackButton';
+import BigInput from '@/app/components/input/standard/BigInput';
+import InputTag from '@/app/components/input/standard/InputTag';
+import ListSelector from '@/app/components/input/standard/ListSelector';
 
 export default function Writer() {
   return (

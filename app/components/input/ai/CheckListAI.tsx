@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 
-import InputEnhancer from '@/app/components/ai/InputEnhancer';
-import CheckList from '@/app/components/standard/CheckList';
+import InputEnhancer from '@/app/components/input/ai/InputEnhancer';
+import CheckList from '@/app/components/input/standard/CheckList';
 
 const VERBS = [
   'analizar',

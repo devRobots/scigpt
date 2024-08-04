@@ -6,9 +6,9 @@ import { CardBody, CardFooter } from '@nextui-org/react';
 import { redirect } from 'next/navigation';
 import { Suspense } from 'react';
 
-import BackButton from '@/app/components/misc/BackButton';
-import SubmitButton from '@/app/components/misc/SubmitButton';
-import SkeletonCheckListAI from '@/app/components/skeletons/CheckListAI';
+import BackButton from '@/app/components/input/misc/BackButton';
+import SubmitButton from '@/app/components/input/misc/SubmitButton';
+import SkeletonCheckListAI from '@/app/components/input/skeletons/CheckListAI';
 import ObjectivesList from '@/app/components/writer/ObjectivesList';
 
 export default async function Thesis({ params }: { params: { uuid: string } }) {

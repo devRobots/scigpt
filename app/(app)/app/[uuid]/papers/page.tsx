@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 
 import { usePapers } from '@/app/hooks/usePapers';
 
-import InputSearchAI from '@/app/components/ai/InputSearchAI';
+import InputSearchAI from '@/app/components/input/ai/InputSearchAI';
 import PaperList from '@/app/components/writer/PapersReviews';
 
 /* eslint-disable react-hooks/exhaustive-deps */

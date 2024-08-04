@@ -1,7 +1,7 @@
 import { Radio, RadioGroup } from '@nextui-org/radio';
 import { Skeleton } from '@nextui-org/react';
 
-import SkeletonInputEnhancer from '@/app/components/skeletons/InputEnhancer';
+import SkeletonInputEnhancer from '@/app/components/input/skeletons/InputEnhancer';
 
 export function SkeletonRadio() {
   return (
