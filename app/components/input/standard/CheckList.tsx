@@ -41,7 +41,7 @@ export default function CheckList({
   items: string[];
 }) {
   return (
-    <CheckboxGroup className="w-full">
+    <CheckboxGroup className="w-full" isRequired>
       {items.length > 0 ? (
         items.map((item, index) => {
           return (

@@ -7,6 +7,9 @@ import { redirect } from 'next/navigation';
 export async function submitObjectives(formData: FormData) {
   const uuid = formData.get('uuid') as string;
   const objectives = formData.getAll('objetivo') as string[];
+
+  if (objectives.length < 3) return;
+
   await updateDraft(uuid, { objectives: objectives, stage: App.Writer });
   redirect(`${Pages.Writer}/${uuid}/${App.Writer}`);
 }

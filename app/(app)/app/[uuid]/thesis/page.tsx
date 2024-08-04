@@ -1,7 +1,7 @@
 import { submitThesis } from '@/app/actions/thesis';
 import { Pages } from '@/app/lib/data/consts';
 import { getDraft } from '@/app/lib/firebase/firestore';
-import { Card, CardBody, CardHeader } from '@nextui-org/react';
+import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/react';
 import { redirect } from 'next/navigation';
 import { Suspense } from 'react';
 
@@ -41,10 +41,10 @@ export default async function Thesis({ params }: { params: { uuid: string } }) {
               <ThesisList draft={draft} />
             </Suspense>
           </CardBody>
-          <CardHeader className="card-action-footer">
+          <CardFooter className="card-action-footer">
             <BackButton label="Salir" href={Pages.Writer} />
             <SubmitButton label="Continuar" />
-          </CardHeader>
+          </CardFooter>
         </form>
       </Card>
     </section>
