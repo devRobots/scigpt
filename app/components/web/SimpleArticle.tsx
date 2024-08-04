@@ -3,7 +3,7 @@ export default function SimpleArticle({
   content
 }: {
   title: string;
-  content: string;
+  content: string;  
 }) {
   return (
     <article className="flex flex-col items-center justify-center gap-4 xl:w-1/2 text-center">
