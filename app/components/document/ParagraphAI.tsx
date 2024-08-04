@@ -26,7 +26,7 @@ export default function ParagraphAI({
 
   return (
     <div
-      className="-m-2 p-2 rounded-md hover:border-1 hover:cursor-pointer hover:bg-content3"
+      className="-m-2 p-2 rounded-md border-1 border-transparent hover:border-primary hover:cursor-pointer hover:bg-content3"
       onClick={handleClick}
     >
       <h3 className="font-bold text-lg">{subtitle}</h3>

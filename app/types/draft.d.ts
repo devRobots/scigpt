@@ -15,5 +15,5 @@ export interface Draft {
   results?: string;
   discussion?: string;
   conclusion?: string;
-  references?: string;
+  references?: string[];
 }
