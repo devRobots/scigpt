@@ -1,8 +1,8 @@
 import '@/app/globals.css';
 import { NextUIProviders } from '@/app/providers/NextUIProviders';
 
-import Footer from '@/app/components/core/Footer';
-import NavBar from '@/app/components/core/navbar/NavBar';
+import Footer from '@/app/components/web/Footer';
+import NavBar from '@/app/components/web/navbar/NavBar';
 
 export const metadata = {
   title: 'SciGPT',

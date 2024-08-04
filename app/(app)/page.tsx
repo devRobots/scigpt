@@ -1,8 +1,8 @@
-import MainBanner from '@/app/components/web/MainBanner';
 import SimpleArticle from '@/app/components/web/SimpleArticle';
-import Strengths from '@/app/components/web/Strengths';
-import TechBrands from '@/app/components/web/TechBrands';
-import UseCases from '@/app/components/web/UseCases';
+import MainBanner from '@/app/components/web/home/MainBanner';
+import Strengths from '@/app/components/web/home/Strengths';
+import TechBrands from '@/app/components/web/home/TechBrands';
+import UseCases from '@/app/components/web/home/UseCases';
 
 export default function HomePage() {
   return (

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { FaArrowRight } from 'react-icons/fa6';
 
-import ParagraphAI from '@/app/components/document/ParagraphAI';
+import ParagraphAI from '@/app/components/writer/ParagraphAI';
 
 export default async function ReviewPage({
   params

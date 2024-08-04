@@ -7,7 +7,7 @@ import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card';
 import { Chip } from '@nextui-org/react';
 import Link from 'next/link';
 
-import NotFound from '@/app/components/core/NotFound';
+import NotFound from '@/app/components/web/NotFound';
 
 export default async function PersonalDrafts() {
   const session = await auth();

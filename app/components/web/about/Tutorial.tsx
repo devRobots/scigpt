@@ -1,5 +1,6 @@
-import { TimelineItem } from './TimelineItem';
 import { Fa1, Fa2, Fa3, Fa4, Fa5 } from 'react-icons/fa6';
+
+import { TimelineItem } from '@/app/components/web/about/Timeline';
 
 export default function Tutorial() {
   return (

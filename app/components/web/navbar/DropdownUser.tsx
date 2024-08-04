@@ -8,14 +8,13 @@ import {
   DropdownTrigger,
   User
 } from '@nextui-org/react';
-import { useRouter } from 'next/navigation';
 
 export default function DropdownUser({ user }: { user: any }) {
-  const router = useRouter();
-
   const signout = async () => {
-    const success = await signOut();
-    if (success) router.push('/');
+    await signOut({
+      redirectTo: '/login',
+      redirect: true
+    });
   };
 
   return (

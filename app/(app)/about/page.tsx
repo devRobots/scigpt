@@ -1,8 +1,8 @@
 import { Divider } from '@nextui-org/react';
 
-import MyStory from '@/app/components/web/MyStory';
 import SimpleArticle from '@/app/components/web/SimpleArticle';
-import Tutorial from '@/app/components/web/Tutorial';
+import MyStory from '@/app/components/web/about/MyStory';
+import Tutorial from '@/app/components/web/about/Tutorial';
 
 export default function AboutPage() {
   return (
