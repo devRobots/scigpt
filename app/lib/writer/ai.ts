@@ -6,7 +6,9 @@ import {
 import { Draft } from '@/app/types/draft';
 
 export async function fetchAI(input: string, prompt: string) {
-  const response = await fetch("http://localhost:3000/api/ai", {
+  const base_api = process.env.NEXT_PUBLIC_API_URL;
+  const api_endpoint = `${base_api}/api/ai`;
+  const response = await fetch(api_endpoint, {
     method: 'POST',
     body: JSON.stringify({ input, prompt }),
     headers: { 'Content-Type': 'application/json' }
@@ -77,7 +79,6 @@ export async function generate(item: string, draft: Draft) {
   if (!checkInput(input)) return null;
   const prompt = promptDraftItem(item, input);
   const response = await fetchAI(JSON.stringify(input), prompt);
-  console.log(response);
   return response[item];
 }
 

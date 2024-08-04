@@ -13,7 +13,9 @@ export default function DownloadButton({
   isPdf?: boolean;
 }) {
   const handleExport = async () => {
-    const res = await fetch(`/api/writer/export?draft=${draft}&pdf=${isPdf}`);
+    const base_api = process.env.NEXT_PUBLIC_API_URL;
+    const api_endpoint = `${base_api}/api/writer/export?draft=${draft}`;
+    const res = await fetch(api_endpoint);
     const blob = await res.blob();
     saveAs(blob, 'redaccion.' + (isPdf ? 'pdf' : 'docx'));
   };
