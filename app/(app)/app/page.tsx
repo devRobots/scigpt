@@ -1,29 +1,17 @@
-import { App, Pages } from '@/app/lib/data/consts';
-import { Button } from '@nextui-org/button';
-import Link from 'next/link';
-import { FaPlus } from 'react-icons/fa6';
-
+import NewDraft from '@/app/components/writer/NewDraft';
 import PersonalDrafts from '@/app/components/writer/PersonalDrafts';
 
 export default function Writer() {
   return (
     <main className="content-full">
-      <section className="flex flex-col w-full sm:flex-row sm:items-center sm:justify-evenly gap-2">
+      <section className="flex flex-col w-full sm:flex-row sm:items-center sm:justify-evenly items-start gap-2">
         <div>
           <h1 className="text-4xl font-bold">Mis articulos</h1>
           <p className="text-lg text-default-900/40">
-            Escribe, edita y publica tus articulos
+            Bienvenido a la revolución en escritura academica.
           </p>
         </div>
-        <Link href={`${Pages.Writer}/${App.New}`}>
-          <Button
-            className="super-button"
-            variant="shadow"
-            startContent={<FaPlus />}
-          >
-            Nuevo
-          </Button>
-        </Link>
+        <NewDraft />
       </section>
       <PersonalDrafts />
     </main>

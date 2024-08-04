@@ -1,15 +1,23 @@
 import { submitDraft } from '@/app/actions/draft';
-import { fieldsOfStudy as items } from '@/app/lib/data/consts';
+import { fieldsOfStudy as items, Pages } from '@/app/lib/data/consts';
+import { getDraftsCountByOwner } from '@/app/lib/firebase/firestore';
+import { auth } from '@/auth';
 import { Button } from '@nextui-org/button';
 import { Card, CardBody, CardFooter } from '@nextui-org/card';
 import { Textarea } from '@nextui-org/react';
+import { redirect } from 'next/navigation';
 
 import BackButton from '@/app/components/input/misc/BackButton';
 import BigInput from '@/app/components/input/standard/BigInput';
 import InputTag from '@/app/components/input/standard/InputTag';
 import ListSelector from '@/app/components/input/standard/ListSelector';
 
-export default function Writer() {
+export default async function Writer() {
+  const session = await auth();
+  const user = session?.user;
+  const countDrafts = await getDraftsCountByOwner(user!.email!);
+  if (countDrafts >= 3) redirect(Pages.Writer);
+
   return (
     <main className="content-fit">
       <section className="xl:w-3/5">

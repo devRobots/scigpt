@@ -6,18 +6,12 @@ import {
   doc,
   getDoc,
   getDocs,
-  onSnapshot,
   query,
   updateDoc,
   where
 } from '@firebase/firestore';
 
 const DRAFT_COLLECTION = 'draft';
-
-export async function suscribeDraft(uuid: string, handler: (draft: Draft) => void) {
-  const docRef = doc(db, DRAFT_COLLECTION, uuid);
-  onSnapshot(docRef, (doc) => handler(doc.data() as Draft));
-}
 
 export async function getDraft(uuid: string) {
   const docRef = doc(db, DRAFT_COLLECTION, uuid);
@@ -47,4 +41,11 @@ export async function getDraftsByOwner(owner: string) {
     } as Draft;
   });
   return drafts || [];
+}
+
+export async function getDraftsCountByOwner(owner: string) {
+  const draftRef = collection(db, DRAFT_COLLECTION);
+  const q = query(draftRef, where('owner', '==', owner));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs.length;
 }
