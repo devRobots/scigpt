@@ -13,7 +13,7 @@ export default function DownloadButton({
   isPdf?: boolean;
 }) {
   const handleExport = async () => {
-    const base_api = "https://" + process.env.VERCEL_URL;
+    const base_api = 'https://' + process.env.NEXT_PUBLIC_VERCEL_URL;
     const api_endpoint = `${base_api}/api/writer/export?draft=${draft}`;
     const res = await fetch(api_endpoint);
     const blob = await res.blob();
