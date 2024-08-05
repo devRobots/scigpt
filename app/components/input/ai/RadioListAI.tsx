@@ -25,7 +25,7 @@ export default function RadioListAI({
   return (
     <div className="flex flex-col border-frame p-2 gap-3">
       <RadioList name={name} items={items} />
-      <InputEnhancer handler={appendItem} />
+      <InputEnhancer context="thesis" examples={items} handler={appendItem} />
     </div>
   );
 }
