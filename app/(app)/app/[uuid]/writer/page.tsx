@@ -10,6 +10,7 @@ export default async function Page({ params }: { params: { uuid: string } }) {
   const uuid = params.uuid;
   const draft = await getDraft(uuid);
   if (!draft) redirect(Pages.Writer);
+  
   const { stage } = draft;
   if (stage !== 'writer') redirect(`${Pages.Writer}/${uuid}/${stage}`);
 

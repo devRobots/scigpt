@@ -1,7 +1,7 @@
 'use client';
 
+import { exportDraft } from '@/app/lib/writer/draft';
 import { Card } from '@nextui-org/react';
-import { saveAs } from 'file-saver';
 
 export default function DownloadButton({
   children,
@@ -12,19 +12,10 @@ export default function DownloadButton({
   draft: string;
   isPdf?: boolean;
 }) {
-  const handleExport = async () => {
-    const base_api =
-      'https://' + process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL;
-    const api_endpoint = `${base_api}/api/writer/export?draft=${draft}`;
-    const res = await fetch(api_endpoint);
-    const blob = await res.blob();
-    saveAs(blob, 'redaccion.' + (isPdf ? 'pdf' : 'docx'));
-  };
-
   return (
     <Card
       className="w-72 h-72 items-center justify-evenly hover:bg-content3"
-      onPress={handleExport}
+      onPress={() => exportDraft(draft, isPdf)}
       isPressable
     >
       {children}

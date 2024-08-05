@@ -4,6 +4,7 @@ import {
   promptTextImprovement
 } from '@/app/lib/writer/prompt/builder';
 import { Draft } from '@/app/types/draft';
+import saveAs from 'file-saver';
 
 const HTTP = 'http://';
 const API_URL = process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL;
@@ -111,6 +112,13 @@ export async function generateObjectives(draft_id: string) {
   const response = await fetch(api_endpoint, { cache: 'force-cache' });
   const data = await response.json();
   return data.objectives;
+}
+
+export async function exportDraft(draft_id: string, isPdf: boolean = false) {
+  const api_endpoint = `${HTTP}${API_URL}/api/writer/${draft_id}/export`;
+  const res = await fetch(api_endpoint);
+  const blob = await res.blob();
+  saveAs(blob, 'redaccion.' + (isPdf ? 'pdf' : 'docx'));
 }
 
 export async function improveText(text: string) {

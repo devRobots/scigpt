@@ -2,11 +2,8 @@ import { getDraft } from "@/app/lib/firebase/firestore";
 import { Document, Packer, Paragraph } from "docx";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(request: NextRequest) {
-    const params = request.nextUrl.searchParams;
-    const draft_id = params.get("draft");
-    if (!draft_id) return NextResponse.error();
-    const draft = await getDraft(draft_id);
+export async function GET(request: NextRequest, { params }: { params: { draft: string } }) {
+    const draft = await getDraft(params.draft);
     if (!draft) return NextResponse.error();
 
     const {
