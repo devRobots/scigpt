@@ -8,8 +8,9 @@ export default function NotFound({ text }: { text: string }) {
         <Image
           src="/lost+found.webp"
           width={256}
-          height={236}
+          height={237}
           alt="Error 404"
+          priority
         />
         <h2 className="text-lg text-center">{text}</h2>
       </Card>

@@ -26,7 +26,7 @@ export default function NavBar() {
         <NavbarContent className="hidden sm:flex gap-4" as="div" justify="end">
           <UserButton />
         </NavbarContent>
-        <NavbarMenu>
+        <NavbarMenu className="scifi-dark">
           <NavBarLinks isMenu />
         </NavbarMenu>
       </NavbarContent>

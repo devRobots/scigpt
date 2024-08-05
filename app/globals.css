@@ -70,12 +70,6 @@
     border-default-200;
 }
 
-.main-card {
-  @apply h-fit 
-    w-full 
-    p-0 sm:p-2;
-}
-
 .card-action-footer {
   @apply
   flex 
@@ -92,6 +86,11 @@
   to-primary 
   bg-clip-text 
   text-transparent;
+}
+
+p + #text-loader {
+  @apply 
+  text-white/40;
 }
 
 .apa-format {

@@ -1,5 +1,6 @@
 'use client';
 
+import { App, Pages } from '@/app/lib/data/consts';
 import { updateDraft } from '@/app/lib/firebase/firestore';
 import { generate } from '@/app/lib/writer/draft';
 import { Draft } from '@/app/types/draft';
@@ -33,9 +34,9 @@ export function LoaderItem({
           id="check"
         />
       ) : (
-        '-'
+        <p className="w-4 h-4 mb-0 ml-1">-</p>
       )}
-      <p className="text-lg text-white/40" id="text-loader">
+      <p className="text-lg text-white" id="text-loader">
         {text}
       </p>
     </div>
@@ -75,7 +76,7 @@ export function Loader({ draft }: { draft: Draft }) {
         });
       }
       setStep(8);
-      draft.stage = 'review';
+      draft.stage = App.Review;
       await updateDraft(draft.id, draft);
     };
     load();
@@ -98,7 +99,7 @@ export function Loader({ draft }: { draft: Draft }) {
         </div>
       </article>
       {step == 8 && (
-        <Link href={`/app/${draft.id}/review`}>
+        <Link href={`${Pages.Writer}/${draft.id}/${App.Review}`}>
           <Button className="super-button" size="md" hidden={false}>
             Verificar
           </Button>

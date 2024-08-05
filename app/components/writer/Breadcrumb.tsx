@@ -41,7 +41,7 @@ export default function Breadcrumb() {
         <p className="hidden sm:flex">Objetivos</p>
       </BreadcrumbItem>
       <BreadcrumbItem
-        key="breadcrumb-3"
+        key="breadcrumb-2"
         isDisabled={!path.includes('writer')}
         isCurrent
       >

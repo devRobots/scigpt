@@ -5,7 +5,9 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { FaArrowRight } from 'react-icons/fa6';
 
+import Paragraph from '@/app/components/writer/Paragraph';
 import ParagraphAI from '@/app/components/writer/ParagraphAI';
+import ParagraphList from '@/app/components/writer/ParagraphList';
 
 export default async function ReviewPage({
   params
@@ -41,18 +43,8 @@ export default async function ReviewPage({
             subtitle="Resumen"
             paragraph={abstract!}
           />
-          <ParagraphAI
-            uuid={uuid}
-            name="abstract"
-            subtitle="Abstract"
-            paragraph={abstract!}
-          />
-          <ParagraphAI
-            uuid={uuid}
-            name="keywords"
-            subtitle="Keywords"
-            paragraph={keywords!.join(', ')}
-          />
+          <Paragraph subtitle="Abstract" paragraph={abstract!} />
+          <Paragraph subtitle="Keywords" paragraph={keywords!.join(', ')} />
           <ParagraphAI
             uuid={uuid}
             name="introduction"
@@ -83,14 +75,7 @@ export default async function ReviewPage({
             subtitle="Conclusiones"
             paragraph={conclusion!}
           />
-          <article>
-            <h3 className="font-bold text-lg">Referencias</h3>
-            <ul>
-              {references!.map((reference, index) => (
-                <li key={index}>{reference}</li>
-              ))}
-            </ul>
-          </article>
+          <ParagraphList subtitle="Referencias" items={references!} />
         </CardBody>
       </Card>
       <div className="w-full xl:w-fit xl:fixed xl:bottom-16 xl:right-8">

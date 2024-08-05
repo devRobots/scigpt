@@ -24,7 +24,7 @@ export default function ParagraphAI({
   };
 
   return (
-    <div
+    <article
       className="-m-2 p-2 rounded-md border-1 border-transparent hover:border-primary hover:cursor-pointer hover:bg-content3"
       onClick={handleClick}
     >
@@ -39,6 +39,6 @@ export default function ParagraphAI({
         text={text}
         setText={setText}
       />
-    </div>
+    </article>
   );
 }

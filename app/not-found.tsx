@@ -5,7 +5,13 @@ import Link from 'next/link';
 export default function NotFound() {
   return (
     <main className="content-full">
-      <Image src="/lost+found.webp" width={256} height={236} alt="Error 404" />
+      <Image
+        src="/lost+found.webp"
+        width={256}
+        height={237}
+        alt="Error 404"
+        priority
+      />
       <article>
         <h1 className="font-bold text-xl text-center">
           Error 404: No encontrado

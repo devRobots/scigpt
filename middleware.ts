@@ -1,6 +1,6 @@
+import { Pages } from '@/app/lib/data/consts';
 import { auth } from '@/auth';
 import { NextRequest, NextResponse } from 'next/server';
-import { App, Pages } from '@/app/lib/data/consts';
 
 export async function middleware(request: NextRequest) {
   const session = await auth();

@@ -10,12 +10,12 @@ export default async function Page({ params }: { params: { uuid: string } }) {
   const uuid = params.uuid;
   const draft = await getDraft(uuid);
   if (!draft) redirect(Pages.Writer);
-  
+
   const { stage } = draft;
   if (stage !== 'writer') redirect(`${Pages.Writer}/${uuid}/${stage}`);
 
   return (
-    <section className="subcontent-full my-24">
+    <section className="subcontent-full my-24 lg:my-8 xl:my-20">
       <Image src="/writer.webp" width={256} height={230} alt="Editorial" />
       <h2 className="editorial-header">Redactando...</h2>
       <Loader draft={{ ...draft, id: uuid } as Draft} />

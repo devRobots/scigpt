@@ -8,9 +8,9 @@ export enum Pages {
 export enum App {
   Hipothesis = 'thesis',
   Objectives = 'objectives',
-  PaperReview = 'review',
   Writer = 'writer',
-  Export = 'finish',
+  Review = 'review',
+  Export = 'export',
 
   New = 'new'
 }
