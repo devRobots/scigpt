@@ -1,4 +1,4 @@
-import { App } from "@/app/lib/data/consts";
+import { App, Pages } from "@/app/lib/data/consts";
 import { getDraft, updateDraft } from "@/app/lib/firebase/firestore";
 import { extractJSON } from "@/app/lib/utils";
 import { promptDraftItem } from "@/app/lib/writer/prompt/builder";
@@ -14,7 +14,7 @@ export async function GET(request: NextRequest, { params }: { params: { draft: s
     if (cache?.objectives) return NextResponse.json(cache);
 
     const input = { topics, approach, fieldOfStudy, thesis };
-    const prompt = promptDraftItem("thesis", input);
+    const prompt = promptDraftItem("objectives", input);
 
     const seed = Math.floor(Math.random() * 1024);
     const model = google('models/gemini-1.5-flash-latest');
@@ -30,7 +30,9 @@ export async function GET(request: NextRequest, { params }: { params: { draft: s
     });
 
     const data: Draft = JSON.parse(extractJSON(text));
-    await updateDraft(uuid, { cache: { ...cache, thesis: data.objectives } });
+    await updateDraft(uuid, {
+        cache: { ...cache, objectives: data.objectives }
+    });
 
     return NextResponse.json(data);
 }
@@ -44,5 +46,7 @@ export async function POST(request: NextRequest, { params }: { params: { draft: 
     if (objectives.length < 3) return;
 
     await updateDraft(uuid, { objectives: objectives, stage: App.Writer });
-    return new NextResponse("", { status: 200 });
+
+    const redirect = `${Pages.Writer}/${uuid}/${App.Writer}`;
+    return new NextResponse(redirect, { status: 200 });
 }

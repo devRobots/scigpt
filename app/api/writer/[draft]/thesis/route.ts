@@ -1,4 +1,4 @@
-import { App } from "@/app/lib/data/consts";
+import { App, Pages } from "@/app/lib/data/consts";
 import { getDraft, updateDraft } from "@/app/lib/firebase/firestore";
 import { extractJSON } from "@/app/lib/utils";
 import { promptDraftItem } from "@/app/lib/writer/prompt/builder";
@@ -43,5 +43,7 @@ export async function POST(request: NextRequest, { params }: { params: { draft: 
     if (!thesis) return;
 
     await updateDraft(uuid, { thesis: thesis, stage: App.Objectives });
-    return new NextResponse("", { status: 200 });
+
+    const redirect = `${Pages.Writer}/${uuid}/${App.Objectives}`;
+    return new NextResponse(redirect, { status: 200 });
 }

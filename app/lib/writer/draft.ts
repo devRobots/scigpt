@@ -89,7 +89,7 @@ export async function submitThesis(draft_id: string, formData: FormData) {
   const api_endpoint = `${HTTP}${API_URL}/api/writer/${draft_id}/thesis`;
   const request = { method: 'POST', body: formData };
   const response = await fetch(api_endpoint, request);
-  return response.ok;
+  return response;
 }
 
 export async function generateThesis(draft_id: string) {
@@ -103,7 +103,7 @@ export async function submitObjectives(draft_id: string, formData: FormData) {
   const api_endpoint = `${HTTP}${API_URL}/api/writer/${draft_id}/objectives`;
   const request = { method: 'POST', body: formData };
   const response = await fetch(api_endpoint, request);
-  return response.ok;
+  return response;
 }
 
 export async function generateObjectives(draft_id: string) {

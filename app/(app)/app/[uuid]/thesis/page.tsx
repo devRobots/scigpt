@@ -1,4 +1,4 @@
-import { App, Pages } from '@/app/lib/data/consts';
+import { Pages } from '@/app/lib/data/consts';
 import { getDraft } from '@/app/lib/firebase/firestore';
 import { submitThesis } from '@/app/lib/writer/draft';
 import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/react';
@@ -21,7 +21,8 @@ export default async function Thesis({ params }: { params: { uuid: string } }) {
   const submit = async (formData: FormData) => {
     'use server';
     const response = await submitThesis(uuid, formData);
-    if (response) redirect(`${Pages.Writer}/${uuid}/${App.Objectives}`);
+    const redirectTo = await response.text();
+    if (response.ok) redirect(redirectTo);
   };
 
   return (
