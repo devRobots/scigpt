@@ -14,7 +14,8 @@ export async function fetchAI(input: string, prompt: string) {
   const request = {
     method: 'POST',
     body: JSON.stringify({ input, prompt }),
-    headers: { 'Content-Type': 'application/json' }
+    headers: { 'Content-Type': 'application/json' },
+    timeout: 30000
   };
   const response = await fetch(`${HTTP}${API_URL}/api/ai`, request);
   const raw = await response.text();
