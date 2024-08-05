@@ -10,7 +10,7 @@ const HTTP = 'http://';
 const API_URL = process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL;
 
 export async function fetchAI(input: string, prompt: string) {
-  const api_endpoint = `${HTTP}${API_URL}/api/writer/ai`;
+  const api_endpoint = `${HTTP}${API_URL}/api/ai`;
   const response = await fetch(api_endpoint, {
     method: 'POST',
     body: JSON.stringify({ input, prompt }),

@@ -48,8 +48,8 @@ export function Loader({ draft }: { draft: Draft }) {
 
   useEffect(() => {
     const items = [
-      'abstract',
       'keywords',
+      'abstract',
       'introduction',
       'methodology',
       'results',
@@ -85,8 +85,8 @@ export function Loader({ draft }: { draft: Draft }) {
     <>
       <article className="flex flex-row gap-4">
         <div className="flex flex-col">
-          <LoaderItem text="Resumen" status={status[0]} />
-          <LoaderItem text="Palabras clave" status={status[1]} />
+          <LoaderItem text="Palabras clave" status={status[0]} />
+          <LoaderItem text="Resumen" status={status[1]} />
           <LoaderItem text="Introduccion" status={status[2]} />
           <LoaderItem text="Metodologia" status={status[3]} />
         </div>
