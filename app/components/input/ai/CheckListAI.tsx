@@ -39,7 +39,11 @@ export default function CheckListAI({
   return (
     <div className="flex flex-col border-frame p-2 gap-2">
       <CheckList name={name} items={items} />
-      <InputEnhancer handler={appendItem} />
+      <InputEnhancer
+        context="objectives"
+        examples={items}
+        handler={appendItem}
+      />
     </div>
   );
 }

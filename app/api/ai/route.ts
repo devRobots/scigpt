@@ -23,8 +23,5 @@ export async function POST(request: NextRequest) {
     seed: seed
   });
 
-  const dataStart = text.indexOf('{');
-  const dataEnd = text.lastIndexOf('}');
-  const data = text.slice(dataStart, dataEnd + 1);
-  return NextResponse.json(data);
+  return new NextResponse(text, { status: 200 });
 }

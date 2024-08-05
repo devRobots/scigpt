@@ -1,4 +1,5 @@
 import { getDraft } from '@/app/lib/firebase/firestore';
+import { extractJSON } from '@/app/lib/utils';
 import {
   promptDraftItem,
   promptTextImprovement
@@ -6,17 +7,19 @@ import {
 import { Draft } from '@/app/types/draft';
 import saveAs from 'file-saver';
 
-const HTTP = 'https://';
+const HTTP = 'http://';
 const API_URL = process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL;
 
 export async function fetchAI(input: string, prompt: string) {
-  const response = await fetch(`${HTTP}${API_URL}/api/ai`, {
+  const request = {
     method: 'POST',
     body: JSON.stringify({ input, prompt }),
     headers: { 'Content-Type': 'application/json' }
-  });
-  const data = await response.json();
-  return JSON.parse(data);
+  };
+  const response = await fetch(`${HTTP}${API_URL}/api/ai`, request);
+  const raw = await response.text();
+  const data = JSON.parse(extractJSON(raw));
+  return data;
 }
 
 function checkInput(input: any) {
@@ -119,15 +122,19 @@ export async function generateObjectives(draft_id: string) {
   return data.objectives;
 }
 
-export async function exportDraft(draft_id: string, isPdf: boolean = false) {
+export async function exportDraft(draft_id: string) {
   const res = await fetch(`${HTTP}${API_URL}/api/writer/${draft_id}/export`);
   const blob = await res.blob();
-  saveAs(blob, 'redaccion.' + (isPdf ? 'pdf' : 'docx'));
+  saveAs(blob, `redaccion-${draft_id}.docx`);
 }
 
-export async function improveText(text: string) {
-  const input = JSON.stringify({ text });
-  const improveTextPrompt = promptTextImprovement(input);
-  const response = await fetchAI(input, improveTextPrompt);
-  return response.improvedText;
+export async function improveText(context: string, examples: string[], text: string) {
+  const prompt = promptTextImprovement(context, text, examples);
+  const request = {
+    method: 'POST',
+    body: JSON.stringify({ input: text, prompt })
+  };
+  const response = await fetch(`${HTTP}${API_URL}/api/ai`, request);
+  const data = await response.text();
+  return data.trim();
 }

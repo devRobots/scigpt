@@ -5,8 +5,7 @@ import { Card } from '@nextui-org/react';
 
 export default function DownloadButton({
   children,
-  draft,
-  isPdf
+  draft
 }: {
   children: React.ReactNode;
   draft: string;
@@ -15,7 +14,7 @@ export default function DownloadButton({
   return (
     <Card
       className="w-72 h-72 items-center justify-evenly hover:bg-content3"
-      onPress={() => exportDraft(draft, isPdf)}
+      onPress={() => exportDraft(draft)}
       isPressable
     >
       {children}
