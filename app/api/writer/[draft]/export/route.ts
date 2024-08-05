@@ -29,10 +29,15 @@ export async function GET(request: NextRequest, { params }: { params: { draft: s
                         alignment: "center",
                     }),
                     new Paragraph({
+                        text: "Resumen",
+                        heading: "Heading2",
+                    }),
+                    new Paragraph(abstract!.es),
+                    new Paragraph({
                         text: "Abstract",
                         heading: "Heading2",
                     }),
-                    new Paragraph(abstract!),
+                    new Paragraph(abstract!.en),
                     new Paragraph({
                         text: "Keywords",
                         heading: "Heading2",

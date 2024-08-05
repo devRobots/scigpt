@@ -7,7 +7,7 @@ import {
 import { Draft } from '@/app/types/draft';
 import saveAs from 'file-saver';
 
-const HTTP = 'https://';
+const HTTP = 'http://';
 const API_URL = process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL;
 
 export async function fetchAI(input: string, prompt: string) {

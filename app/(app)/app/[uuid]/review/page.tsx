@@ -41,9 +41,9 @@ export default async function ReviewPage({
             uuid={uuid}
             name="abstract"
             subtitle="Resumen"
-            paragraph={abstract!}
+            paragraph={abstract!.es}
           />
-          <Paragraph subtitle="Abstract" paragraph={abstract!} />
+          <Paragraph subtitle="Abstract" paragraph={abstract!.en} />
           <Paragraph subtitle="Keywords" paragraph={keywords!.join(', ')} />
           <ParagraphAI
             uuid={uuid}

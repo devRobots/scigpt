@@ -8,7 +8,10 @@ export interface Draft {
   fieldOfStudy: string;
   thesis?: string;
   objectives?: string;
-  abstract?: string;
+  abstract?: {
+    es: string;
+    en: string;
+  };
   keywords?: string[];
   introduction?: string;
   methodology?: string;
