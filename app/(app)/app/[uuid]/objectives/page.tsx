@@ -1,6 +1,6 @@
-import { submitObjectives } from '@/app/actions/objectives';
-import { Pages } from '@/app/lib/data/consts';
+import { App, Pages } from '@/app/lib/data/consts';
 import { getDraft } from '@/app/lib/firebase/firestore';
+import { submitObjectives } from '@/app/lib/writer/ai';
 import { Card, CardHeader } from '@nextui-org/card';
 import { CardBody, CardFooter } from '@nextui-org/react';
 import { redirect } from 'next/navigation';
@@ -19,6 +19,12 @@ export default async function Thesis({ params }: { params: { uuid: string } }) {
   const { stage } = draft;
   if (stage !== 'objectives') redirect(`${Pages.Writer}/${uuid}/${stage}`);
 
+  const submit = async (formData: FormData) => {
+    'use server';
+    const response = await submitObjectives(uuid, formData);
+    if (response) redirect(`${Pages.Writer}/${uuid}/${App.Objectives}`);
+  };
+
   return (
     <section className="subcontent-full">
       <Card className="xl:w-3/5">
@@ -32,7 +38,7 @@ export default async function Thesis({ params }: { params: { uuid: string } }) {
             el investigador para implementar una metodología.
           </p>
         </CardHeader>
-        <form action={submitObjectives}>
+        <form action={submit}>
           <input type="hidden" hidden name="uuid" value={uuid} />
           <CardBody className="h-fit gap-3">
             <p className="font-semibold">
@@ -40,7 +46,7 @@ export default async function Thesis({ params }: { params: { uuid: string } }) {
               mas interesantes para continuar con el proceso de redaccion:
             </p>
             <Suspense fallback={<SkeletonCheckListAI />}>
-              <ObjectivesList draft={draft} />
+              <ObjectivesList draftId={uuid} />
             </Suspense>
           </CardBody>
           <CardFooter className="card-action-footer">

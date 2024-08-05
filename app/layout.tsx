@@ -7,6 +7,7 @@ import NavBar from '@/app/components/web/navbar/NavBar';
 export const metadata = {
   title: 'SciGPT',
   description: 'Crea trabajos de grado con IA',
+  metadataBase: new URL('https://scigpt.vercel.app/'),
   openGraph: {
     title: 'SciGPT',
     description: 'Crea trabajos de grado con IA.',

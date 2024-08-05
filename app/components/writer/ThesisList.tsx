@@ -1,10 +1,9 @@
-import { generate } from '@/app/lib/writer/ai';
-import { Draft } from '@/app/types/draft';
+import { generateThesis } from '@/app/lib/writer/ai';
 
 import RadioListAI from '@/app/components/input/ai/RadioListAI';
 
-export default async function ThesisList({ draft }: { draft: Draft }) {
-  const thesisList: any[] = await generate('thesis', draft);
+export default async function ThesisList({ draftId }: { draftId: string }) {
+  const thesisList: any[] = await generateThesis(draftId);
   return (
     <RadioListAI name="Hipotesis" initialItems={thesisList} maxItems={10} />
   );

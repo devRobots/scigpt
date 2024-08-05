@@ -1,6 +1,6 @@
-import { submitThesis } from '@/app/actions/thesis';
-import { Pages } from '@/app/lib/data/consts';
+import { App, Pages } from '@/app/lib/data/consts';
 import { getDraft } from '@/app/lib/firebase/firestore';
+import { submitThesis } from '@/app/lib/writer/ai';
 import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/react';
 import { redirect } from 'next/navigation';
 import { Suspense } from 'react';
@@ -18,6 +18,12 @@ export default async function Thesis({ params }: { params: { uuid: string } }) {
   const { stage } = draft;
   if (stage !== 'thesis') redirect(`${Pages.Writer}/${uuid}/${stage}`);
 
+  const submit = async (formData: FormData) => {
+    'use server';
+    const response = await submitThesis(uuid, formData);
+    if (response) redirect(`${Pages.Writer}/${uuid}/${App.Objectives}`);
+  };
+
   return (
     <section className="subcontent-full">
       <Card className="xl:w-3/5">
@@ -30,15 +36,14 @@ export default async function Thesis({ params }: { params: { uuid: string } }) {
             elementos dentro del proyecto.
           </p>
         </CardHeader>
-        <form action={submitThesis}>
-          <input type="hidden" hidden name="uuid" value={uuid} />
+        <form action={submit}>
           <CardBody className="h-fit gap-3">
             <p className="font-semibold">
               Seleccione a continuacion la hipotesis que le resulte mas
               interesante para continuar con el proceso de redaccion:
             </p>
             <Suspense fallback={<SkeletonRadioListAI />}>
-              <ThesisList draft={draft} />
+              <ThesisList draftId={uuid} />
             </Suspense>
           </CardBody>
           <CardFooter className="card-action-footer">

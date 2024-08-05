@@ -16,4 +16,10 @@ export interface Draft {
   discussion?: string;
   conclusion?: string;
   references?: string[];
+  cache?: DraftCache;
+}
+
+export interface DraftCache {
+  thesis: string[];
+  objectives: string[];
 }
