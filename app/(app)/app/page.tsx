@@ -3,7 +3,7 @@ import PersonalDrafts from '@/app/components/writer/PersonalDrafts';
 
 export default function Writer() {
   return (
-    <main className="content-full">
+    <main className="content-fit lg:h-screen">
       <section className="flex flex-col w-full sm:flex-row sm:items-center sm:justify-evenly items-start gap-2">
         <div>
           <h1 className="text-4xl font-bold">Mis articulos</h1>
