@@ -1,5 +1,7 @@
 import '@/app/globals.css';
 import { NextUIProviders } from '@/app/providers/NextUIProviders';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import Footer from '@/app/components/web/Footer';
 import NavBar from '@/app/components/web/navbar/NavBar';
@@ -36,6 +38,8 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning={true}>
       <body>
+        <Analytics />
+        <SpeedInsights />
         <NextUIProviders>
           <NavBar />
           {children}
