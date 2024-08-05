@@ -1,6 +1,6 @@
-import { submitDraft } from '@/app/actions/draft';
 import { fieldsOfStudy as items, Pages } from '@/app/lib/data/consts';
 import { getDraftsCountByOwner } from '@/app/lib/firebase/firestore';
+import { newDraft } from '@/app/lib/writer/draft';
 import { auth } from '@/auth';
 import { Button } from '@nextui-org/button';
 import { Card, CardBody, CardFooter } from '@nextui-org/card';
@@ -11,7 +11,6 @@ import BackButton from '@/app/components/input/misc/BackButton';
 import BigInput from '@/app/components/input/standard/BigInput';
 import InputTag from '@/app/components/input/standard/InputTag';
 import ListSelector from '@/app/components/input/standard/ListSelector';
-import { newDraft } from '@/app/lib/writer/draft';
 
 export default async function Writer() {
   const session = await auth();
@@ -29,7 +28,7 @@ export default async function Writer() {
     <main className="content-fit">
       <section className="xl:w-3/5">
         <Card className="p-1">
-          <form action={submitDraft}>
+          <form action={submit}>
             <input type="hidden" hidden name="owner" value={user!.email!} />
             <CardBody className="flex flex-col md:flex-row columns-1 md:columns-2 gap-6">
               <section className="flex flex-col w-full gap-4">
