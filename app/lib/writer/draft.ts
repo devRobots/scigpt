@@ -1,7 +1,6 @@
 import { getDraft } from '@/app/lib/firebase/firestore';
 import {
   promptDraftItem,
-  promptQueries,
   promptTextImprovement
 } from '@/app/lib/writer/prompt/builder';
 import { Draft } from '@/app/types/draft';
@@ -131,12 +130,4 @@ export async function improveText(text: string) {
   const improveTextPrompt = promptTextImprovement(input);
   const response = await fetchAI(input, improveTextPrompt);
   return response.improvedText;
-}
-
-export async function generateQueries(draft: Draft) {
-  const { thesis, topics, fieldOfStudy } = draft;
-  const input = JSON.stringify({ thesis, topics, fieldOfStudy });
-  const queriesPrompt = promptQueries(input);
-  const response = await fetchAI(input, queriesPrompt);
-  return response.queries;
 }
