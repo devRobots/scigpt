@@ -1,4 +1,4 @@
-import { generateThesis } from '@/app/lib/writer/ai';
+import { generateThesis } from '@/app/lib/writer/draft';
 
 import RadioListAI from '@/app/components/input/ai/RadioListAI';
 

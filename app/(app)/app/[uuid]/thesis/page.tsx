@@ -1,6 +1,6 @@
 import { App, Pages } from '@/app/lib/data/consts';
 import { getDraft } from '@/app/lib/firebase/firestore';
-import { submitThesis } from '@/app/lib/writer/ai';
+import { submitThesis } from '@/app/lib/writer/draft';
 import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/react';
 import { redirect } from 'next/navigation';
 import { Suspense } from 'react';

@@ -1,6 +1,6 @@
 import { App, Pages } from '@/app/lib/data/consts';
 import { getDraft } from '@/app/lib/firebase/firestore';
-import { submitObjectives } from '@/app/lib/writer/ai';
+import { submitObjectives } from '@/app/lib/writer/draft';
 import { Card, CardHeader } from '@nextui-org/card';
 import { CardBody, CardFooter } from '@nextui-org/react';
 import { redirect } from 'next/navigation';

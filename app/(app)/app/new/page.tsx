@@ -11,12 +11,19 @@ import BackButton from '@/app/components/input/misc/BackButton';
 import BigInput from '@/app/components/input/standard/BigInput';
 import InputTag from '@/app/components/input/standard/InputTag';
 import ListSelector from '@/app/components/input/standard/ListSelector';
+import { newDraft } from '@/app/lib/writer/draft';
 
 export default async function Writer() {
   const session = await auth();
   const user = session?.user;
   const countDrafts = await getDraftsCountByOwner(user!.email!);
   if (countDrafts >= 3) redirect(Pages.Writer);
+
+  const submit = async (formData: FormData) => {
+    'use server';
+    const response = await newDraft(formData);
+    if (response.ok) redirect(await response.text());
+  };
 
   return (
     <main className="content-fit">

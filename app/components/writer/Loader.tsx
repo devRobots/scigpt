@@ -1,7 +1,7 @@
 'use client';
 
 import { updateDraft } from '@/app/lib/firebase/firestore';
-import { generate } from '@/app/lib/writer/ai';
+import { generate } from '@/app/lib/writer/draft';
 import { Draft } from '@/app/types/draft';
 import { Button, Spinner } from '@nextui-org/react';
 import Link from 'next/link';

@@ -78,6 +78,13 @@ export async function generate(item: string, draft: Draft) {
   return response[item];
 }
 
+export async function newDraft(formData: FormData) {
+  const api_endpoint = `${HTTP}${API_URL}/api/writer`;
+  const request = { method: 'POST', body: formData };
+  const response = await fetch(api_endpoint, request);
+  return response;
+}
+
 export async function submitThesis(draft_id: string, formData: FormData) {
   const api_endpoint = `${HTTP}${API_URL}/api/writer/${draft_id}/thesis`;
   const request = { method: 'POST', body: formData };

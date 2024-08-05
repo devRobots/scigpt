@@ -1,4 +1,4 @@
-import { generateObjectives } from '@/app/lib/writer/ai';
+import { generateObjectives } from '@/app/lib/writer/draft';
 
 import CheckListAI from '@/app/components/input/ai/CheckListAI';
 
