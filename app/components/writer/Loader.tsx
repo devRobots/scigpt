@@ -67,13 +67,17 @@ export function Loader({ draft }: { draft: Draft }) {
           return next;
         });
         const response = await redact(item, draft);
-        if (!response) return;
+        if (!response) {
+          i--;
+          continue;
+        }
         draft[item as keyof Draft] = response;
         setStatus((prev) => {
           const next = [...prev];
           next[i] = 'done';
           return next;
         });
+        await updateDraft(draft.id, draft);
       }
       setStep(8);
       draft.stage = App.Review;
