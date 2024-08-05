@@ -78,7 +78,7 @@ export default async function ReviewPage({
           <ParagraphList subtitle="Referencias" items={references!} />
         </CardBody>
       </Card>
-      <div className="w-full xl:w-fit xl:fixed xl:bottom-16 xl:right-8">
+      <div className="w-full lg:w-fit lg:fixed lg:bottom-16 lg:right-8">
         <Link href={`${Pages.Writer}/${uuid}/export`}>
           <Button
             size="lg"
