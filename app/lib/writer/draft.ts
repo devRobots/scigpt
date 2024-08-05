@@ -1,3 +1,4 @@
+import { getDraft } from '@/app/lib/firebase/firestore';
 import {
   promptDraftItem,
   promptQueries,
@@ -10,8 +11,7 @@ const HTTP = 'http://';
 const API_URL = process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL;
 
 export async function fetchAI(input: string, prompt: string) {
-  const api_endpoint = `${HTTP}${API_URL}/api/ai`;
-  const response = await fetch(api_endpoint, {
+  const response = await fetch(`${HTTP}${API_URL}/api/ai`, {
     method: 'POST',
     body: JSON.stringify({ input, prompt }),
     headers: { 'Content-Type': 'application/json' }
@@ -79,6 +79,12 @@ export async function generate(item: string, draft: Draft) {
   return response[item];
 }
 
+export async function regenerate(item: string, draft_id: string) {
+  const draft = await getDraft(draft_id);
+  const generated = await generate(item, draft);
+  return generated;
+}
+
 export async function newDraft(formData: FormData) {
   const api_endpoint = `${HTTP}${API_URL}/api/writer`;
   const request = { method: 'POST', body: formData };
@@ -115,8 +121,7 @@ export async function generateObjectives(draft_id: string) {
 }
 
 export async function exportDraft(draft_id: string, isPdf: boolean = false) {
-  const api_endpoint = `${HTTP}${API_URL}/api/writer/${draft_id}/export`;
-  const res = await fetch(api_endpoint);
+  const res = await fetch(`${HTTP}${API_URL}/api/writer/${draft_id}/export`);
   const blob = await res.blob();
   saveAs(blob, 'redaccion.' + (isPdf ? 'pdf' : 'docx'));
 }

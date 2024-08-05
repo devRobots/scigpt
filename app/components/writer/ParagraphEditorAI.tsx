@@ -1,5 +1,7 @@
 'use client';
 
+import { updateDraft } from '@/app/lib/firebase/firestore';
+import { regenerate } from '@/app/lib/writer/draft';
 import {
   Button,
   Modal,
@@ -7,25 +9,37 @@ import {
   ModalContent,
   ModalFooter,
   ModalHeader,
+  Spinner,
   Textarea
 } from '@nextui-org/react';
+import { useState } from 'react';
 import { IoSparkles } from 'react-icons/io5';
 
 export default function ParagraphEditorAI({
+  uuid,
+  name,
   isOpen,
   onClose,
   title,
   text,
   setText
 }: {
+  uuid: string;
+  name: string;
   isOpen: boolean;
   onClose: () => void;
   title: string;
   text: string;
   setText: (text: string) => void;
 }) {
-  const handlerRegenerate = () => {
-    setText('Hola');
+  const [loading, setLoading] = useState(false);
+
+  const handlerRegenerate = async () => {
+    setLoading(true);
+    const generated = await regenerate(name, uuid);
+    await updateDraft(uuid, { [name]: generated });
+    setText(generated);
+    setLoading(false);
   };
 
   return (
@@ -45,7 +59,11 @@ export default function ParagraphEditorAI({
           <>
             <ModalHeader className="flex flex-col gap-1">{title}</ModalHeader>
             <ModalBody>
-              <Textarea minRows={10} rows={20} maxRows={30} value={text} />
+              {loading ? (
+                <Spinner />
+              ) : (
+                <Textarea minRows={10} rows={20} maxRows={30} value={text} />
+              )}
             </ModalBody>
             <ModalFooter>
               <Button color="danger" variant="light" onPress={onClose}>

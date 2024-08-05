@@ -6,9 +6,13 @@ import { useState } from 'react';
 import ParagraphEditorAI from '@/app/components/writer/ParagraphEditorAI';
 
 export default function ParagraphAI({
+  uuid,
+  name,
   subtitle,
   paragraph
 }: {
+  uuid: string;
+  name: string;
   subtitle: string;
   paragraph: string;
 }) {
@@ -27,6 +31,8 @@ export default function ParagraphAI({
       <h3 className="font-bold text-lg">{subtitle}</h3>
       <p>{text}</p>
       <ParagraphEditorAI
+        uuid={uuid}
+        name={name}
         isOpen={isOpen}
         onClose={onClose}
         title={subtitle}

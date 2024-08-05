@@ -35,14 +35,54 @@ export default async function ReviewPage({
       <Card className="apa-format">
         <CardBody className="flex gap-8">
           <h2 className="editorial-header text-center">{thesis!}</h2>
-          <ParagraphAI subtitle="Resumen" paragraph={abstract!} />
-          <ParagraphAI subtitle="Abstract" paragraph={abstract!} />
-          <ParagraphAI subtitle="Keywords" paragraph={keywords!.join(', ')} />
-          <ParagraphAI subtitle="Introduccion" paragraph={introduction!} />
-          <ParagraphAI subtitle="Metodologia" paragraph={methodology!} />
-          <ParagraphAI subtitle="Resultados" paragraph={results!} />
-          <ParagraphAI subtitle="Discusion" paragraph={discussion!} />
-          <ParagraphAI subtitle="Conclusiones" paragraph={conclusion!} />
+          <ParagraphAI
+            uuid={uuid}
+            name="abstract"
+            subtitle="Resumen"
+            paragraph={abstract!}
+          />
+          <ParagraphAI
+            uuid={uuid}
+            name="abstract"
+            subtitle="Abstract"
+            paragraph={abstract!}
+          />
+          <ParagraphAI
+            uuid={uuid}
+            name="keywords"
+            subtitle="Keywords"
+            paragraph={keywords!.join(', ')}
+          />
+          <ParagraphAI
+            uuid={uuid}
+            name="introduction"
+            subtitle="Introduccion"
+            paragraph={introduction!}
+          />
+          <ParagraphAI
+            uuid={uuid}
+            name="methodology"
+            subtitle="Metodologia"
+            paragraph={methodology!}
+          />
+          <ParagraphAI
+            uuid={uuid}
+            name="results"
+            subtitle="Resultados"
+            paragraph={results!}
+          />
+          <ParagraphAI
+            uuid={uuid}
+            name="discussion"
+            subtitle="Discusion"
+            paragraph={discussion!}
+          />
+          <ParagraphAI
+            uuid={uuid}
+            name="conclusion"
+            subtitle="Conclusiones"
+            paragraph={conclusion!}
+          />
           <article>
             <h3 className="font-bold text-lg">Referencias</h3>
             <ul>
